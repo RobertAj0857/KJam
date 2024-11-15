@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cthstnn2x6s4a"]
+[gd_scene load_steps=24 format=3 uid="uid://cthstnn2x6s4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
 [ext_resource type="Texture2D" uid="uid://cvxfpj0wjxhiq" path="res://pirate1.1-Sheet.png" id="2_lgdf0"]
+[ext_resource type="Script" path="res://Scripts/PirateCraftingController.cs" id="3_j0cep"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5rwkl"]
 atlas = ExtResource("2_lgdf0")
@@ -166,6 +167,7 @@ animations = [{
 radius = 5.0
 height = 16.0
 
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xtey8")
 AccelerationRate = 1.0
 Friction = 0.1
@@ -181,3 +183,6 @@ autoplay = "Front Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jtlcu")
+
+[node name="PirateCraftingController" type="Node2D" parent="."]
+script = ExtResource("3_j0cep")
