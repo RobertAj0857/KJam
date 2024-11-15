@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0wmuv4mfsckf"]
+
+[sub_resource type="TileSet" id="TileSet_oy1ou"]
+
+[node name="Level" type="TileMapLayer"]
+tile_set = SubResource("TileSet_oy1ou")
