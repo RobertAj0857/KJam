@@ -166,7 +166,6 @@ animations = [{
 radius = 5.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_xtey8")
 AccelerationRate = 1.0
 Friction = 0.1
