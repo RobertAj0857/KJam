@@ -4,9 +4,10 @@ using System;
 public partial class Node2d : Node2D
 {
 	// Called when the node enters the scene tree for the first time.
+	int val;
 	public override void _Ready()
 	{
-		int val = 10;
+		val = 10;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,7 +16,7 @@ public partial class Node2d : Node2D
 		for (int i = 0; i < 10; i++)
 		{
 			val += i;
-			GD.Print(val);
+			Console.WriteLine(val);
 		}
 	}
 }
