@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2o6pgpawcgxn"]
 
 [ext_resource type="Script" path="res://Scripts/MainViewport.cs" id="1_dvxft"]
-[ext_resource type="PackedScene" path="res://Scenes/Game.tscn" id="2_rvlmj"]
+[ext_resource type="PackedScene" uid="uid://bv6nlfcx0srg1" path="res://Scenes/Game.tscn" id="2_rvlmj"]
 
 [node name="Control" type="Control"]
 texture_filter = 1

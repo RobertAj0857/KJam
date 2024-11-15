@@ -61,6 +61,7 @@ public partial class Player : CharacterBody2D
 
 		// For animations
 		if (isMoving) {
+			// Flip
 			if (lastMovingDirection.X > 0) {
 				sprite.FlipH = true;
 			} else if (lastMovingDirection.X < 0) {
@@ -75,6 +76,14 @@ public partial class Player : CharacterBody2D
 				sprite.Play("Front Walk");
 			} else if (lastMovingDirection.Equals(new Vector2(0, -1))) {
 				sprite.Play("Back Walk");
+			} else if (lastMovingDirection.Dot(new Vector2(1, 1)) > 0.9) {
+				sprite.Play("Front Walk");
+			} else if (lastMovingDirection.Dot(new Vector2(-1, 1)) > 0.9) {
+				sprite.Play("Front Walk");
+			} else if (lastMovingDirection.Dot(new Vector2(1, -1)) > 0.9) {
+				sprite.Play("Back Walk");
+			} else if (lastMovingDirection.Dot(new Vector2(-1, -1)) > 0.9) {
+				sprite.Play("Back Walk");
 			}
 		}
 		if (lastMovingDirection.Equals(new Vector2(1, 0))) {
@@ -84,6 +93,14 @@ public partial class Player : CharacterBody2D
 		} else if (lastMovingDirection.Equals(new Vector2(0, 1))) {
 			sprite.Play("Front Idle");
 		} else if (lastMovingDirection.Equals(new Vector2(0, -1))) {
+			sprite.Play("Back Idle");
+		} else if (lastMovingDirection.Dot(new Vector2(1, 1)) > 0.9) {
+			sprite.Play("Front Idle");
+		} else if (lastMovingDirection.Dot(new Vector2(-1, 1)) > 0.9) {
+			sprite.Play("Front Idle");
+		} else if (lastMovingDirection.Dot(new Vector2(1, -1)) > 0.9) {
+			sprite.Play("Back Idle");
+		} else if (lastMovingDirection.Dot(new Vector2(-1, -1)) > 0.9) {
 			sprite.Play("Back Idle");
 		}
 
