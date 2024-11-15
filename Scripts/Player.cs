@@ -16,6 +16,11 @@ public partial class Player : CharacterBody2D
 	private float currentVelocity  = 0f;
 	private Vector2 inputDirection = Vector2.Zero;
 
+	[Export]
+	public AnimatedSprite2D sprite;
+
+	private Vector2 lastMovingDirection; // For animations
+
 	public void GetInput()
     {
         if (IsPlayer1) {
@@ -23,6 +28,8 @@ public partial class Player : CharacterBody2D
 		}else{
 			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down");
 		}
+
+		lastMovingDirection = inputDirection; // For animations
     }
 
 	public void LerpVelocityToMax(Vector2 target, float interpolationValue, float max) {
@@ -45,11 +52,40 @@ public partial class Player : CharacterBody2D
 	{
 		LerpVelocityToMax(new(), (float) Math.Pow(Friction, delta * 60), 0);
 		GetInput();
-		bool isMoving = inputDirection != Vector2.Zero;
+		Boolean isMoving = inputDirection != Vector2.Zero;
 		if (isMoving) {
 			Velocity += inputDirection * Speed * AccelerationRate * (float) delta;
 			Velocity.LimitLength(MaxSpeed);
 			MoveAndSlide();
 		}
+
+		// For animations
+		if (isMoving) {
+			if (lastMovingDirection.X > 0) {
+				sprite.FlipH = true;
+			} else if (lastMovingDirection.X < 0) {
+				sprite.FlipH = false;
+			}
+
+			if (lastMovingDirection.Equals(new Vector2(1, 0))) {
+				sprite.Play("Side Walk");
+			} else if (lastMovingDirection.Equals(new Vector2(-1, 0))) {
+				sprite.Play("Side Walk");
+			} else if (lastMovingDirection.Equals(new Vector2(0, 1))) {
+				sprite.Play("Front Walk");
+			} else if (lastMovingDirection.Equals(new Vector2(0, -1))) {
+				sprite.Play("Back Walk");
+			}
+		}
+		if (lastMovingDirection.Equals(new Vector2(1, 0))) {
+			sprite.Play("Side Idle");
+		} else if (lastMovingDirection.Equals(new Vector2(-1, 0))) {
+			sprite.Play("Side Idle");
+		} else if (lastMovingDirection.Equals(new Vector2(0, 1))) {
+			sprite.Play("Front Idle");
+		} else if (lastMovingDirection.Equals(new Vector2(0, -1))) {
+			sprite.Play("Back Idle");
+		}
+
 	}
 }

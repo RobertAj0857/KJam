@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqhxyjjeyvr2q"
-path="res://.godot/imported/pirate1.0-Sheet.png-4851840754a99e986cd120ee7adc8c5d.ctex"
+uid="uid://cvxfpj0wjxhiq"
+path="res://.godot/imported/pirate1.1-Sheet.png-80387de805618add9d2cc2d1648e9948.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pirate1.0-Sheet.png"
-dest_files=["res://.godot/imported/pirate1.0-Sheet.png-4851840754a99e986cd120ee7adc8c5d.ctex"]
+source_file="res://pirate1.1-Sheet.png"
+dest_files=["res://.godot/imported/pirate1.1-Sheet.png-80387de805618add9d2cc2d1648e9948.ctex"]
 
 [params]
 
