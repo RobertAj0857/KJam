@@ -4,6 +4,8 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	[Export]
+	public bool IsPlayer1 = true;
+	[Export]
 	public float Speed { get; set; } = 1000.0f;
 	[Export]
 	public float AccelerationRate { get; set; } = 0.1f;
@@ -16,7 +18,11 @@ public partial class Player : CharacterBody2D
 
 	public void GetInput()
     {
-        inputDirection = Input.GetVector("Player1Left", "Player1Right", "Player1Up", "Player1Down");
+        if (IsPlayer1) {
+			inputDirection = Input.GetVector("Player1Left", "Player1Right", "Player1Up", "Player1Down");
+		}else{
+			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down");
+		}
     }
 
 	public void LerpVelocityToMax(Vector2 target, float interpolationValue, float max) {

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2o6pgpawcgxn"]
 
 [ext_resource type="Script" path="res://Scripts/MainViewport.cs" id="1_dvxft"]
-[ext_resource type="PackedScene" uid="uid://cksm5xi8aku6c" path="res://Scenes/Test_robert.tscn" id="1_pi8uw"]
+[ext_resource type="PackedScene" uid="uid://u5m5gtdyw8tp" path="res://Scenes/Game.tscn" id="2_rvlmj"]
 
 [node name="Control" type="Control"]
 texture_filter = 1
@@ -38,5 +38,4 @@ size_2d_override = Vector2i(640, 360)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Node2D" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_pi8uw")]
-texture_filter = 1
+[node name="Game" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_rvlmj")]
