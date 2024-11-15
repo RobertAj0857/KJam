@@ -44,12 +44,12 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
 	{
 		LerpVelocityToMax(new(), (float) Math.Pow(Friction, delta * 60), 0);
+		GetInput();
 		bool isMoving = inputDirection != Vector2.Zero;
 		if (isMoving) {
 			Velocity += inputDirection * Speed * AccelerationRate * (float) delta;
 			Velocity.LimitLength(MaxSpeed);
+			MoveAndSlide();
 		}
-		GetInput();
-        MoveAndSlide();
 	}
 }
