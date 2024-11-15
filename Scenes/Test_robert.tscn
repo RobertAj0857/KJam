@@ -10,5 +10,5 @@ position = Vector2(65, 67)
 texture = ExtResource("1_jh4bq")
 
 [node name="Pirate1_0" type="Sprite2D" parent="."]
-position = Vector2(275, 61)
+position = Vector2(277, 66)
 texture = ExtResource("2_xh4kx")
