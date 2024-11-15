@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://esavbth0sx81"
-path="res://.godot/imported/pirate1.0-walk-Sheet.png-3ab55cd945922aeff2ae68f1577301e8.ctex"
+uid="uid://bcqra35h6m5i3"
+path="res://.godot/imported/pirate1.1-walk-Sheet.png-eee21befe411e1459d83f5989ea95631.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pirate1.0-walk-Sheet.png"
-dest_files=["res://.godot/imported/pirate1.0-walk-Sheet.png-3ab55cd945922aeff2ae68f1577301e8.ctex"]
+source_file="res://pirate1.1-walk-Sheet.png"
+dest_files=["res://.godot/imported/pirate1.1-walk-Sheet.png-eee21befe411e1459d83f5989ea95631.ctex"]
 
 [params]
 
