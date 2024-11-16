@@ -28,8 +28,11 @@ public partial class Player : CharacterBody2D
 		}else{
 			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down");
 		}
-
-		lastMovingDirection = inputDirection; // For animations
+		
+		if (inputDirection != Vector2.Zero) {
+			lastMovingDirection = inputDirection; // For animations
+		}
+		
     }
 
 	public void LerpVelocityToMax(Vector2 target, float interpolationValue, float max) {
@@ -52,7 +55,7 @@ public partial class Player : CharacterBody2D
 	{
 		LerpVelocityToMax(new(), (float) Math.Pow(Friction, delta * 60), 0);
 		GetInput();
-		Boolean isMoving = inputDirection != Vector2.Zero;
+		bool isMoving = inputDirection != Vector2.Zero;
 		if (isMoving) {
 			Velocity += inputDirection * Speed * AccelerationRate * (float) delta;
 			Velocity.LimitLength(MaxSpeed);
@@ -60,6 +63,7 @@ public partial class Player : CharacterBody2D
 		}
 
 		// For animations
+		string animationType = "Idle";
 		if (isMoving) {
 			// Flip
 			if (lastMovingDirection.X > 0) {
@@ -67,42 +71,16 @@ public partial class Player : CharacterBody2D
 			} else if (lastMovingDirection.X < 0) {
 				sprite.FlipH = false;
 			}
-
-			if (lastMovingDirection.Equals(new Vector2(1, 0))) {
-				sprite.Play("Side Walk");
-			} else if (lastMovingDirection.Equals(new Vector2(-1, 0))) {
-				sprite.Play("Side Walk");
-			} else if (lastMovingDirection.Equals(new Vector2(0, 1))) {
-				sprite.Play("Front Walk");
-			} else if (lastMovingDirection.Equals(new Vector2(0, -1))) {
-				sprite.Play("Back Walk");
-			} else if (lastMovingDirection.Dot(new Vector2(1, 1)) > 0.9) {
-				sprite.Play("Front Walk");
-			} else if (lastMovingDirection.Dot(new Vector2(-1, 1)) > 0.9) {
-				sprite.Play("Front Walk");
-			} else if (lastMovingDirection.Dot(new Vector2(1, -1)) > 0.9) {
-				sprite.Play("Back Walk");
-			} else if (lastMovingDirection.Dot(new Vector2(-1, -1)) > 0.9) {
-				sprite.Play("Back Walk");
-			}
+			animationType = "Walk";
 		}
-		if (lastMovingDirection.Equals(new Vector2(1, 0))) {
-			sprite.Play("Side Idle");
-		} else if (lastMovingDirection.Equals(new Vector2(-1, 0))) {
-			sprite.Play("Side Idle");
-		} else if (lastMovingDirection.Equals(new Vector2(0, 1))) {
-			sprite.Play("Front Idle");
-		} else if (lastMovingDirection.Equals(new Vector2(0, -1))) {
-			sprite.Play("Back Idle");
-		} else if (lastMovingDirection.Dot(new Vector2(1, 1)) > 0.9) {
-			sprite.Play("Front Idle");
-		} else if (lastMovingDirection.Dot(new Vector2(-1, 1)) > 0.9) {
-			sprite.Play("Front Idle");
-		} else if (lastMovingDirection.Dot(new Vector2(1, -1)) > 0.9) {
-			sprite.Play("Back Idle");
-		} else if (lastMovingDirection.Dot(new Vector2(-1, -1)) > 0.9) {
-			sprite.Play("Back Idle");
+		//GD.Print(animationType+inputDirection+""+IsPlayer1);
+		if (lastMovingDirection.X < -0.9 || 0.9 < lastMovingDirection.X) {
+			sprite.Play("Side "+animationType);
+			GD.Print("Side "+animationType);
+		} else if (lastMovingDirection.Y > 0) {
+			sprite.Play("Front "+animationType);
+		} else if (lastMovingDirection.Y < 0) {
+			sprite.Play("Back "+animationType);
 		}
-
 	}
 }
