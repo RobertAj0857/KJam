@@ -3,6 +3,7 @@ using System;
 
 public partial class Explosion : Area2D
 {
+	
 	public int Damage {get; set;} = 5;//Set damage for explosion
 	public int ExplosionRange = 10;
 	public double ExplosionDuration = 0.5;
