@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://chb2kr3ap64po"]
+[gd_scene load_steps=6 format=3 uid="uid://chb2kr3ap64po"]
 
 [ext_resource type="Texture2D" uid="uid://cvv274hyirhsi" path="res://Sprites/BigPirateHead.png" id="1_8s5x7"]
+[ext_resource type="Texture2D" uid="uid://ippkbwb3v5py" path="res://Sprites/UIPlank.png" id="1_fj55a"]
 [ext_resource type="Texture2D" uid="uid://bamsucef8imdl" path="res://Sprites/CannonBig1.0.png" id="2_plp1q"]
 [ext_resource type="Texture2D" uid="uid://xo0j0qlxd2wo" path="res://Sprites/RomeBig1.0.png" id="3_sbyli"]
 [ext_resource type="Texture2D" uid="uid://cajqrvbhv6l3w" path="res://Sprites/WatchBig1.0.png" id="4_dq8lr"]
@@ -12,55 +13,33 @@ anchors_preset = 0
 offset_right = 320.0
 offset_bottom = 180.0
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_right = 36.0
-offset_bottom = 180.0
-color = Color(0.463043, 0.399666, 0.341697, 1)
+[node name="UiPlank" type="Sprite2D" parent="."]
+position = Vector2(302, 90)
+texture = ExtResource("1_fj55a")
 
-[node name="ColorRect2" type="ColorRect" parent="ColorRect2"]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 44.0
-offset_right = 31.0
-offset_bottom = 136.0
+[node name="ColorRect4" type="ColorRect" parent="UiPlank"]
+offset_left = -14.0
+offset_top = -45.0
+offset_right = 14.0
+offset_bottom = 51.0
 color = Color(0.623834, 0.550825, 0.484333, 1)
 
-[node name="BigPirateHead2" type="Sprite2D" parent="ColorRect2"]
-texture_filter = 1
-position = Vector2(18, 22)
-texture = ExtResource("1_8s5x7")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = 284.0
-offset_right = 320.0
-offset_bottom = 180.0
-color = Color(0.463043, 0.399666, 0.341697, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 45.0
-offset_right = 32.0
-offset_bottom = 141.0
-color = Color(0.623834, 0.550825, 0.484333, 1)
-
-[node name="CannonBig1_0" type="Sprite2D" parent="ColorRect/ColorRect2"]
+[node name="CannonBig1_0" type="Sprite2D" parent="UiPlank/ColorRect4"]
 texture_filter = 1
 position = Vector2(10, 10)
 texture = ExtResource("2_plp1q")
 
-[node name="RomeBig1_0" type="Sprite2D" parent="ColorRect/ColorRect2"]
+[node name="RomeBig1_0" type="Sprite2D" parent="UiPlank/ColorRect4"]
 texture_filter = 1
 position = Vector2(9, 43)
 texture = ExtResource("3_sbyli")
 
-[node name="WatchBig1_0" type="Sprite2D" parent="ColorRect/ColorRect2"]
+[node name="WatchBig1_0" type="Sprite2D" parent="UiPlank/ColorRect4"]
 texture_filter = 1
 position = Vector2(10, 77)
 texture = ExtResource("4_dq8lr")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect/ColorRect2"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="UiPlank/ColorRect4"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 layout_mode = 0
@@ -71,7 +50,7 @@ offset_bottom = 27.0
 theme_override_font_sizes/normal_font_size = 12
 text = "2/5"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="ColorRect/ColorRect2"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="UiPlank/ColorRect4"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 layout_mode = 0
@@ -82,7 +61,7 @@ offset_bottom = 61.0
 theme_override_font_sizes/normal_font_size = 12
 text = "2/5"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="ColorRect/ColorRect2"]
+[node name="RichTextLabel4" type="RichTextLabel" parent="UiPlank/ColorRect4"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 layout_mode = 0
@@ -93,7 +72,72 @@ offset_bottom = 95.0
 theme_override_font_sizes/normal_font_size = 12
 text = "2/5"
 
-[node name="BigPirateHead" type="Sprite2D" parent="ColorRect"]
+[node name="BigPirateHead" type="Sprite2D" parent="UiPlank/ColorRect4"]
 texture_filter = 1
-position = Vector2(18, 22)
+position = Vector2(14, -23)
 texture = ExtResource("1_8s5x7")
+
+[node name="UiPlank2" type="Sprite2D" parent="."]
+position = Vector2(18, 90)
+texture = ExtResource("1_fj55a")
+
+[node name="ColorRect4" type="ColorRect" parent="UiPlank2"]
+offset_left = -14.0
+offset_top = -45.0
+offset_right = 14.0
+offset_bottom = 51.0
+color = Color(0.623834, 0.550825, 0.484333, 1)
+
+[node name="CannonBig1_0" type="Sprite2D" parent="UiPlank2/ColorRect4"]
+texture_filter = 1
+position = Vector2(10, 10)
+texture = ExtResource("2_plp1q")
+
+[node name="RomeBig1_0" type="Sprite2D" parent="UiPlank2/ColorRect4"]
+texture_filter = 1
+position = Vector2(9, 43)
+texture = ExtResource("3_sbyli")
+
+[node name="WatchBig1_0" type="Sprite2D" parent="UiPlank2/ColorRect4"]
+texture_filter = 1
+position = Vector2(10, 77)
+texture = ExtResource("4_dq8lr")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="UiPlank2/ColorRect4"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 29.0
+offset_bottom = 27.0
+theme_override_font_sizes/normal_font_size = 12
+text = "2/5"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="UiPlank2/ColorRect4"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 44.0
+offset_right = 28.0
+offset_bottom = 61.0
+theme_override_font_sizes/normal_font_size = 12
+text = "2/5"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="UiPlank2/ColorRect4"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 78.0
+offset_right = 28.0
+offset_bottom = 95.0
+theme_override_font_sizes/normal_font_size = 12
+text = "2/5"
+
+[node name="BigPirateHead" type="Sprite2D" parent="UiPlank2/ColorRect4"]
+texture_filter = 1
+position = Vector2(14, -23)
+texture = ExtResource("1_8s5x7")
+flip_h = true

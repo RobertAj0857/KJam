@@ -222,11 +222,10 @@ _data = {
 "RESET": SubResource("Animation_ac70b")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "pirateCraftingController")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_mask = 5
 script = ExtResource("1_xtey8")
 sprite = NodePath("PirateSprite")
-pirateCraftingController = NodePath("PirateCraftingController")
 
 [node name="PirateSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

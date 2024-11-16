@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
-[ext_resource type="Material" uid="uid://bv31jolj6ktff" path="res://fire.tres" id="3_32gn2"]
+[ext_resource type="Material" uid="uid://bdghndt26jvx3" path="res://fire.tres" id="3_32gn2"]
 [ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="4_3jlnk"]
 
 [node name="Game" type="Node2D"]
@@ -10,12 +10,10 @@
 [node name="Level" parent="." instance=ExtResource("2_gpv0w")]
 
 [node name="Player2" parent="." instance=ExtResource("2_re7t3")]
-z_index = 0
 position = Vector2(102, 54)
 IsPlayer1 = false
 
 [node name="Player1" parent="." instance=ExtResource("2_re7t3")]
-z_index = 0
 position = Vector2(39, 47)
 
 [node name="ColorRect" type="Sprite2D" parent="."]
