@@ -18,15 +18,21 @@ public partial class Projectile : Area2D
 		direction = value;
 		velocity = direction * Speed;
 	}}
+	private bool spawned = false;
 	private double timePassed = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Scale = Vector2.Zero;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(!spawned) {
+			spawned = true;
+			Visible = true;
+		}
 	}
 
 	public void Destroy() {
@@ -35,7 +41,13 @@ public partial class Projectile : Area2D
 
     public override void _PhysicsProcess(double delta)
     {
+
 		timePassed += delta;
+		if(timePassed < 0.1) {
+			Scale = Vector2.One * (float)(timePassed / 0.25);
+		} else if(Scale != Vector2.One){
+			Scale = Vector2.One;
+		}
 		if(timePassed >= LifeTime){
 			Destroy();
 			return;
