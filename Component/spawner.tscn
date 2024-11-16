@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://Scripts/Spawner.cs" id="1_soih2"]
 [ext_resource type="Script" path="res://Scripts/MarkerLocation.cs" id="2_tqbpo"]
 
-[node name="Spawner" type="Node2D"]
+[node name="Spawner" type="Node2D" node_paths=PackedStringArray("UpperLeft", "BottomRight")]
 script = ExtResource("1_soih2")
+UpperLeft = NodePath("UpperLeft")
+BottomRight = NodePath("BottomRight")
 
 [node name="UpperLeft" type="Marker2D" parent="."]
 
