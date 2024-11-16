@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=5 format=3 uid="uid://u5m5gtdyw8tp"]
 
 [ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
+[ext_resource type="Material" uid="uid://bv31jolj6ktff" path="res://fire.tres" id="3_32gn2"]
+[ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="4_3jlnk"]
 
 [node name="Game" type="Node2D"]
 
@@ -13,3 +15,20 @@ IsPlayer1 = false
 
 [node name="Player1" parent="." instance=ExtResource("2_re7t3")]
 position = Vector2(39, 47)
+
+[node name="ColorRect" type="Sprite2D" parent="."]
+visible = false
+material = ExtResource("3_32gn2")
+texture = ExtResource("4_3jlnk")
+centered = false
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_right = 36.0
+offset_bottom = 176.0
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+offset_left = 284.0
+offset_right = 320.0
+offset_bottom = 176.0
