@@ -3,7 +3,7 @@ using System;
 
 public partial class MainViewport : Control
 {
-	private Vector2 dimensions = new(640, 360);
+	private Vector2 dimensions = new(320, 180);
 	private Vector2 lastViewportSize = Vector2.Zero;
 	private SubViewportContainer viewportContainer = null;
 	private int scalingFactor = 1;
