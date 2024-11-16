@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform vec2 offset;
+uniform float speed;
 uniform sampler2D tex1: source_color, filter_nearest, repeat_enable;
 uniform sampler2D gradient: source_color, filter_nearest;
 
@@ -10,8 +10,8 @@ void vertex() {
 
 void fragment() {
 	vec2 size = vec2(textureSize(TEXTURE, 0));
-	vec2 pos = floor(UV * size)/size;
-	float energy = texture(TEXTURE, pos).r * 2.0 * pow(texture(tex1, pos+floor((vec2(1,0)*TIME)*size)/size).r, 2.4) * (0.3+min(pos.x, 22.0));
+	vec2 pos = round(UV * size)/size;
+	float energy = texture(TEXTURE, pos).r * 2.0 * pow(texture(tex1, pos+floor((vec2(1,0)*TIME*speed)*size)/size).r, 2.4) * (0.3+min(pos.x, 22.0));
 	COLOR = texture(gradient, vec2(energy, energy));
 }
 
