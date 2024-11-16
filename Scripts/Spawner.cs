@@ -62,14 +62,17 @@ public partial class Spawner : Node2D
 		{
 			case 1:
 				element = PirateCraftingController.Element.Cannon;
+				PickUp.Instance.MakePickUp(this, element);
 				break;
 
 			case 2:
 				element = PirateCraftingController.Element.PocketWatch;
+				PickUp.Instance.MakePickUp(this, element);
 				break;
 
 			case 3:
 				element = PirateCraftingController.Element.Rum;
+				PickUp.Instance.MakePickUp(this, element);
 				break;
 
 			default:
