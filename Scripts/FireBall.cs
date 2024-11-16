@@ -8,6 +8,7 @@ public partial class FireBall : Projectile
 	public override void _Ready()
 	{
 		sprite = GetNode<Sprite2D>("Sprite2D");
+		timeToGrow = 0.2f;
 		Rotate();
 		base._Ready();
 	}

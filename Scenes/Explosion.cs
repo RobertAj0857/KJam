@@ -3,9 +3,11 @@ using System;
 
 public partial class Explosion : Area2D
 {
+	[Export]
+	Sprite2D effect;
 	public int Damage {get; set;} = 5;//Set damage for explosion
 	public int ExplosionRange = 10;
-	public double ExplosionDuration = 0.5;
+	public double ExplosionDuration = 1.5;
 	private double timePassed = 0;
 	private bool exploded = false;
 	[Export]
@@ -31,13 +33,14 @@ public partial class Explosion : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
+		((ShaderMaterial)effect.Material).SetShaderParameter("iValue", Math.Min(1.0, timePassed/ExplosionDuration));
 		if(timePassed >= 0.05 && !exploded){
 			exploded = true;
 			Explode();
 		}
-		timePassed += delta;
 		if(timePassed >= ExplosionDuration){
 			QueueFree();
 		}
+		timePassed += delta;
 	}
 }

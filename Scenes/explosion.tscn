@@ -1,35 +1,55 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2nlgcvavooit"]
+[gd_scene load_steps=14 format=3 uid="uid://b2p6x7j211vcl"]
 
 [ext_resource type="Script" path="res://Scenes/Explosion.cs" id="1_n5186"]
-[ext_resource type="Texture2D" uid="uid://c8pssntb8eppw" path="res://Sprites/Barrel3.png" id="1_x5ek2"]
-[ext_resource type="Texture2D" uid="uid://cqg014cc1yy5p" path="res://Sprites/Barrel2.png" id="2_io3dn"]
-[ext_resource type="Texture2D" uid="uid://f2vsccwldic5" path="res://Sprites/Barrel1.png" id="3_u5son"]
+[ext_resource type="Shader" path="res://explosion.gdshader" id="2_7xbn3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_85asc"]
 radius = 16.0
 height = 32.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_msgrh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_x5ek2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_io3dn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_u5son")
-}],
-"loop": true,
-"name": &"Countdown",
-"speed": 1.0
-}]
+[sub_resource type="Gradient" id="Gradient_fsglj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.229508, 0.491803, 0.852459)
+colors = PackedColorArray(1, 0.8, 0.34902, 1, 1, 0.611765, 0.188235, 1, 1, 0.282353, 0.027451, 1, 1, 0.288667, 0.03, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ilmyv"]
+gradient = SubResource("Gradient_fsglj")
+
+[sub_resource type="Gradient" id="Gradient_0ao3n"]
+offsets = PackedFloat32Array(0, 0.295082, 0.918033)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rx520"]
+gradient = SubResource("Gradient_0ao3n")
+
+[sub_resource type="Gradient" id="Gradient_o4gu4"]
+offsets = PackedFloat32Array(0.213115, 1)
+colors = PackedColorArray(0.490793, 0.493533, 0.501028, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aa0j8"]
+noise_type = 0
+seed = 1
+frequency = 0.2
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rv0un"]
+width = 36
+height = 36
+seamless = true
+color_ramp = SubResource("Gradient_o4gu4")
+noise = SubResource("FastNoiseLite_aa0j8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y2gi"]
+resource_local_to_scene = true
+shader = ExtResource("2_7xbn3")
+shader_parameter/iValue = 0.0
+shader_parameter/grayGradient = SubResource("GradientTexture1D_rx520")
+shader_parameter/gradient = SubResource("GradientTexture1D_ilmyv")
+shader_parameter/tex1 = SubResource("NoiseTexture2D_rv0un")
 
 [sub_resource type="Gradient" id="Gradient_1du6b"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.00784314, 0.301961, 0.364706, 0.494118, 0.686275)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0.28, 1, 1, 0.55, 0, 1, 1, 0.0666667, 0, 1, 1, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.746753)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mhw7m"]
 gradient = SubResource("Gradient_1du6b")
@@ -38,23 +58,18 @@ height = 36
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="Explosion" type="Area2D" node_paths=PackedStringArray("collisionShape2D")]
+[node name="Explosion" type="Area2D" node_paths=PackedStringArray("effect", "collisionShape2D")]
 texture_filter = 1
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_n5186")
+effect = NodePath("ExplosionEffect")
 collisionShape2D = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_85asc")
 
-[node name="ExplosionEffect" type="AnimatedSprite2D" parent="."]
-visible = false
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_msgrh")
-animation = &"Countdown"
-autoplay = "Countdown"
-
-[node name="TempEffect" type="Sprite2D" parent="."]
+[node name="ExplosionEffect" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3y2gi")
 texture = SubResource("GradientTexture2D_mhw7m")
