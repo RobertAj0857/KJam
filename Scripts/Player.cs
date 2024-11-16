@@ -34,8 +34,11 @@ public partial class Player : CharacterBody2D
 	[Export]
 	public AnimatedSprite2D sprite;
 
+	[Export]
+	public PirateCraftingController pirateCraftingController;
+
 	private Vector2 lastMovingDirection; // For animations
-	public Vector2 AimDirection = new Vector2(0,1); // For projectiles
+	public Vector2 AimDirection = new Vector2(0, 1); // For projectiles
 	private bool isDead = false;
 	public bool IsDead {get => isDead; set{
 		isDead = value;
@@ -68,9 +71,10 @@ public partial class Player : CharacterBody2D
 			AimDirection = lastMovingDirection;
 			lastMovingDirection = inputDirection; // For animations
 		}
-    }
+	}
 
-	public void LerpVelocityToMax(Vector2 target, float interpolationValue, float max){
+	public void LerpVelocityToMax(Vector2 target, float interpolationValue, float max)
+	{
 		max *= Speed;
 		float speed = Velocity.Length();
 		Vector2 sum = Velocity + (target - Velocity) * interpolationValue;
@@ -110,7 +114,8 @@ public partial class Player : CharacterBody2D
 			Velocity += inputDirection * Speed * AccelerationRate * (float)delta;
 			Velocity.LimitLength(MaxSpeed);
 		}
-		if(Velocity != Vector2.Zero){
+		if (Velocity != Vector2.Zero)
+		{
 			MoveAndSlide();
 		}
 

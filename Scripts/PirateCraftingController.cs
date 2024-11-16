@@ -24,7 +24,7 @@ public partial class PirateCraftingController : Node2D
 		"Player1Element3",
 		"Player2Element3",
 	};
-	private Dictionary<Element, int> elementAmounts;
+	public Dictionary<Element, int> elementAmounts;
 	private Dictionary<Element, bool> currentCraftCombination;
 	private delegate void Combination(PirateCraftingController p);
 	private Dictionary<int, Combination> elementEffects = new Dictionary<int, Combination>(){
@@ -52,7 +52,8 @@ public partial class PirateCraftingController : Node2D
 	private bool isPerformingAction = false;
 	private bool activeCraftCombination = false;
 
-	private void shootCannonBall(){
+	private void shootCannonBall()
+	{
 		GD.Print("Cannon ball");
 		Projectile cannonBall = (Projectile) GD.Load<PackedScene>("res://Scenes/cannonBall.tscn").Instantiate();
 		cannonBall.Position = player.Position;
@@ -60,14 +61,17 @@ public partial class PirateCraftingController : Node2D
 		cannonBall.Team1 = player.IsPlayer1;
 		player.GetParent().AddChild(cannonBall);
 	}
-	private void drinkRum(){
+	private void drinkRum()
+	{
 		GD.Print("DRUNK MOVEMENT");
 		player.ApplyDrunkEffect(2.5);
 	}
-	private void goBackInTime(){
+	private void goBackInTime()
+	{
 		GD.Print("GO BACK IN TIME");
 	}
-	private void shootFireCannonBall(){
+	private void shootFireCannonBall()
+	{
 		GD.Print("CANNON BALL ON FIRE");
 		Projectile cannonBall = (Projectile) GD.Load<PackedScene>("res://Scenes/fire_ball.tscn").Instantiate();
 		cannonBall.Position = player.Position;
@@ -75,13 +79,15 @@ public partial class PirateCraftingController : Node2D
 		cannonBall.Team1 = player.IsPlayer1;
 		player.GetParent().AddChild(cannonBall);
 	}
-	private void timeBomb(){
+	private void timeBomb()
+	{
 		GD.Print("TIME BOMB");
 		ExplodingBarrel explodingBarrel = (ExplodingBarrel) GD.Load<PackedScene>("res://Scenes/explodingBarrel.tscn").Instantiate();
 		explodingBarrel.Position = player.Position;
 		player.GetParent().AddChild(explodingBarrel);
 	}
-	private void teleportShot(){
+	private void teleportShot()
+	{
 		GD.Print("TELEPORT WITH CANNON BALL");
 		MagicCannonBall magicCannonBall = (MagicCannonBall) GD.Load<PackedScene>("res://Scenes/magicCannonBall.tscn").Instantiate();
 		magicCannonBall.Position = player.Position;
@@ -90,54 +96,70 @@ public partial class PirateCraftingController : Node2D
 		magicCannonBall.Player = player;
 		player.GetParent().AddChild(magicCannonBall);
 	}
-	private void explosionPlayer(){
+	private void explosionPlayer()
+	{
 		GD.Print("EXPLOSION TELEPORT");
 	}
-	public void makeElementEffect(){
+	public void makeElementEffect()
+	{
 		isPerformingAction = true;
 		activeCraftCombination = false;
 		timeSinceEffect = 0;
 		elementEffects[convertCraftCombinationToInt()](this);
-		foreach (Element element in Enum.GetValues(typeof(Element)).Cast<Element>()){
-			if (currentCraftCombination[element]){
+		foreach (Element element in Enum.GetValues(typeof(Element)).Cast<Element>())
+		{
+			if (currentCraftCombination[element])
+			{
 				elementAmounts[element] -= 1;
 			}
 			currentCraftCombination[element] = false;
 		}
 		amountOfInputs = 0;
 	}
-	private int convertCraftCombinationToInt(){
+	private int convertCraftCombinationToInt()
+	{
 		String craftCombination = "";
-		foreach(KeyValuePair<Element, bool> entry in currentCraftCombination)
+		foreach (KeyValuePair<Element, bool> entry in currentCraftCombination)
 		{
-			if(entry.Value){
-				craftCombination = craftCombination+"1";
-			}else{
-				craftCombination = craftCombination+"0";
+			if (entry.Value)
+			{
+				craftCombination = craftCombination + "1";
+			}
+			else
+			{
+				craftCombination = craftCombination + "0";
 			}
 		}
 		return craftCombination.ToInt();
 	}
-	private void addInput(Element element){
+	private void addInput(Element element)
+	{
 		timeSinceInput = 0;
 		activeCraftCombination = true;
 		amountOfInputs += 1;
 		currentCraftCombination[element] = true;
 	}
 	public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-		if(@event is InputEventKey eventKey && eventKey.Pressed){
-			foreach(String keyInput in keyInputs){
-				if((player.IsPlayer1 && keyInput.Contains("Player1") && eventKey.IsAction(keyInput) || !player.IsPlayer1 && keyInput.Contains("Player2") && eventKey.IsAction(keyInput)) && !isPerformingAction){
+	{
+		base._Input(@event);
+		if (@event is InputEventKey eventKey && eventKey.Pressed)
+		{
+			foreach (String keyInput in keyInputs)
+			{
+				if ((player.IsPlayer1 && keyInput.Contains("Player1") && eventKey.IsAction(keyInput) || !player.IsPlayer1 && keyInput.Contains("Player2") && eventKey.IsAction(keyInput)) && !isPerformingAction)
+				{
 					Element element = keyInputToElement[keyInput];
-					if(elementAmounts[element] > 0){
-						if(currentCraftCombination[element] || amountOfInputs >= maxAmountOfInputs){
+					if (elementAmounts[element] > 0)
+					{
+						if (currentCraftCombination[element] || amountOfInputs >= maxAmountOfInputs)
+						{
 							makeElementEffect();
 							addInput(element);
 							GD.Print("Make effect2");
 							break;
-						}else{
+						}
+						else
+						{
 							addInput(element);
 							GD.Print("Make effect3");
 						}
@@ -145,14 +167,15 @@ public partial class PirateCraftingController : Node2D
 				}
 			}
 		}
-    }
+	}
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		player = GetParent<Player>();
 		elementAmounts = new Dictionary<Element, int>();
 		currentCraftCombination = new Dictionary<Element, bool>();
-		foreach (Element element in Enum.GetValues(typeof(Element)).Cast<Element>()){
+		foreach (Element element in Enum.GetValues(typeof(Element)).Cast<Element>())
+		{
 			elementAmounts[element] = 1000;
 			GD.Print("Temp");
 			currentCraftCombination[element] = false;
@@ -161,9 +184,11 @@ public partial class PirateCraftingController : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(!isPerformingAction){
+		if (!isPerformingAction)
+		{
 			timeSinceInput += delta;
-			if(activeCraftCombination && timeSinceInput >= InputTime){
+			if (activeCraftCombination && timeSinceInput >= InputTime)
+			{
 				makeElementEffect();
 				GD.Print("Make effect1");
 			}
