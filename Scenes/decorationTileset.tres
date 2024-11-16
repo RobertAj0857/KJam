@@ -1,0 +1,36 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dov17o25temx0"]
+
+[ext_resource type="Texture2D" uid="uid://ddkmix8bleka1" path="res://Sprites/SandTileSet1.1.png" id="1_16ymq"]
+[ext_resource type="Texture2D" uid="uid://bliyp0287nvie" path="res://Sprites/testTileSet.png" id="2_g6y0i"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3t3f4"]
+texture = ExtResource("1_16ymq")
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+5:1/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+8:6/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_enxe1"]
+texture = ExtResource("2_g6y0i")
+
+[resource]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+terrain_set_0/mode = 1
+terrain_set_0/terrain_0/name = "Sand"
+terrain_set_0/terrain_0/color = Color(0.783982, 0.58998, 0.475715, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(0.367421, 0.397688, 0.758509, 1)
+sources/1 = SubResource("TileSetAtlasSource_3t3f4")
+sources/2 = SubResource("TileSetAtlasSource_enxe1")
