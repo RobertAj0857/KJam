@@ -20,6 +20,7 @@ public partial class Player : CharacterBody2D
 	public AnimatedSprite2D sprite;
 
 	private Vector2 lastMovingDirection; // For animations
+	public Vector2 AimDirection = new Vector2(0,1); // For projectiles 
 
 	public void GetInput()
 	{
@@ -32,10 +33,18 @@ public partial class Player : CharacterBody2D
 			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down");
 		}
 
+<<<<<<< Updated upstream
 		if (inputDirection != Vector2.Zero)
 		{
 			lastMovingDirection = inputDirection; // For animations
 		}
+=======
+		lastMovingDirection = inputDirection; // For animations
+		if(inputDirection != Vector2.Zero){
+			AimDirection = lastMovingDirection;
+		}
+    }
+>>>>>>> Stashed changes
 
 	}
 

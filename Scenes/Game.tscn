@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv6nlfcx0srg1"]
+[gd_scene load_steps=2 format=3 uid="uid://u5m5gtdyw8tp"]
 
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://mwsq4qgwqf7e" path="res://Scenes/Player.tscn" id="2_re7t3"]
+=======
+[ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
+>>>>>>> Stashed changes
 
 [node name="Game" type="Node2D"]
 position = Vector2(64, 62)
