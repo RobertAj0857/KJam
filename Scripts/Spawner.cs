@@ -36,7 +36,7 @@ public partial class Spawner : Node2D
 		timer.OneShot = true;
 		timer.WaitTime = random.RandfRange(from, to);
 		AddChild(timer);
-		timer.Connect("timeout", this, nameof(onTimerTimeout));
+		//timer.Connect("timeout", this, nameof(onTimerTimeout));
 		timer.Start();
 	}
 
