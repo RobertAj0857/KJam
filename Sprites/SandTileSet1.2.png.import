@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i6d4s5gteov4"
-path="res://.godot/imported/SandTileSet1.2.png-6c2e3f9f7ea6189b6ace0666f0071dd2.ctex"
+uid="uid://isceqanum7fg"
+path="res://.godot/imported/SandTileSet1.2.png-65e6e788207aca960d4d3e90dbbad5db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SandTileSet1.2.png"
-dest_files=["res://.godot/imported/SandTileSet1.2.png-6c2e3f9f7ea6189b6ace0666f0071dd2.ctex"]
+source_file="res://Sprites/SandTileSet1.2.png"
+dest_files=["res://.godot/imported/SandTileSet1.2.png-65e6e788207aca960d4d3e90dbbad5db.ctex"]
 
 [params]
 

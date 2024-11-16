@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i6d4s5gteov4"
-path="res://.godot/imported/SandTileSet1.2.png-6c2e3f9f7ea6189b6ace0666f0071dd2.ctex"
+uid="uid://bpvkcpa5krepm"
+path="res://.godot/imported/BigPirateBlackBeardHead1.0.png-af5298a1d5080fc645b6e534c8e0f594.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SandTileSet1.2.png"
-dest_files=["res://.godot/imported/SandTileSet1.2.png-6c2e3f9f7ea6189b6ace0666f0071dd2.ctex"]
+source_file="res://Sprites/BigPirateBlackBeardHead1.0.png"
+dest_files=["res://.godot/imported/BigPirateBlackBeardHead1.0.png-af5298a1d5080fc645b6e534c8e0f594.ctex"]
 
 [params]
 
