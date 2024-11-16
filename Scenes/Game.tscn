@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=3 format=3 uid="uid://u5m5gtdyw8tp"]
 
+[ext_resource type="AudioStream" uid="uid://20mrtrjsuwy" path="res://Audio/PirateMusic8Bit.mp3" id="2_bosjb"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
 
 [node name="Game" type="Node2D"]
@@ -10,3 +11,7 @@ IsPlayer1 = false
 
 [node name="Player1" parent="." instance=ExtResource("2_re7t3")]
 position = Vector2(39, 47)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bosjb")
+autoplay = true
