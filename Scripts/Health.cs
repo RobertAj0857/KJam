@@ -5,11 +5,10 @@ public partial class Health : Node2D
 {
     [Export] int maxHealth = 100;
     [Export] bool immortality = false;
+    [Export]
+	public AnimationPlayer animationPlayer;
     public int MaxHealth { get => maxHealth; }
     public bool Immortality { get => immortality; set { immortality = value; } }
-
-    [Export]
-    public Damage damage { get; set; } = null;
 
     [Export]
     public Player character { get; set; } = null;
@@ -28,10 +27,13 @@ public partial class Health : Node2D
 
     }
 
-    public void loseHealth()
+    public void loseHealth(int damage)
     {
-        pirateHealth -= damage.amount;
-        checkIfDead();
+        if(!Immortality){
+            pirateHealth -= damage;
+            checkIfDead();
+            animationPlayer.Play("HitEffect");
+        }
     }
 
     public void checkIfDead()
@@ -39,6 +41,7 @@ public partial class Health : Node2D
         if (pirateHealth <= 0)
         {
             pirateHealth = 0;
+            character.IsDead = true;
             GD.Print("You fucking died loser!");
             //character.die();
         }
