@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://jegb13bppims"]
+
+[ext_resource type="PackedScene" uid="uid://cyjl6v3a8s23o" path="res://Scenes/projectile.tscn" id="1_kg2ci"]
+[ext_resource type="Script" path="res://Scripts/MagicCannonBall.cs" id="2_pn8hs"]
+
+[node name="MagicCannonBall" instance=ExtResource("1_kg2ci")]
+script = ExtResource("2_pn8hs")
+Damage = 0
+
+[node name="Sprite2D" parent="." index="1"]
+modulate = Color(0.883333, 0, 1, 1)
