@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 public partial class PirateCraftingController : Node2D
 {
 	[Export]
-	public double InputTime = 0.25;
+	public double InputTime = 0.5;
 	public enum Element
 	{
 		Cannon,
@@ -24,15 +24,14 @@ public partial class PirateCraftingController : Node2D
 	};
 	private Dictionary<Element, int> elementAmounts;
 	private Dictionary<Element, bool> currentCraftCombination;
-	private delegate void Combination(PirateCraftingController p);
-	private Dictionary<int, Combination> elementEffects = new Dictionary<int, Combination>(){
-		{100,p => p.shootCannonBall()},
-		{010,p => p.drinkRum()},
-		{001,p => p.goBackInTime()},
-		{110,p => p.shootFireCannonBall()},
-		{011,p => p.timeBomb()},
-		{101,p => p.teleportShot()},
-		{111,p => p.explosionPlayer()},
+	private Dictionary<int, LambdaExpression> elementEffects = new Dictionary<int, LambdaExpression>(){
+		{100,() => GD.Print("CANNON BALL")},
+		{010,() => GD.Print("DRUNK MOVEMENT")},
+		{001,() => GD.Print("GO BACK IN TIME")},
+		{110,() => GD.Print("FIRE CANNON BALL")},
+		{011,() => GD.Print("TIME BOMB")},
+		{101,() => GD.Print("TELEPORT WITH CANNON BALL")},
+		{111,() => GD.Print("EXPLOSION TELEPORT")},
 	};
 	private Dictionary<String, Element> keyInputToElement = new Dictionary<string, Element>(){
 		{keyInputs[0],Element.Cannon},
@@ -42,48 +41,17 @@ public partial class PirateCraftingController : Node2D
 		{keyInputs[4],Element.PocketWatch},
 		{keyInputs[5],Element.PocketWatch},
 	};
-	private Player player;
 	private int amountOfInputs = 0;
 	private int maxAmountOfInputs = 3;
 	private double timeSinceInput = 0;
 	private bool isPerformingAction = false;
 	private bool activeCraftCombination = false;
-
-	private void shootCannonBall(){
-		GD.Print("Cannon ball");
-		Projectile cannonBall = (Projectile) GD.Load<PackedScene>("res://Scenes/projectile.tscn").Instantiate();
-		cannonBall.Position = player.Position;
-		cannonBall.Direction = player.AimDirection;
-		cannonBall.Team1 = player.IsPlayer1;
-		player.GetParent().AddChild(cannonBall);
-		
-	}
-	private void drinkRum(){
-		GD.Print("DRUNK MOVEMENT");
-	}
-	private void goBackInTime(){
-		GD.Print("GO BACK IN TIME");
-	}
-	private void shootFireCannonBall(){
-		GD.Print("CANNON BALL ON FIRE");
-	}
-	private void timeBomb(){
-		GD.Print("TIME BOMB");
-	}
-	private void teleportShot(){
-		GD.Print("TELEPORT WITH CANNON BALL");
-	}
-	private void explosionPlayer(){
-		GD.Print("EXPLOSION TELEPORT");
-	}
+	private bool isPlayer1 = true;
 	public void makeElementEffect(){
 		isPerformingAction = true;
 		activeCraftCombination = false;
-		elementEffects[convertCraftCombinationToInt()](this);
+		elementEffects[convertCraftCombinationToInt()].Compile().DynamicInvoke();
 		foreach (Element element in Enum.GetValues(typeof(Element)).Cast<Element>()){
-			if (currentCraftCombination[element]){
-				elementAmounts[element] -= 1;
-			}
 			currentCraftCombination[element] = false;
 		}
 		amountOfInputs = 0;
@@ -112,7 +80,7 @@ public partial class PirateCraftingController : Node2D
         base._Input(@event);
 		if(@event is InputEventKey eventKey && eventKey.Pressed){
 			foreach(String keyInput in keyInputs){
-				if((player.IsPlayer1 && keyInput.Contains("Player1") && eventKey.IsAction(keyInput) || !player.IsPlayer1 && keyInput.Contains("Player2") && eventKey.IsAction(keyInput)) && !isPerformingAction){
+				if((isPlayer1 && keyInput.Contains("Player1") && eventKey.IsAction(keyInput) || !isPlayer1 && keyInput.Contains("Player2") && eventKey.IsAction(keyInput)) && !isPerformingAction){
 					Element element = keyInputToElement[keyInput];
 					if(elementAmounts[element] > 0){
 						if(currentCraftCombination[element] || amountOfInputs >= maxAmountOfInputs){
@@ -132,11 +100,12 @@ public partial class PirateCraftingController : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		player = GetParent<Player>();
+		Player player = GetParent<Player>();
+		isPlayer1 = player.IsPlayer1;
 		elementAmounts = new Dictionary<Element, int>();
 		currentCraftCombination = new Dictionary<Element, bool>();
 		foreach (Element element in Enum.GetValues(typeof(Element)).Cast<Element>()){
-			elementAmounts[element] = 1000;
+			elementAmounts[element] = 1;
 			GD.Print("Temp");
 			currentCraftCombination[element] = false;
 		}

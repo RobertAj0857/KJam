@@ -3,7 +3,8 @@ using System;
 
 public partial class Hitbox : Area2D
 {
-	public bool Team1 {get => ((Player) GetParent()).IsPlayer1;}
+	[Export]
+	public bool Team1 {get; set;} = true;
 	//[Export]
 	//Health
 	// Called when the node enters the scene tree for the first time.
