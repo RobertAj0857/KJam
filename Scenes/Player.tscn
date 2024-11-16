@@ -1,17 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://mwsq4qgwqf7e"]
+[gd_scene load_steps=25 format=3 uid="uid://cthstnn2x6s4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
 [ext_resource type="PackedScene" uid="uid://bmu8to8ft00ji" path="res://Scenes/hitbox.tscn" id="2_knigx"]
 [ext_resource type="Texture2D" uid="uid://cvxfpj0wjxhiq" path="res://pirate1.1-Sheet.png" id="3_lgdf0"]
 [ext_resource type="Script" path="res://Scripts/PirateCraftingController.cs" id="4_j0cep"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5rwkl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6j57"]
 atlas = ExtResource("3_lgdf0")
-region = Rect2(10, 12, 10, 12)
+region = Rect2(10, 60, 10, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_plfs2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8b82"]
 atlas = ExtResource("3_lgdf0")
-region = Rect2(20, 12, 10, 12)
+region = Rect2(20, 60, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0syog"]
 atlas = ExtResource("3_lgdf0")
@@ -81,10 +81,10 @@ region = Rect2(40, 24, 10, 12)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5rwkl")
+"texture": SubResource("AtlasTexture_w6j57")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_plfs2")
+"texture": SubResource("AtlasTexture_q8b82")
 }],
 "loop": true,
 "name": &"Back Idle",
@@ -176,12 +176,11 @@ Friction = 0.1
 sprite = NodePath("PirateSprite")
 
 [node name="PirateSprite" type="AnimatedSprite2D" parent="."]
-unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_4if56")
-animation = &"Back Walk"
-autoplay = "Back Walk"
+animation = &"Front Idle"
+autoplay = "Front Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jtlcu")
