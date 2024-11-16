@@ -6,7 +6,7 @@ public partial class Projectile : Area2D
 	[Export]
 	public float Speed {get; set;} = 1;
 	[Export]
-	public float Damage {get; set;} = 10;
+	public int Damage {get; set;} = 10;
 	[Export]
 	public bool Team1 {get; set;} = true;
 
@@ -44,7 +44,7 @@ public partial class Projectile : Area2D
 		Godot.Collections.Array<Area2D> hits = GetOverlappingAreas();
 		foreach(Area2D hit in hits) {
 			if(hit is Hitbox box && box.Team1 != Team1) {
-				// do damage
+				box.damageComponent.attackHit(Damage);
 				Destroy();
 			}
 		}

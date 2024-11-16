@@ -1,9 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://cthstnn2x6s4a"]
+[gd_scene load_steps=33 format=3 uid="uid://cthstnn2x6s4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
+[ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="2_47xgi"]
 [ext_resource type="PackedScene" path="res://Scenes/hitbox.tscn" id="2_knigx"]
-[ext_resource type="Texture2D" uid="uid://cvxfpj0wjxhiq" path="res://pirate1.1-Sheet.png" id="3_lgdf0"]
+[ext_resource type="Texture2D" uid="uid://cvxfpj0wjxhiq" path="res://PirateCharacter1.png" id="3_lgdf0"]
 [ext_resource type="Script" path="res://Scripts/PirateCraftingController.cs" id="4_j0cep"]
+[ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="4_oycj8"]
+[ext_resource type="PackedScene" uid="uid://butnvcpogf8qb" path="res://Component/Health.tscn" id="6_iogy4"]
+[ext_resource type="PackedScene" uid="uid://dtnfx35yrdbdy" path="res://Component/Damage.tscn" id="7_e2oo3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k057c"]
+resource_local_to_scene = true
+shader = ExtResource("2_47xgi")
+shader_parameter/quantity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6j57"]
 atlas = ExtResource("3_lgdf0")
@@ -109,6 +118,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_oycj8")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8fnyb")
 }, {
 "duration": 1.0,
@@ -168,15 +185,53 @@ animations = [{
 radius = 4.0
 height = 10.0
 
+[sub_resource type="Animation" id="Animation_jjqix"]
+resource_name = "Dead"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PirateSprite:material:shader_parameter/quantity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ac70b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PirateSprite:material:shader_parameter/quantity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0llp"]
+_data = {
+"HitEffect": SubResource("Animation_jjqix"),
+"RESET": SubResource("Animation_ac70b")
+}
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_mask = 5
 script = ExtResource("1_xtey8")
 AccelerationRate = 1.0
-Friction = 0.1
+Friction = 0.05
 sprite = NodePath("PirateSprite")
 
 [node name="PirateSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_k057c")
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_4if56")
 animation = &"Front Idle"
@@ -188,4 +243,18 @@ shape = SubResource("CapsuleShape2D_jtlcu")
 [node name="PirateCraftingController" type="Node2D" parent="."]
 script = ExtResource("4_j0cep")
 
-[node name="Hitbox" parent="." instance=ExtResource("2_knigx")]
+[node name="Hitbox" parent="." node_paths=PackedStringArray("damageComponent") instance=ExtResource("2_knigx")]
+damageComponent = NodePath("../Damage")
+
+[node name="Health" parent="." node_paths=PackedStringArray("animationPlayer", "character") instance=ExtResource("6_iogy4")]
+animationPlayer = NodePath("../AnimationPlayer")
+character = NodePath("..")
+
+[node name="Damage" parent="." node_paths=PackedStringArray("character", "Health") instance=ExtResource("7_e2oo3")]
+character = NodePath("..")
+Health = NodePath("../Health")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i0llp")
+}

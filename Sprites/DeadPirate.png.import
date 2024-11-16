@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvxfpj0wjxhiq"
-path="res://.godot/imported/pirate1.1-Sheet.png-80387de805618add9d2cc2d1648e9948.ctex"
+uid="uid://c3xx8tq63g02q"
+path="res://.godot/imported/DeadPirate.png-1188cfdda9cf3425d15dc66b9270e0be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pirate1.1-Sheet.png"
-dest_files=["res://.godot/imported/pirate1.1-Sheet.png-80387de805618add9d2cc2d1648e9948.ctex"]
+source_file="res://Sprites/DeadPirate.png"
+dest_files=["res://.godot/imported/DeadPirate.png-1188cfdda9cf3425d15dc66b9270e0be.ctex"]
 
 [params]
 
