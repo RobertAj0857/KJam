@@ -10,10 +10,10 @@
 [node name="Level" parent="." instance=ExtResource("2_gpv0w")]
 
 [node name="Player2" parent="." instance=ExtResource("2_re7t3")]
-position = Vector2(102, 54)
+position = Vector2(246, 85)
 IsPlayer1 = false
 
-[node name="Player1" parent="." instance=ExtResource("2_re7t3")]
+[node name=p"Player1" parent="." instance=ExtResource("2_re7t3")]
 position = Vector2(39, 47)
 
 [node name="ColorRect" type="Sprite2D" parent="."]
