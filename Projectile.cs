@@ -43,7 +43,7 @@ public partial class Projectile : Area2D
 		// checks for players
 		Godot.Collections.Array<Area2D> hits = GetOverlappingAreas();
 		foreach(Area2D hit in hits) {
-			if(hit is Hitbox box && box.Team1 == Team1) {
+			if(hit is Hitbox box && box.Team1 != Team1) {
 				// do damage
 				Destroy();
 			}
