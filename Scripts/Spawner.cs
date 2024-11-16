@@ -4,8 +4,6 @@ using System;
 public partial class Spawner : Node2D
 {
 	[Export]
-	public PackedScene ItemScene;
-	[Export]
 	public Marker2D UpperLeft;
 	[Export]
 	public Marker2D BottomRight;
@@ -50,11 +48,7 @@ public partial class Spawner : Node2D
 
 	public void SpawnItems()
 	{
-		if (ItemScene == null)
-		{
-			GD.Print("No scene has been set");
-			return;
-		}
+
 
 		itemint = random.RandiRange(ItemFrom, ItemTo);
 		Vector2 spawnPosition = GetRandomPositionBetweenMarkers();
@@ -80,10 +74,7 @@ public partial class Spawner : Node2D
 				break;
 		}
 
-		/*
-		Node2D item = (Node2D)ItemScene.Instance();
-		AddChild(item); 
-		item.Position = spawnPosition; */
+
 	}
 
 	public Vector2 GetRandomPositionBetweenMarkers()
