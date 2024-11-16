@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3a6d4rl7cddp"]
+
+[ext_resource type="Script" path="res://Scripts/PickUp.cs" id="1_8yfyl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11n2s"]
+radius = 4.0
+
+[node name="PickUp" type="Area2D" node_paths=PackedStringArray("sprite2D", "collision")]
+script = ExtResource("1_8yfyl")
+sprite2D = NodePath("Sprite2D")
+collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_11n2s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

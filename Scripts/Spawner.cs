@@ -4,6 +4,8 @@ using System;
 public partial class Spawner : Node2D
 {
 	[Export]
+	public PackedScene ItemScene;
+	[Export]
 	public Marker2D UpperLeft;
 	[Export]
 	public Marker2D BottomRight;
@@ -15,34 +17,83 @@ public partial class Spawner : Node2D
 	public float from { get; set; } = 0.2f;
 	[Export]
 	public float to { get; set; } = 3f;
+
 	private RandomNumberGenerator random;
+	private double timePassed = 0;
+	private double waitTime = 0;
+	private int itemint = 0;
+	[Export]
+	public int ItemFrom { get; set; } = 1;
+	[Export]
+	public int ItemTo { get; set; } = 3;
+
 
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		random = new RandomNumberGenerator();
+		waitTime = random.RandfRange(from, to);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
-
+		base._PhysicsProcess(delta);
+		timePassed += delta;
+		if (timePassed >= waitTime)
+		{
+			timePassed = 0;
+			waitTime = random.RandfRange(from, to);
+			SpawnItems();
+		}
 	}
 
-	public void SpawnTimer()
+	public void SpawnItems()
 	{
-		Timer timer = new Timer();
-		timer.OneShot = true;
-		timer.WaitTime = random.RandfRange(from, to);
-		AddChild(timer);
-		//timer.Connect("timeout", this, nameof(onTimerTimeout));
-		timer.Start();
+		if (ItemScene == null)
+		{
+			GD.Print("No scene has been set");
+			return;
+		}
+
+		itemint = random.RandiRange(ItemFrom, ItemTo);
+		Vector2 spawnPosition = GetRandomPositionBetweenMarkers();
+		switch (itemint)
+		{
+			case 1:
+				element = PirateCraftingController.Element.Cannon;
+				break;
+
+			case 2:
+				element = PirateCraftingController.Element.PocketWatch;
+				break;
+
+			case 3:
+				element = PirateCraftingController.Element.Rum;
+				break;
+
+			default:
+				GD.Print("No item was picked");
+				break;
+		}
+
+		/*
+		Node2D item = (Node2D)ItemScene.Instance();
+		AddChild(item); 
+		item.Position = spawnPosition; */
 	}
 
-	private void SpawnItems()
+	public Vector2 GetRandomPositionBetweenMarkers()
 	{
-		GD.Print("fuck");
+		Vector2 posA = UpperLeft.GlobalPosition;
+		Vector2 posB = BottomRight.GlobalPosition;
+
+		float randomX = GD.Randf() * (posB.X - posA.X) + posA.X;
+		float randomY = GD.Randf() * (posB.Y - posA.Y) + posA.Y;
+
+
+
+		return new Vector2(randomX, randomY);
 	}
 
 }
