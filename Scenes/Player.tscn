@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://cthstnn2x6s4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
-[ext_resource type="PackedScene" path="res://Scenes/hitbox.tscn" id="2_knigx"]
+[ext_resource type="PackedScene" uid="uid://bmu8to8ft00ji" path="res://Scenes/hitbox.tscn" id="2_knigx"]
 [ext_resource type="Texture2D" uid="uid://cvxfpj0wjxhiq" path="res://pirate1.1-Sheet.png" id="3_lgdf0"]
 [ext_resource type="Script" path="res://Scripts/PirateCraftingController.cs" id="4_j0cep"]
 
