@@ -13,9 +13,24 @@ public partial class Player : CharacterBody2D
 	public float MaxSpeed { get; set; } = 2000.0f;
 	[Export]
 	public float Friction { get; set; } = 0.3f;
+	private float baseFriction;
+	private float baseAcceleration;
 	private float currentVelocity = 0f;
 	private Vector2 inputDirection = Vector2.Zero;
-
+	private double drunkTimer = -1;
+	private bool drunkMovement = false;
+	private double currentDrunkDuration = 0;
+	public bool DrunkMovement{ get => drunkMovement; set{
+		drunkMovement = value;
+		if(drunkMovement){
+			drunkTimer = 0;
+			Friction = baseFriction / 5f;
+			AccelerationRate = baseAcceleration / 2.25f;
+		}else{
+			Friction = baseFriction;
+			AccelerationRate = baseAcceleration;
+		}
+	}}
 	[Export]
 	public AnimatedSprite2D sprite;
 
@@ -27,6 +42,16 @@ public partial class Player : CharacterBody2D
 		sprite.Play("Dead");
 		GetTree().ReloadCurrentScene();
 	}}
+    public override void _Ready()
+    {
+        base._Ready();
+		baseAcceleration = AccelerationRate;
+		baseFriction = Friction;
+    }
+    public void ApplyDrunkEffect(double duration){
+		currentDrunkDuration = duration;
+		DrunkMovement = true;
+	}
 
 	public void GetInput()
 	{
@@ -70,6 +95,13 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if(drunkTimer != -1){
+			drunkTimer += delta;
+			if(drunkTimer >= currentDrunkDuration){
+				drunkTimer = -1;
+				DrunkMovement = false;
+			}
+		}
 		LerpVelocityToMax(new(), (float)Math.Pow(Friction, delta * 60), 0);
 		GetInput();
 		bool isMoving = inputDirection != Vector2.Zero;

@@ -1,17 +1,13 @@
 using Godot;
 using System;
 
-public partial class Projectile : Area2D
+public partial class MagicCannonBall : Projectile
 {
-	[Export]
-	public float Speed {get; set;} = 1;
-	[Export]
-	public int Damage {get; set;} = 10;
-	[Export]
-	public bool Team1 {get; set;} = true;
 
+	public Player Player;
 	private Vector2 velocity = Vector2.Zero;
 	private Vector2 direction;
+	private double timePassed = 0;
 	[Export]
 	public Vector2 Direction {get=>direction; set{
 		direction = value;
@@ -27,17 +23,19 @@ public partial class Projectile : Area2D
 	{
 	}
 
-	public void Destroy() {
-		QueueFree();
-	}
-
     public override void _PhysicsProcess(double delta)
     {
+		timePassed += delta;
+		if(timePassed >= LifeTime){
+			Destroy();
+			return;
+		}
 		// move projectile
         GlobalPosition += velocity * (float)delta * 100;
 		// checks for walls
 		if(GetOverlappingBodies().Count > 0) {
 			// destroy if wall hit
+			Player.Position = Position;
 			Destroy();
 		}
 		// checks for players
@@ -45,6 +43,7 @@ public partial class Projectile : Area2D
 		foreach(Area2D hit in hits) {
 			if(hit is Hitbox box && box.Team1 != Team1) {
 				box.damageComponent.attackHit(Damage);
+				Player.Position = Position;
 				Destroy();
 			}
 		}

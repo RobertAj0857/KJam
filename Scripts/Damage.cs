@@ -21,8 +21,8 @@ public partial class Damage : Node2D
 
 	public void attackHit(int damage)
 	{
-		if (!character.IsDead){
-
+		if (character.IsDead || damage <= 0){
+			return;
 		}
 		Health.loseHealth(damage);
 	}
