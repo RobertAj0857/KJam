@@ -35,7 +35,7 @@ public partial class MagicCannonBall : Projectile
 		// checks for walls
 		if(GetOverlappingBodies().Count > 0) {
 			// destroy if wall hit
-			Player.Position = Position;
+			Player.Position = Position - direction * 10;
 			Destroy();
 		}
 		// checks for players
@@ -43,7 +43,7 @@ public partial class MagicCannonBall : Projectile
 		foreach(Area2D hit in hits) {
 			if(hit is Hitbox box && box.Team1 != Team1) {
 				box.damageComponent.attackHit(Damage);
-				Player.Position = Position;
+				Player.Position = Position - direction * 10;
 				Destroy();
 			}
 		}

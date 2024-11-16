@@ -39,9 +39,13 @@ public partial class Player : CharacterBody2D
 	}}
 	[Export]
 	public AnimatedSprite2D sprite;
+	[Export]
+	public CombinationShower combinationShower;
 
 	[Export]
 	public PirateCraftingController pirateCraftingController;
+	[Export]
+	public CpuParticles2D timeWarpEffect;
 
 	private Vector2 lastMovingDirection; // For animations
 	public Vector2 AimDirection = new Vector2(0, 1); // For projectiles
@@ -70,6 +74,8 @@ public partial class Player : CharacterBody2D
 
 	public void TimeWarp(double duration){
 		TimeWarping = true;
+		//sprite.Visible = false;
+		timeWarpEffect.Emitting = true;
 		timePassed = 0;
 		timeWarpTargetIndex = 1;
 		lastPositions.AddFirst(Position);
@@ -145,6 +151,8 @@ public partial class Player : CharacterBody2D
 				}
 				timeWarpTargetIndex ++;
 				if(timeWarpTargetIndex >= positionsWarpedBack - 1){
+					//sprite.Visible = true;
+					timeWarpEffect.Emitting = false;
 					TimeWarping = false;
 				}
 			}

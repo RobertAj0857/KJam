@@ -39,12 +39,14 @@ public partial class Projectile : Area2D
 		QueueFree();
 	}
 
+	protected double timeToGrow = 0.1;
+
     public override void _PhysicsProcess(double delta)
     {
 
 		timePassed += delta;
-		if(timePassed < 0.1) {
-			Scale = Vector2.One * (float)(timePassed / 0.25);
+		if(timePassed < timeToGrow) {
+			Scale = Vector2.One * (float)(Math.Pow(timePassed / timeToGrow, 1));
 		} else if(Scale != Vector2.One){
 			Scale = Vector2.One;
 		}

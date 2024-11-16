@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl5irmkhaoe8j"]
+[gd_scene load_steps=9 format=3 uid="uid://d01kjcclwvd7x"]
 
 [ext_resource type="Script" path="res://Scripts/ExplodingBarrel.cs" id="1_u2ved"]
 [ext_resource type="Texture2D" uid="uid://c8pssntb8eppw" path="res://Sprites/Barrel3.png" id="2_j2c0y"]
@@ -34,8 +34,8 @@ height = 12.0
 
 [sub_resource type="Gradient" id="Gradient_qqqke"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.654902, 0.701961)
-colors = PackedColorArray(0, 0, 0, 0, 0.719454, 2.55093e-06, 5.77569e-07, 1, 1, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.654902, 0.720779)
+colors = PackedColorArray(0, 0, 0, 0, 0.72, 0, 0, 0.729412, 1, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_srx6s"]
 gradient = SubResource("Gradient_qqqke")

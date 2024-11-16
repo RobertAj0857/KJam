@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 public partial class PirateCraftingController : Node2D
 {
 	[Export]
-	public double InputTime = 0.15;
+	public double InputTime = 0.35;
 	[Export]
 	private double EffectCooldown = 0.2;
 	public enum Element
@@ -69,7 +69,7 @@ public partial class PirateCraftingController : Node2D
 	private void goBackInTime()
 	{
 		GD.Print("GO BACK IN TIME");
-		player.TimeWarp(0.5);
+		player.TimeWarp(0.4);
 	}
 	private void shootFireCannonBall()
 	{
@@ -114,6 +114,7 @@ public partial class PirateCraftingController : Node2D
 				elementAmounts[element] -= 1;
 			}
 			currentCraftCombination[element] = false;
+			player.combinationShower.updateCombination(currentCraftCombination, amountOfInputs);
 		}
 		amountOfInputs = 0;
 	}
@@ -139,6 +140,7 @@ public partial class PirateCraftingController : Node2D
 		activeCraftCombination = true;
 		amountOfInputs += 1;
 		currentCraftCombination[element] = true;
+		player.combinationShower.updateCombination(currentCraftCombination, amountOfInputs);
 	}
 	public override void _Input(InputEvent @event)
 	{
@@ -181,6 +183,7 @@ public partial class PirateCraftingController : Node2D
 			GD.Print("Temp");
 			currentCraftCombination[element] = false;
 		}
+		player.combinationShower.updateCombination(currentCraftCombination, amountOfInputs);
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
