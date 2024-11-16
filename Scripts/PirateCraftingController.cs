@@ -69,6 +69,7 @@ public partial class PirateCraftingController : Node2D
 	private void goBackInTime()
 	{
 		GD.Print("GO BACK IN TIME");
+		player.TimeWarp(0.5);
 	}
 	private void shootFireCannonBall()
 	{
@@ -142,7 +143,7 @@ public partial class PirateCraftingController : Node2D
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
-		if (@event is InputEventKey eventKey && eventKey.Pressed)
+		if (@event is InputEventKey eventKey && eventKey.Pressed && !player.IsDead && !player.TimeWarping)
 		{
 			foreach (String keyInput in keyInputs)
 			{

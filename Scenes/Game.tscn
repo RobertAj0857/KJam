@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
 [ext_resource type="Material" uid="uid://dqqhfopt8ak0v" path="res://fire.tres" id="3_32gn2"]
 [ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="4_3jlnk"]
-[ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="5_ueibf"]
+[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
 
 [node name="Game" type="Node2D"]
 
@@ -34,12 +34,4 @@ offset_left = 284.0
 offset_right = 320.0
 offset_bottom = 176.0
 
-[node name="Spawner" parent="." instance=ExtResource("5_ueibf")]
-
-[node name="UpperLeft" parent="Spawner" index="0"]
-position = Vector2(32, 0)
-
-[node name="BottomRight" parent="Spawner" index="1"]
-position = Vector2(280, 176)
-
-[editable path="Spawner"]
+[node name="Music" parent="." instance=ExtResource("5_pbftw")]

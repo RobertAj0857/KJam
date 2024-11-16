@@ -8,6 +8,8 @@ public partial class FireBall : Projectile
 	public override void _Ready()
 	{
 		sprite = GetNode<Sprite2D>("Sprite2D");
+		Rotate();
+		base._Ready();
 	}
 
 	private void Rotate() {
@@ -21,6 +23,7 @@ public partial class FireBall : Projectile
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		base._Process(delta);
 		Rotate();
 	}
 }

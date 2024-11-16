@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Player : CharacterBody2D
 {
@@ -20,6 +21,11 @@ public partial class Player : CharacterBody2D
 	private double drunkTimer = -1;
 	private bool drunkMovement = false;
 	private double currentDrunkDuration = 0;
+	private LinkedList<Vector2> lastPositions = new LinkedList<Vector2>();
+	private double savePositionInterval = 0.1;
+	private int positionsWarpedBack = 10;
+	private double timePassed = 0;
+	private double interpolation = 0;
 	public bool DrunkMovement{ get => drunkMovement; set{
 		drunkMovement = value;
 		if(drunkMovement){
@@ -39,6 +45,12 @@ public partial class Player : CharacterBody2D
 
 	private Vector2 lastMovingDirection; // For animations
 	public Vector2 AimDirection = new Vector2(0, 1); // For projectiles
+	private bool timeWarping = false;
+	private int timeWarpTargetIndex = 0;
+	private double timeWarpDurationPerStep = 0;
+	public bool TimeWarping {get => timeWarping; set{
+		timeWarping = value;
+	}}
 	private bool isDead = false;
 	public bool IsDead {get => isDead; set{
 		isDead = value;
@@ -56,6 +68,17 @@ public partial class Player : CharacterBody2D
 		DrunkMovement = true;
 	}
 
+	public void TimeWarp(double duration){
+		TimeWarping = true;
+		timePassed = 0;
+		timeWarpTargetIndex = 1;
+		lastPositions.AddFirst(Position);
+		if(lastPositions.Count > 0){
+			lastPositions.RemoveLast();
+		}
+		timeWarpDurationPerStep = duration/((double)positionsWarpedBack);
+	}
+
 	public void GetInput()
 	{
 		if (IsPlayer1)
@@ -67,7 +90,7 @@ public partial class Player : CharacterBody2D
 			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down");
 		}
 		
-		if(inputDirection != Vector2.Zero){
+		if(inputDirection != Vector2.Zero && !TimeWarping){
 			AimDirection = lastMovingDirection;
 			lastMovingDirection = inputDirection; // For animations
 		}
@@ -99,6 +122,41 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if(IsDead){
+			return;
+		}
+		timePassed += delta;
+		if(TimeWarping){
+			Vector2 posFrom = Position;
+			if (lastPositions.First != null){
+				posFrom = lastPositions.First.Value;
+			}
+			Vector2 posTo = posFrom;
+			if (lastPositions.First != null && lastPositions.First.Next != null){
+				posTo = lastPositions.First.Next.Value;
+			}
+			interpolation += delta / timeWarpDurationPerStep;
+			Position = posFrom.Lerp(posTo, (float)interpolation);
+			if(interpolation >= 1){
+				interpolation = 0;
+				timePassed = 0;
+				if(lastPositions.Count > 0){
+					lastPositions.RemoveFirst();
+				}
+				timeWarpTargetIndex ++;
+				if(timeWarpTargetIndex >= positionsWarpedBack - 1){
+					TimeWarping = false;
+				}
+			}
+		}else{
+			if(timePassed >= savePositionInterval){
+				lastPositions.AddFirst(Position);
+				timePassed = 0;
+				if(lastPositions.Count > positionsWarpedBack){
+					lastPositions.RemoveLast();
+				}
+			}
+		}
 		if(drunkTimer != -1){
 			drunkTimer += delta;
 			if(drunkTimer >= currentDrunkDuration){
@@ -109,12 +167,12 @@ public partial class Player : CharacterBody2D
 		LerpVelocityToMax(new(), (float)Math.Pow(Friction, delta * 60), 0);
 		GetInput();
 		bool isMoving = inputDirection != Vector2.Zero;
-		if (isMoving)
+		if (isMoving && !TimeWarping)
 		{
 			Velocity += inputDirection * Speed * AccelerationRate * (float)delta;
 			Velocity.LimitLength(MaxSpeed);
 		}
-		if (Velocity != Vector2.Zero)
+		if (Velocity != Vector2.Zero && !TimeWarping)
 		{
 			MoveAndSlide();
 		}
