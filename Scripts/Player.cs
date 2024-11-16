@@ -33,23 +33,13 @@ public partial class Player : CharacterBody2D
 			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down");
 		}
 
-<<<<<<< Updated upstream
-		if (inputDirection != Vector2.Zero)
-		{
-			lastMovingDirection = inputDirection; // For animations
-		}
-=======
-		lastMovingDirection = inputDirection; // For animations
 		if(inputDirection != Vector2.Zero){
 			AimDirection = lastMovingDirection;
+			lastMovingDirection = inputDirection; // For animations
 		}
     }
->>>>>>> Stashed changes
 
-	}
-
-	public void LerpVelocityToMax(Vector2 target, float interpolationValue, float max)
-	{
+	public void LerpVelocityToMax(Vector2 target, float interpolationValue, float max){
 		max *= Speed;
 		float speed = Velocity.Length();
 		Vector2 sum = Velocity + (target - Velocity) * interpolationValue;
