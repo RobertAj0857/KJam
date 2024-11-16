@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cthstnn2x6s4a"]
+[gd_scene load_steps=33 format=3 uid="uid://cthstnn2x6s4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
 [ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="2_47xgi"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://wrmxcngoxaru" path="res://Sprites/CannonSmall1.0.png" id="9_u5oor"]
 [ext_resource type="Texture2D" uid="uid://cdhfodrbbpul3" path="res://Sprites/RomeSmall1.0.png" id="10_meow7"]
 [ext_resource type="Texture2D" uid="uid://d3y11656bp85q" path="res://Sprites/WatchSmall1.0.png" id="11_i2kd4"]
+[ext_resource type="PackedScene" path="res://Component/Health.tscn" id="6_iogy4"]
+[ext_resource type="PackedScene" uid="uid://dbwg81slv7etb" path="res://Component/Damage.tscn" id="7_e2oo3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k057c"]
 resource_local_to_scene = true
