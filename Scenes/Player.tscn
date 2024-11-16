@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cthstnn2x6s4a"]
+[gd_scene load_steps=43 format=3 uid="uid://cthstnn2x6s4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
 [ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="2_47xgi"]
@@ -6,8 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cvxfpj0wjxhiq" path="res://PirateCharacter1.png" id="3_lgdf0"]
 [ext_resource type="Script" path="res://Scripts/PirateCraftingController.cs" id="4_j0cep"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="4_oycj8"]
-[ext_resource type="PackedScene" path="res://Component/Health.tscn" id="6_iogy4"]
+[ext_resource type="PackedScene" uid="uid://butnvcpogf8qb" path="res://Component/Health.tscn" id="6_iogy4"]
 [ext_resource type="PackedScene" uid="uid://dbwg81slv7etb" path="res://Component/Damage.tscn" id="7_e2oo3"]
+[ext_resource type="Script" path="res://Scripts/CombinationShower.cs" id="9_6ypg6"]
+[ext_resource type="Texture2D" uid="uid://wrmxcngoxaru" path="res://Sprites/CannonSmall1.0.png" id="9_u5oor"]
+[ext_resource type="Texture2D" uid="uid://cdhfodrbbpul3" path="res://Sprites/RomeSmall1.0.png" id="10_meow7"]
+[ext_resource type="Texture2D" uid="uid://d3y11656bp85q" path="res://Sprites/WatchSmall1.0.png" id="11_i2kd4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k057c"]
 resource_local_to_scene = true
@@ -222,12 +226,52 @@ _data = {
 "RESET": SubResource("Animation_ac70b")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[sub_resource type="Gradient" id="Gradient_8y4mx"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.564706, 0.662745, 1)
+colors = PackedColorArray(1, 1, 1, 0.376471, 0.255659, 0.255659, 0.255659, 0.376471, 0.72, 0.72, 0.72, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cw0ts"]
+gradient = SubResource("Gradient_8y4mx")
+width = 14
+height = 14
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d2hn1"]
+gradient = SubResource("Gradient_8y4mx")
+width = 14
+height = 14
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_taam5"]
+gradient = SubResource("Gradient_8y4mx")
+width = 14
+height = 14
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_2ed73"]
+offsets = PackedFloat32Array(0, 0.992032)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.601076, 0.961372, 0)
+
+[sub_resource type="Curve" id="Curve_p8odu"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "combinationShower", "pirateCraftingController", "timeWarpEffect")]
+z_index = 10
 collision_mask = 5
 script = ExtResource("1_xtey8")
 sprite = NodePath("PirateSprite")
+combinationShower = NodePath("CombinationShower")
+pirateCraftingController = NodePath("PirateCraftingController")
+timeWarpEffect = NodePath("TimeWarp")
 
 [node name="PirateSprite" type="AnimatedSprite2D" parent="."]
+z_index = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_k057c")
 position = Vector2(0, -1)
@@ -256,3 +300,56 @@ Health = NodePath("../Health")
 libraries = {
 "": SubResource("AnimationLibrary_i0llp")
 }
+
+[node name="CombinationShower" type="Node2D" parent="."]
+script = ExtResource("9_6ypg6")
+
+[node name="Cannon" type="Sprite2D" parent="CombinationShower"]
+visible = false
+z_index = 20
+texture_filter = 1
+position = Vector2(-7, -13)
+texture = SubResource("GradientTexture2D_cw0ts")
+
+[node name="Icon" type="Sprite2D" parent="CombinationShower/Cannon"]
+z_index = 22
+texture_filter = 1
+texture = ExtResource("9_u5oor")
+
+[node name="Rum" type="Sprite2D" parent="CombinationShower"]
+visible = false
+z_index = 20
+texture_filter = 1
+position = Vector2(7, -13)
+texture = SubResource("GradientTexture2D_d2hn1")
+
+[node name="Icon" type="Sprite2D" parent="CombinationShower/Rum"]
+z_index = 22
+texture_filter = 1
+texture = ExtResource("10_meow7")
+
+[node name="Watch" type="Sprite2D" parent="CombinationShower"]
+visible = false
+z_index = 20
+texture_filter = 1
+position = Vector2(14, -13)
+texture = SubResource("GradientTexture2D_taam5")
+
+[node name="Icon" type="Sprite2D" parent="CombinationShower/Watch"]
+z_index = 22
+texture_filter = 1
+texture = ExtResource("11_i2kd4")
+
+[node name="TimeWarp" type="CPUParticles2D" parent="."]
+texture_filter = 1
+emitting = false
+amount = 20
+lifetime = 0.25
+preprocess = 0.05
+fixed_fps = 60
+texture = ExtResource("4_oycj8")
+gravity = Vector2(0, 0)
+color_ramp = SubResource("Gradient_2ed73")
+hue_variation_min = 0.88
+hue_variation_max = 0.88
+hue_variation_curve = SubResource("Curve_p8odu")
