@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvr3hmb3el8fg"]
+[gd_scene load_steps=2 format=3 uid="uid://cli5a2epgaf23"]
 
 [ext_resource type="Script" path="res://Scripts/Spawner.cs" id="1_soih2"]
-[ext_resource type="Script" path="res://Scripts/MarkerLocation.cs" id="2_tqbpo"]
 
 [node name="Spawner" type="Node2D" node_paths=PackedStringArray("UpperLeft", "BottomRight")]
 script = ExtResource("1_soih2")
 UpperLeft = NodePath("UpperLeft")
 BottomRight = NodePath("BottomRight")
+from = 1.0
+to = 6.0
 
 [node name="UpperLeft" type="Marker2D" parent="."]
 
 [node name="BottomRight" type="Marker2D" parent="."]
 position = Vector2(640, 360)
-script = ExtResource("2_tqbpo")

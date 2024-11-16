@@ -15,41 +15,11 @@ public partial class PickUp : Area2D
 	[Export]
 	public CollisionShape2D collision;
 	public Spawner spawner;
-	private static PickUp instance = null;
-	public static PickUp Instance
-	{
-		get
-		{
-			if (instance == null)
-			{
-				instance = new PickUp();
-			}
-			return instance;
-		}
-	}
 	private PirateCraftingController.Element element;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		sprite2D.Position = spawner.GetRandomPositionBetweenMarkers();
-		switch (element)
-		{
-			case PirateCraftingController.Element.Cannon:
-				sprite2D.Texture = Cannon;
-				break;
-
-			case PirateCraftingController.Element.PocketWatch:
-				sprite2D.Texture = Rum;
-				break;
-
-			case PirateCraftingController.Element.Rum:
-				sprite2D.Texture = StopWatch;
-				break;
-
-			default:
-				GD.Print("No item was picked");
-				break;
-		}
+		GD.Print("_Ready_PickUp");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -64,6 +34,7 @@ public partial class PickUp : Area2D
 			if (hit is Hitbox box)
 			{
 				Collect((Player)box.GetParent<Player>());
+				QueueFree();
 				break;
 			}
 		}
@@ -71,8 +42,30 @@ public partial class PickUp : Area2D
 
 	public void MakePickUp(Spawner s, PirateCraftingController.Element element)
 	{
+		GD.Print("MakePickUp");
 		this.element = element;
 		spawner = s;
+		switch (element)
+		{
+			case PirateCraftingController.Element.Cannon:
+				GD.Print("Cannon event");
+				sprite2D.Texture = Cannon;
+				break;
+
+			case PirateCraftingController.Element.PocketWatch:
+				GD.Print("PC event");
+				sprite2D.Texture = Rum;
+				break;
+
+			case PirateCraftingController.Element.Rum:
+				GD.Print("Rum event");
+				sprite2D.Texture = StopWatch;
+				break;
+
+			default:
+				GD.Print("No item was picked");
+				break;
+		}
 	}
 
 	public void Collect(Player player)

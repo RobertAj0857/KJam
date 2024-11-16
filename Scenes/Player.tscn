@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cvxfpj0wjxhiq" path="res://PirateCharacter1.png" id="3_lgdf0"]
 [ext_resource type="Script" path="res://Scripts/PirateCraftingController.cs" id="4_j0cep"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="4_oycj8"]
-[ext_resource type="PackedScene" uid="uid://butnvcpogf8qb" path="res://Component/Health.tscn" id="6_iogy4"]
-[ext_resource type="PackedScene" uid="uid://dtnfx35yrdbdy" path="res://Component/Damage.tscn" id="7_e2oo3"]
+[ext_resource type="PackedScene" path="res://Component/Health.tscn" id="6_iogy4"]
+[ext_resource type="PackedScene" uid="uid://dbwg81slv7etb" path="res://Component/Damage.tscn" id="7_e2oo3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k057c"]
 resource_local_to_scene = true
