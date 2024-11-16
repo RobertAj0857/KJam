@@ -38,9 +38,10 @@ public partial class Player : CharacterBody2D
 		{
 			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down");
 		}
-		lastMovingDirection = inputDirection; // For animations
+		
 		if(inputDirection != Vector2.Zero){
 			AimDirection = lastMovingDirection;
+			lastMovingDirection = inputDirection; // For animations
 		}
     }
 
