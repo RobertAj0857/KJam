@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cthstnn2x6s4a"]
+[gd_scene load_steps=25 format=3 uid="uid://mwsq4qgwqf7e"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
 [ext_resource type="PackedScene" uid="uid://bmu8to8ft00ji" path="res://Scenes/hitbox.tscn" id="2_knigx"]
@@ -168,7 +168,7 @@ animations = [{
 radius = 4.0
 height = 10.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_mask = 5
 script = ExtResource("1_xtey8")
 AccelerationRate = 1.0
