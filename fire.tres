@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dqqhfopt8ak0v"]
+
+[ext_resource type="Shader" path="res://fireshader.gdshader" id="1_c6j3v"]
+
+[sub_resource type="Gradient" id="Gradient_78525"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.221311, 0.352459, 0.52459)
+colors = PackedColorArray(0, 0, 0, 0, 0.933896, 0.273945, 0.0924188, 1, 0.956214, 0.424565, 0, 1, 0.984725, 0.704735, 0.0976935, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rnwel"]
+gradient = SubResource("Gradient_78525")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6at08"]
+frequency = 0.08
+fractal_octaves = 2
+fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_llt8p"]
+width = 320
+height = 180
+seamless = true
+noise = SubResource("FastNoiseLite_6at08")
+
+[resource]
+shader = ExtResource("1_c6j3v")
+shader_parameter/particles = PackedVector3Array(100, 100, 50)
+shader_parameter/pLen = 1
+shader_parameter/pan = Vector2(0, 30)
+shader_parameter/tex1 = SubResource("NoiseTexture2D_llt8p")
+shader_parameter/gradient = SubResource("GradientTexture1D_rnwel")
