@@ -1,10 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0wmuv4mfsckf"]
 
-[ext_resource type="TileSet" path="res://Tileset.tres" id="1_0snjl"]
+[ext_resource type="TileSet" uid="uid://c00y7i21nl4xp" path="res://Tileset.tres" id="1_sqnsh"]
 
 [node name="Level" type="TileMapLayer"]
-tile_set = ExtResource("1_0snjl")
+tile_set = ExtResource("1_sqnsh")
 metadata/_edit_group_ = true
 
 [node name="Walls" type="TileMapLayer" parent="."]
-tile_set = ExtResource("1_0snjl")
