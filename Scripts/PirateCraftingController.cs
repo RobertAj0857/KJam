@@ -69,6 +69,11 @@ public partial class PirateCraftingController : Node2D
 	}
 	private void shootFireCannonBall(){
 		GD.Print("CANNON BALL ON FIRE");
+		Projectile cannonBall = (Projectile) GD.Load<PackedScene>("res://Scenes/fire_ball.tscn").Instantiate();
+		cannonBall.Position = player.Position;
+		cannonBall.Direction = player.AimDirection;
+		cannonBall.Team1 = player.IsPlayer1;
+		player.GetParent().AddChild(cannonBall);
 	}
 	private void timeBomb(){
 		GD.Print("TIME BOMB");
