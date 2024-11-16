@@ -8,11 +8,11 @@ public partial class Player : CharacterBody2D
 	[Export]
 	public float Speed { get; set; } = 1000.0f;
 	[Export]
-	public float AccelerationRate { get; set; } = 0.1f;
+	public float AccelerationRate { get; set; } = 2f;
 	[Export]
-	public float MaxSpeed { get; set; } = 1000.0f;
+	public float MaxSpeed { get; set; } = 2000.0f;
 	[Export]
-	public float Friction { get; set; } = 0.25f;
+	public float Friction { get; set; } = 0.3f;
 	private float currentVelocity = 0f;
 	private Vector2 inputDirection = Vector2.Zero;
 

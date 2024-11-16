@@ -7,7 +7,9 @@ using System.Linq.Expressions;
 public partial class PirateCraftingController : Node2D
 {
 	[Export]
-	public double InputTime = 0.25;
+	public double InputTime = 0.15;
+	[Export]
+	private double EffectCooldown = 0.2;
 	public enum Element
 	{
 		Cannon,
@@ -46,6 +48,7 @@ public partial class PirateCraftingController : Node2D
 	private int amountOfInputs = 0;
 	private int maxAmountOfInputs = 3;
 	private double timeSinceInput = 0;
+	private double timeSinceEffect = 0;
 	private bool isPerformingAction = false;
 	private bool activeCraftCombination = false;
 
@@ -79,6 +82,7 @@ public partial class PirateCraftingController : Node2D
 	public void makeElementEffect(){
 		isPerformingAction = true;
 		activeCraftCombination = false;
+		timeSinceEffect = 0;
 		elementEffects[convertCraftCombinationToInt()](this);
 		foreach (Element element in Enum.GetValues(typeof(Element)).Cast<Element>()){
 			if (currentCraftCombination[element]){
@@ -87,7 +91,6 @@ public partial class PirateCraftingController : Node2D
 			currentCraftCombination[element] = false;
 		}
 		amountOfInputs = 0;
-		isPerformingAction = false;
 	}
 	private int convertCraftCombinationToInt(){
 		String craftCombination = "";
@@ -149,6 +152,11 @@ public partial class PirateCraftingController : Node2D
 			if(activeCraftCombination && timeSinceInput >= InputTime){
 				makeElementEffect();
 				GD.Print("Make effect1");
+			}
+		}else{
+			timeSinceEffect += delta;
+			if(timeSinceEffect >= EffectCooldown){
+				isPerformingAction = false;
 			}
 		}
 	}
