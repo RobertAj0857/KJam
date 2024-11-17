@@ -18,11 +18,11 @@ public partial class PirateCraftingController : Node2D
 	}
 	private static string[] keyInputs = new string[6]{
 		"Player1Element1",
-		"Player2Element1",
+		"Player2Element3",
 		"Player1Element2",
 		"Player2Element2",
 		"Player1Element3",
-		"Player2Element3",
+		"Player2Element1",
 	};
 	public Dictionary<Element, int> elementAmounts;
 	private Dictionary<Element, bool> currentCraftCombination;
@@ -47,6 +47,7 @@ public partial class PirateCraftingController : Node2D
 	private Player player;
 	private int amountOfInputs = 0;
 	private int maxAmountOfInputs = 3;
+	public int maxAmountOfElements = 5;
 	private double timeSinceInput = 0;
 	private double timeSinceEffect = 0;
 	private bool isPerformingAction = false;
@@ -101,6 +102,18 @@ public partial class PirateCraftingController : Node2D
 	{
 		GD.Print("EXPLOSION TELEPORT");
 	}
+
+	public void updateElementAmounts(){
+		Sprite2D playerUI;
+		if(player.IsPlayer1){
+			playerUI = UI.Instance.GetNode<Sprite2D>("Player1");
+		}else{
+			playerUI = UI.Instance.GetNode<Sprite2D>("Player2");
+		}
+		playerUI.GetNode<Sprite2D>("Elements").GetNode<Sprite2D>("Cannon").GetNode<RichTextLabel>("Amount").Text = elementAmounts[Element.Cannon]+"";
+		playerUI.GetNode<Sprite2D>("Elements").GetNode<Sprite2D>("Rum").GetNode<RichTextLabel>("Amount").Text = elementAmounts[Element.Rum]+"";
+		playerUI.GetNode<Sprite2D>("Elements").GetNode<Sprite2D>("PocketWatch").GetNode<RichTextLabel>("Amount").Text = elementAmounts[Element.PocketWatch]+"";
+	}
 	public void makeElementEffect()
 	{
 		isPerformingAction = true;
@@ -112,6 +125,7 @@ public partial class PirateCraftingController : Node2D
 			if (currentCraftCombination[element])
 			{
 				elementAmounts[element] -= 1;
+				updateElementAmounts();
 			}
 			currentCraftCombination[element] = false;
 			player.combinationShower.updateCombination(currentCraftCombination, amountOfInputs);
@@ -179,8 +193,7 @@ public partial class PirateCraftingController : Node2D
 		currentCraftCombination = new Dictionary<Element, bool>();
 		foreach (Element element in Enum.GetValues(typeof(Element)).Cast<Element>())
 		{
-			elementAmounts[element] = 1000;
-			GD.Print("Temp");
+			elementAmounts[element] = 0;
 			currentCraftCombination[element] = false;
 		}
 		player.combinationShower.updateCombination(currentCraftCombination, amountOfInputs);
