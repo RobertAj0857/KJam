@@ -4,6 +4,10 @@ using System;
 public partial class Projectile : Area2D
 {
 	[Export]
+	public bool isCannonBall = false;
+	[Export]
+	private Texture2D destroyedTex;
+	[Export]
 	public float Speed {get; set;} = 1;
 	[Export]
 	public int Damage {get; set;} = 10;
@@ -36,14 +40,28 @@ public partial class Projectile : Area2D
 	}
 
 	public void Destroy() {
+		if(isCannonBall && !destroyed) {
+			destroyed = true;
+			GetNode<Sprite2D>("Sprite2D").Texture = destroyedTex;
+			return;
+		}
 		QueueFree();
 	}
 
+	private double stayDelta = 0.0;
+	private double stayTime = 0.1;
 	protected double timeToGrow = 0.1;
+	private bool destroyed = false;
 
     public override void _PhysicsProcess(double delta)
     {
-
+		if(destroyed) {
+			stayDelta+=delta;
+			if(stayDelta >= stayTime) {
+				QueueFree();
+			}
+			return;
+		}
 		timePassed += delta;
 		if(timePassed < timeToGrow) {
 			Scale = Vector2.One * (float)(Math.Pow(timePassed / timeToGrow, 1));
