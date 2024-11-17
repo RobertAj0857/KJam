@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cthstnn2x6s4a"]
+[gd_scene load_steps=45 format=3 uid="uid://cthstnn2x6s4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
 [ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="2_47xgi"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://wrmxcngoxaru" path="res://Sprites/CannonSmall1.0.png" id="9_u5oor"]
 [ext_resource type="Texture2D" uid="uid://cdhfodrbbpul3" path="res://Sprites/RomeSmall1.0.png" id="10_meow7"]
 [ext_resource type="Texture2D" uid="uid://d3y11656bp85q" path="res://Sprites/WatchSmall1.0.png" id="11_i2kd4"]
+[ext_resource type="Texture2D" uid="uid://oy1ua2iw4trm" path="res://Sprites/Bubble.png" id="13_gpxqr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k057c"]
 resource_local_to_scene = true
@@ -265,16 +266,21 @@ min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "combinationShower", "pirateCraftingController", "timeWarpEffect")]
+[sub_resource type="Gradient" id="Gradient_ax7ip"]
+offsets = PackedFloat32Array(0, 0.171315, 0.302789, 0.673307, 1)
+colors = PackedColorArray(0, 1, 0.466667, 0, 0, 1, 0.466667, 0, 0, 1, 0.466667, 0.588235, 1, 0.55, 0, 0.588235, 0.316667, 1, 0, 0)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "combinationShower", "pirateCraftingController", "timeWarpEffect", "drunkParticleEffect")]
 z_index = 10
 y_sort_enabled = true
 collision_mask = 5
 script = ExtResource("1_xtey8")
-Speed = 400.0
+Speed = 500.0
 sprite = NodePath("PirateSprite")
 combinationShower = NodePath("CombinationShower")
 pirateCraftingController = NodePath("PirateCraftingController")
 timeWarpEffect = NodePath("TimeWarp")
+drunkParticleEffect = NodePath("DrunkParticle")
 
 [node name="PirateSprite" type="AnimatedSprite2D" parent="."]
 z_index = 10
@@ -302,6 +308,7 @@ damageComponent = NodePath("../Damage")
 position = Vector2(0, -2.5)
 
 [node name="Health" parent="." node_paths=PackedStringArray("animationPlayer", "character") instance=ExtResource("6_iogy4")]
+maxHealth = 80
 animationPlayer = NodePath("../AnimationPlayer")
 character = NodePath("..")
 
@@ -366,5 +373,31 @@ color_ramp = SubResource("Gradient_2ed73")
 hue_variation_min = 0.88
 hue_variation_max = 0.88
 hue_variation_curve = SubResource("Curve_p8odu")
+
+[node name="DrunkParticle" type="CPUParticles2D" parent="."]
+z_index = 11
+texture_filter = 1
+position = Vector2(0, 5)
+emitting = false
+amount = 6
+lifetime = 1.25
+randomness = 1.0
+lifetime_randomness = 0.12
+local_coords = true
+texture = ExtResource("13_gpxqr")
+direction = Vector2(0, -5)
+spread = 55.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 14.0
+initial_velocity_max = 16.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+linear_accel_min = -1.0
+linear_accel_max = 1.0
+damping_min = 2.0
+damping_max = 2.0
+color_ramp = SubResource("Gradient_ax7ip")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 
 [editable path="Hitbox"]

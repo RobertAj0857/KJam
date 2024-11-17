@@ -65,12 +65,12 @@ public partial class PirateCraftingController : Node2D
 	private void drinkRum()
 	{
 		GD.Print("DRUNK MOVEMENT");
-		player.ApplyDrunkEffect(2.5);
+		player.ApplyDrunkEffect(2);
 	}
 	private void goBackInTime()
 	{
 		GD.Print("GO BACK IN TIME");
-		player.TimeWarp(0.3);
+		player.TimeWarp(0.2);
 	}
 	private void shootFireCannonBall()
 	{
@@ -100,7 +100,15 @@ public partial class PirateCraftingController : Node2D
 	}
 	private void explosionPlayer()
 	{
-		GD.Print("EXPLOSION TELEPORT");
+		GD.Print("EXPLOSION DASH");
+		player.TimeWarping = true;
+		Explosion explosion = (Explosion) GD.Load<PackedScene>("res://Scenes/explosion.tscn").Instantiate();
+		explosion.Damage = 20;
+		explosion.ExplosionRange = 56;
+		explosion.ExplosionDuration = 0.5;
+		explosion.Position = player.Position;
+		player.GetParent().AddChild(explosion);
+		player.Dash(0.2);
 	}
 
 	public void updateElementAmounts(){

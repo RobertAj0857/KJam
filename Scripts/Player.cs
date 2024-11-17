@@ -43,10 +43,12 @@ public partial class Player : CharacterBody2D
 		if(drunkMovement){
 			drunkTimer = 0;
 			Friction = baseFriction / 5f;
-			AccelerationRate = baseAcceleration / 2.25f;
+			AccelerationRate = baseAcceleration / 2.2f;
+			drunkParticleEffect.Emitting = true;
 		}else{
 			Friction = baseFriction;
 			AccelerationRate = baseAcceleration;
+			drunkParticleEffect.Emitting = false;
 		}
 	}}
 	[Export]
@@ -58,14 +60,21 @@ public partial class Player : CharacterBody2D
 	public PirateCraftingController pirateCraftingController;
 	[Export]
 	public CpuParticles2D timeWarpEffect;
+	[Export]
+	public CpuParticles2D drunkParticleEffect;
 
 	private Vector2 lastMovingDirection; // For animations
 	public Vector2 AimDirection = new Vector2(0, 1); // For projectiles
 	private bool timeWarping = false;
 	private int timeWarpTargetIndex = 0;
 	private double timeWarpDurationPerStep = 0;
+	private double dashDuration = 0;
+	private Vector2 originDashPosition;
+	private Vector2 targetDashPosition;
+	private bool dashing = false;
 	public bool TimeWarping {get => timeWarping; set{
 		timeWarping = value;
+		timeWarpEffect.Emitting = timeWarping;
 	}}
 	private bool isDead = false;
 	public bool IsDead {get => isDead; set{
@@ -87,7 +96,6 @@ public partial class Player : CharacterBody2D
 	public void TimeWarp(double duration){
 		TimeWarping = true;
 		//sprite.Visible = false;
-		timeWarpEffect.Emitting = true;
 		timePassed = 0;
 		timeWarpTargetIndex = 1;
 		lastPositions.AddFirst(Position);
@@ -95,6 +103,20 @@ public partial class Player : CharacterBody2D
 			lastPositions.RemoveLast();
 		}
 		timeWarpDurationPerStep = duration/((double)positionsWarpedBack);
+	}
+
+	public void Dash(double duration){
+		dashing = true;
+		timePassed = 0;
+		originDashPosition = Position;
+		targetDashPosition = originDashPosition + lastMovingDirection * 70;
+		var spaceState = GetWorld2D().DirectSpaceState;
+		var query = PhysicsRayQueryParameters2D.Create(Position + lastMovingDirection * 8,targetDashPosition,CollisionMask);
+		var result = spaceState.IntersectRay(query);
+		if (result.Count > 0){
+			targetDashPosition = (Vector2)result["position"] - lastMovingDirection * 4;
+		}
+		dashDuration = duration;
 	}
 
 	public void GetInput()
@@ -145,26 +167,36 @@ public partial class Player : CharacterBody2D
 		}
 		timePassed += delta;
 		if(TimeWarping){
-			Vector2 posFrom = Position;
-			if (lastPositions.First != null){
-				posFrom = lastPositions.First.Value;
-			}
-			Vector2 posTo = posFrom;
-			if (lastPositions.First != null && lastPositions.First.Next != null){
-				posTo = lastPositions.First.Next.Value;
-			}
-			interpolation += delta / timeWarpDurationPerStep;
-			Position = posFrom.Lerp(posTo, (float)interpolation);
-			if(interpolation >= 1){
-				interpolation = 0;
-				timePassed = 0;
-				if(lastPositions.Count > 0){
-					lastPositions.RemoveFirst();
+			if(!dashing){
+				Vector2 posFrom = Position;
+				if (lastPositions.First != null){
+					posFrom = lastPositions.First.Value;
 				}
-				timeWarpTargetIndex ++;
-				if(timeWarpTargetIndex >= positionsWarpedBack - 1){
-					//sprite.Visible = true;
-					timeWarpEffect.Emitting = false;
+				Vector2 posTo = posFrom;
+				if (lastPositions.First != null && lastPositions.First.Next != null){
+					posTo = lastPositions.First.Next.Value;
+				}
+				interpolation += delta / timeWarpDurationPerStep;
+				Position = posFrom.Lerp(posTo, (float)interpolation);
+				if(interpolation >= 1){
+					interpolation = 0;
+					timePassed = 0;
+					if(lastPositions.Count > 0){
+						lastPositions.RemoveFirst();
+					}
+					timeWarpTargetIndex ++;
+					if(timeWarpTargetIndex >= positionsWarpedBack - 1){
+						//sprite.Visible = true;
+						TimeWarping = false;
+					}
+				}
+			}else{
+				interpolation += delta / dashDuration;
+				Position = originDashPosition.Lerp(targetDashPosition, (float)interpolation);
+				if(interpolation >= 1){
+					interpolation = 0;
+					timePassed = 0;
+					dashing = false;
 					TimeWarping = false;
 				}
 			}
