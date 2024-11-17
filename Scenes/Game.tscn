@@ -371,9 +371,6 @@ material = SubResource("ShaderMaterial_2bffd")
 sprite_frames = SubResource("SpriteFrames_r0p5u")
 animation = &"Side Walk"
 
-[node name="Hitbox" parent="Player2" index="3"]
-scale = Vector2(1.12, 1.2)
-
 [node name="Player1" parent="." instance=ExtResource("2_re7t3")]
 position = Vector2(89, 43)
 
@@ -381,9 +378,6 @@ position = Vector2(89, 43)
 material = SubResource("ShaderMaterial_sbvno")
 sprite_frames = SubResource("SpriteFrames_yyf85")
 animation = &"Side Walk"
-
-[node name="Hitbox" parent="Player1" index="3"]
-scale = Vector2(1.12, 1.2)
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 visible = false

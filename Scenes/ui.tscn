@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cajqrvbhv6l3w" path="res://Sprites/WatchBig1.0.png" id="4_dq8lr"]
 [ext_resource type="FontFile" uid="uid://70vpt3m63g4x" path="res://alagard.ttf" id="4_wxug4"]
 [ext_resource type="Texture2D" uid="uid://b76yieorji1p2" path="res://Sprites/BigPirateRedBeardHead1.1.png" id="6_dqvqv"]
-[ext_resource type="PackedScene" path="res://Scenes/big_pirate_head.tscn" id="8_6uyyu"]
+[ext_resource type="PackedScene" uid="uid://ce4n3no7hg5qo" path="res://Scenes/big_pirate_head.tscn" id="8_6uyyu"]
 [ext_resource type="Shader" path="res://Scenes/big_pirate_head.gdshader" id="9_h14o2"]
 [ext_resource type="Texture2D" uid="uid://dq3gmx8y74ma6" path="res://Sprites/BigPirateHead1.1.png" id="10_66eb3"]
 
