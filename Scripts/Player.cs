@@ -20,9 +20,9 @@ public partial class Player : CharacterBody2D
 			if(inWater == value) return;
 			inWater = value;
 			if(inWater) {
-
+				((ShaderMaterial)sprite.Material).SetShaderParameter("inWater", 1);
 			} else {
-
+				((ShaderMaterial)sprite.Material).SetShaderParameter("inWater", 0);
 			}
 		}
 	}

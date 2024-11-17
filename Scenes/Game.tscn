@@ -1,10 +1,11 @@
-[gd_scene load_steps=51 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=52 format=3 uid="uid://u5m5gtdyw8tp"]
 
 [ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
 [ext_resource type="Material" uid="uid://dqqhfopt8ak0v" path="res://fire.tres" id="3_32gn2"]
 [ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="3_rqib2"]
 [ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="4_3jlnk"]
+[ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="4_57ofa"]
 [ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
 [ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
@@ -16,6 +17,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_rqib2")
 shader_parameter/inWater = null
 shader_parameter/quantity = 0.0
+shader_parameter/waterTex = ExtResource("4_57ofa")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6ju0"]
 atlas = ExtResource("4_xd23c")
@@ -189,6 +191,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_rqib2")
 shader_parameter/inWater = null
 shader_parameter/quantity = 0.0
+shader_parameter/waterTex = ExtResource("4_57ofa")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v74ko"]
 atlas = ExtResource("6_fk4ex")

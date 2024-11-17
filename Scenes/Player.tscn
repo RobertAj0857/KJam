@@ -1,9 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://cthstnn2x6s4a"]
+[gd_scene load_steps=44 format=3 uid="uid://cthstnn2x6s4a"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_xtey8"]
 [ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="2_47xgi"]
 [ext_resource type="PackedScene" uid="uid://bmu8to8ft00ji" path="res://Scenes/hitbox.tscn" id="2_knigx"]
 [ext_resource type="Texture2D" uid="uid://cvxfpj0wjxhiq" path="res://PirateCharacter1.png" id="3_lgdf0"]
+[ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="3_v5q7d"]
 [ext_resource type="Script" path="res://Scripts/PirateCraftingController.cs" id="4_j0cep"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="4_oycj8"]
 [ext_resource type="PackedScene" uid="uid://butnvcpogf8qb" path="res://Component/Health.tscn" id="6_iogy4"]
@@ -16,8 +17,9 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k057c"]
 resource_local_to_scene = true
 shader = ExtResource("2_47xgi")
-shader_parameter/inWater = 1
+shader_parameter/inWater = 0.0
 shader_parameter/quantity = 0.0
+shader_parameter/waterTex = ExtResource("3_v5q7d")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6j57"]
 atlas = ExtResource("3_lgdf0")
@@ -292,8 +294,12 @@ shape = SubResource("CapsuleShape2D_jtlcu")
 script = ExtResource("4_j0cep")
 
 [node name="Hitbox" parent="." node_paths=PackedStringArray("damageComponent") instance=ExtResource("2_knigx")]
+position = Vector2(0, 3)
 scale = Vector2(1.12, 1.2)
 damageComponent = NodePath("../Damage")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, -2.5)
 
 [node name="Health" parent="." node_paths=PackedStringArray("animationPlayer", "character") instance=ExtResource("6_iogy4")]
 animationPlayer = NodePath("../AnimationPlayer")
@@ -360,3 +366,5 @@ color_ramp = SubResource("Gradient_2ed73")
 hue_variation_min = 0.88
 hue_variation_max = 0.88
 hue_variation_curve = SubResource("Curve_p8odu")
+
+[editable path="Hitbox"]
