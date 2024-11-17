@@ -4,4 +4,4 @@
 
 [node name="CannonBall" instance=ExtResource("1_4j6ac")]
 visible = false
-Speed = 2.0
+Speed = 1.5
