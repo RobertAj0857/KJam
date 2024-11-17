@@ -70,14 +70,12 @@ public partial class PirateCraftingController : Node2D
 	{
 		GD.Print("DRUNK MOVEMENT");
 		player.ApplyDrunkEffect(2);
-		player.ApplyDrunkEffect(2.5);
 		sfx.PlaySound("DRUNK MOVEMENT");
 	}
 	private void goBackInTime()
 	{
 		GD.Print("GO BACK IN TIME");
 		player.TimeWarp(0.2);
-		player.TimeWarp(0.4);
 		sfx.PlaySound("GO BACK IN TIME");
 	}
 	private void shootFireCannonBall()

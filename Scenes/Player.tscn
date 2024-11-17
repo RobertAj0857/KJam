@@ -284,6 +284,7 @@ drunkParticleEffect = NodePath("DrunkParticle")
 
 [node name="PirateSprite" type="AnimatedSprite2D" parent="."]
 z_index = 10
+y_sort_enabled = true
 texture_filter = 1
 material = SubResource("ShaderMaterial_k057c")
 position = Vector2(0, -1)

@@ -34,7 +34,7 @@ public partial class Player : CharacterBody2D
 	private double currentDrunkDuration = 0;
 	private LinkedList<Vector2> lastPositions = new LinkedList<Vector2>();
 	private double savePositionInterval = 0.1;
-	private int positionsWarpedBack = 10;
+	private int positionsWarpedBack = 15;
 	private double timePassed = 0;
 	private double interpolation = 0;
 	public bool DrunkMovement{ get => drunkMovement; set{
