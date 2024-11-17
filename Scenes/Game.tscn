@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=61 format=3 uid="uid://u5m5gtdyw8tp"]
 
 [ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
@@ -8,13 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="4_57ofa"]
 [ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
-[ext_resource type="PackedScene" uid="uid://dhwraoqcp8qec" path="res://Scenes/music.tscn" id="5_pbftw"]
+[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
 [ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
 [ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
 [ext_resource type="PackedScene" uid="uid://cs788k6d8frg3" path="res://Scenes/SFX.tscn" id="11_pah0f"]
 [ext_resource type="AudioStream" uid="uid://buhktu2s0ijl2" path="res://Audio/Cannon.mp3" id="12_uubjk"]
 [ext_resource type="AudioStream" uid="uid://d1t4go3nivth8" path="res://Audio/fireball.mp3" id="13_4j41u"]
+[ext_resource type="AudioStream" uid="uid://cjnoyba6v37q2" path="res://Audio/Drinking.mp3" id="13_6r7ah"]
 [ext_resource type="AudioStream" uid="uid://ci6tgkrqayvf4" path="res://Audio/explozioooon.mp3" id="14_1w05c"]
+[ext_resource type="AudioStream" uid="uid://bd4tjw3tb1qbb" path="res://Audio/reverseFast.mp3" id="14_v310y"]
+[ext_resource type="AudioStream" uid="uid://7msniwx1pglq" path="res://Audio/ReverseFaster.mp3" id="17_mh647"]
+[ext_resource type="AudioStream" uid="uid://dllod8rrjku2m" path="res://Audio/23707__hazure__seagull.mp3" id="18_u23r2"]
+[ext_resource type="AudioStream" uid="uid://crpfwyfdyhjt6" path="res://Audio/ocean.mp3" id="19_pmdem"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bffd"]
 resource_local_to_scene = true
@@ -371,10 +376,11 @@ y_sort_enabled = true
 [node name="Level" parent="." instance=ExtResource("2_gpv0w")]
 position = Vector2(32, 0)
 
-[node name="Player2" parent="." instance=ExtResource("2_re7t3")]
+[node name="Player2" parent="." node_paths=PackedStringArray("drunkParticleEffect") instance=ExtResource("2_re7t3")]
 y_sort_enabled = false
 position = Vector2(255, 114)
 IsPlayer1 = false
+drunkParticleEffect = NodePath("DrunkParticle")
 
 [node name="PirateSprite" parent="Player2" index="0"]
 z_index = 2
@@ -385,9 +391,10 @@ animation = &"Side Walk"
 [node name="PirateCraftingController" parent="Player2" index="2" node_paths=PackedStringArray("sfx")]
 sfx = NodePath("../../Music")
 
-[node name="Player1" parent="." instance=ExtResource("2_re7t3")]
+[node name="Player1" parent="." node_paths=PackedStringArray("drunkParticleEffect") instance=ExtResource("2_re7t3")]
 y_sort_enabled = false
 position = Vector2(89, 43)
+drunkParticleEffect = NodePath("DrunkParticle")
 
 [node name="PirateSprite" parent="Player1" index="0"]
 z_index = 2
@@ -423,10 +430,12 @@ volume_db = 5.0
 max_polyphony = 6
 
 [node name="SFX2" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("13_6r7ah")
 volume_db = 5.0
 mp3 = 1
 
 [node name="SFX3" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("14_v310y")
 volume_db = 5.0
 mp3 = 2
 
@@ -440,15 +449,19 @@ stream = ExtResource("14_1w05c")
 mp3 = 4
 
 [node name="SFX6" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("17_mh647")
 mp3 = 5
 
 [node name="SFX7" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("14_1w05c")
 mp3 = 6
 
 [node name="SFX8" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("18_u23r2")
 mp3 = 7
 
 [node name="SFX9" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("19_pmdem")
 mp3 = 8
 
 [node name="Spawner" parent="." instance=ExtResource("6_058mw")]
