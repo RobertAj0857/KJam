@@ -29,14 +29,23 @@ public partial class PickUp : Area2D
 
 		// checks for players
 		Godot.Collections.Array<Area2D> hits = GetOverlappingAreas();
+		bool cantPickUp = false;
 		foreach (Area2D hit in hits)
 		{
 			if (hit is Hitbox box)
 			{
-				Collect((Player)box.GetParent<Player>());
-				QueueFree();
-				break;
+				Player player = (Player)box.GetParent<Player>();
+				if(player.pirateCraftingController.elementAmounts[element] < player.pirateCraftingController.maxAmountOfElements){
+					Collect(player);
+					QueueFree();
+					return;
+				}else{
+					cantPickUp = true;
+				}
 			}
+		}
+		if(hits.Count > 0 && !cantPickUp){
+			QueueFree();
 		}
 	}
 
@@ -51,11 +60,11 @@ public partial class PickUp : Area2D
 				break;
 
 			case PirateCraftingController.Element.PocketWatch:
-				sprite2D.Texture = Rum;
+				sprite2D.Texture = StopWatch;
 				break;
 
 			case PirateCraftingController.Element.Rum:
-				sprite2D.Texture = StopWatch;
+				sprite2D.Texture = Rum;
 				break;
 
 			default:
@@ -67,5 +76,6 @@ public partial class PickUp : Area2D
 	public void Collect(Player player)
 	{
 		player.pirateCraftingController.elementAmounts[element] += 1;
+		player.pirateCraftingController.updateElementAmounts();
 	}
 }

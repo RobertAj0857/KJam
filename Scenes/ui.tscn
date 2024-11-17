@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://chb2kr3ap64po"]
+[gd_scene load_steps=14 format=3 uid="uid://chb2kr3ap64po"]
 
 [ext_resource type="Texture2D" uid="uid://ippkbwb3v5py" path="res://Sprites/UIPlank.png" id="1_fj55a"]
 [ext_resource type="Script" path="res://Scripts/UI.cs" id="1_s1p8x"]
@@ -8,7 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://cajqrvbhv6l3w" path="res://Sprites/WatchBig1.0.png" id="4_dq8lr"]
 [ext_resource type="FontFile" uid="uid://70vpt3m63g4x" path="res://alagard.ttf" id="4_wxug4"]
 [ext_resource type="Texture2D" uid="uid://b76yieorji1p2" path="res://Sprites/BigPirateRedBeardHead1.1.png" id="6_dqvqv"]
-[ext_resource type="PackedScene" uid="uid://ce4n3no7hg5qo" path="res://Scenes/big_pirate_head.tscn" id="8_6uyyu"]
+[ext_resource type="PackedScene" path="res://Scenes/big_pirate_head.tscn" id="8_6uyyu"]
+[ext_resource type="Shader" path="res://Scenes/big_pirate_head.gdshader" id="9_h14o2"]
+[ext_resource type="Texture2D" uid="uid://dq3gmx8y74ma6" path="res://Sprites/BigPirateHead1.1.png" id="10_66eb3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xsasj"]
+resource_local_to_scene = true
+shader = ExtResource("9_h14o2")
+shader_parameter/iValue = 0.0
+shader_parameter/skull = ExtResource("10_66eb3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q62wf"]
+resource_local_to_scene = true
+shader = ExtResource("9_h14o2")
+shader_parameter/iValue = 0.0
+shader_parameter/skull = ExtResource("10_66eb3")
 
 [node name="UI" type="Control" node_paths=PackedStringArray("head1", "head2")]
 texture_filter = 1
@@ -155,6 +169,7 @@ text = "/"
 scroll_active = false
 
 [node name="BigPirateHead" parent="Player2" instance=ExtResource("8_6uyyu")]
+material = SubResource("ShaderMaterial_xsasj")
 
 [node name="Player1" type="Sprite2D" parent="."]
 position = Vector2(18, 90)
@@ -291,6 +306,7 @@ text = "/"
 scroll_active = false
 
 [node name="BigPirateHead2" parent="Player1" instance=ExtResource("8_6uyyu")]
+material = SubResource("ShaderMaterial_q62wf")
 position = Vector2(0, -68)
 texture = ExtResource("6_dqvqv")
 flip_h = true

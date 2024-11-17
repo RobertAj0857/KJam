@@ -171,7 +171,9 @@ public partial class PirateCraftingController : Node2D
 						if (currentCraftCombination[element] || amountOfInputs >= maxAmountOfInputs)
 						{
 							makeElementEffect();
-							addInput(element);
+							if(elementAmounts[element] > 0){
+								addInput(element);
+							}
 							GD.Print("Make effect2");
 							break;
 						}
