@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://vy8nfio2q6jr"]
+[gd_scene load_steps=3 format=3 uid="uid://vy8nfio2q6jr"]
 
 [ext_resource type="PackedScene" uid="uid://cyjl6v3a8s23o" path="res://Scenes/projectile.tscn" id="1_4j6ac"]
+[ext_resource type="Texture2D" uid="uid://bysatlucu087d" path="res://Sprites/CannonballBroke.png" id="2_xbpf8"]
 
 [node name="CannonBall" instance=ExtResource("1_4j6ac")]
 visible = false
+isCannonBall = true
+destroyedTex = ExtResource("2_xbpf8")
 Speed = 1.5
