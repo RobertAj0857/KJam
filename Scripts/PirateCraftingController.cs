@@ -196,7 +196,6 @@ public partial class PirateCraftingController : Node2D
 			elementAmounts[element] = 0;
 			currentCraftCombination[element] = false;
 		}
-		updateElementAmounts();
 		player.combinationShower.updateCombination(currentCraftCombination, amountOfInputs);
 	}
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
