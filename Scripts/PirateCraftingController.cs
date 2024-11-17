@@ -114,7 +114,7 @@ public partial class PirateCraftingController : Node2D
 		player.TimeWarping = true;
 		Explosion explosion = (Explosion) GD.Load<PackedScene>("res://Scenes/explosion.tscn").Instantiate();
 		explosion.Damage = 20;
-		explosion.ExplosionRange = 56;
+		explosion.ExplosionRange = 72;
 		explosion.ExplosionDuration = 0.5;
 		explosion.Position = player.Position;
 		player.GetParent().AddChild(explosion);

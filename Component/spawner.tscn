@@ -7,7 +7,7 @@ script = ExtResource("1_soih2")
 UpperLeft = NodePath("UpperLeft")
 BottomRight = NodePath("BottomRight")
 from = 0.5
-to = 1.5
+to = 1.0
 
 [node name="UpperLeft" type="Marker2D" parent="."]
 position = Vector2(40, 16)
