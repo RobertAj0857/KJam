@@ -11,6 +11,7 @@ void fragment() {
 	vec4 color1 = texture(TEXTURE,UV);
 	vec4 color2 = texture(skull,UV);
 	vec2 size = vec2(textureSize(TEXTURE, 0));
+	vec2 pixelSize = 1.0 / size;
 	vec2 pos = round(UV * size)/size;
 	float i = floor(iValue*size.y)/size.y;
 	COLOR = step(i, UV.y)*color1 + step(UV.y, i)*color2;
