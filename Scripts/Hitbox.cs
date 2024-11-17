@@ -22,9 +22,12 @@ public partial class Hitbox : Area2D
 
     public override void _PhysicsProcess(double delta)
     {
-		player.InWater = GetOverlappingBodies().Count > 0;
+		player.InWater = (
+			GetOverlappingBodies().Count > 0 
+			&& !GetParent().GetParent().GetNode<Level>("Level").IsOnBridge(GlobalPosition)
+		);
 		if(player.InWater) {
-			GD.Print("InWater");
+			//GD.Print("InWater");
 		}
     }
 }

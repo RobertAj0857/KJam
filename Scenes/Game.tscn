@@ -7,13 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="4_3jlnk"]
 [ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
-[ext_resource type="PackedScene" uid="uid://dhwraoqcp8qec" path="res://Scenes/music.tscn" id="5_pbftw"]
+[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
 [ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
 [ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bffd"]
 resource_local_to_scene = true
 shader = ExtResource("3_rqib2")
+shader_parameter/inWater = null
 shader_parameter/quantity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6ju0"]
@@ -186,6 +187,7 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sbvno"]
 resource_local_to_scene = true
 shader = ExtResource("3_rqib2")
+shader_parameter/inWater = null
 shader_parameter/quantity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v74ko"]
@@ -363,27 +365,25 @@ y_sort_enabled = true
 position = Vector2(32, 0)
 
 [node name="Player2" parent="." instance=ExtResource("2_re7t3")]
+y_sort_enabled = false
 position = Vector2(255, 114)
 IsPlayer1 = false
 
 [node name="PirateSprite" parent="Player2" index="0"]
+z_index = 2
 material = SubResource("ShaderMaterial_2bffd")
 sprite_frames = SubResource("SpriteFrames_r0p5u")
 animation = &"Side Walk"
 
-[node name="Hitbox" parent="Player2" index="3"]
-scale = Vector2(1.12, 1.2)
-
 [node name="Player1" parent="." instance=ExtResource("2_re7t3")]
+y_sort_enabled = false
 position = Vector2(89, 43)
 
 [node name="PirateSprite" parent="Player1" index="0"]
+z_index = 2
 material = SubResource("ShaderMaterial_sbvno")
 sprite_frames = SubResource("SpriteFrames_yyf85")
 animation = &"Side Walk"
-
-[node name="Hitbox" parent="Player1" index="3"]
-scale = Vector2(1.12, 1.2)
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 visible = false
