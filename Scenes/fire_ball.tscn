@@ -48,7 +48,7 @@ fill_from = Vector2(0.5, 0.5)
 visible = false
 script = ExtResource("2_uimgl")
 Speed = 1.75
-Damage = 15
+Damage = 20
 
 [node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_fs3y6")

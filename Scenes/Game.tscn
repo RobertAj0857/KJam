@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=62 format=3 uid="uid://u5m5gtdyw8tp"]
 
 [ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
@@ -8,9 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="4_57ofa"]
 [ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
-[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
+[ext_resource type="PackedScene" uid="uid://dhwraoqcp8qec" path="res://Scenes/music.tscn" id="5_pbftw"]
 [ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
 [ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
+[ext_resource type="Texture2D" uid="uid://ku4nvhqtmh62" path="res://Sprites/RedDeadPirate.png" id="6_i2jdo"]
 [ext_resource type="PackedScene" uid="uid://cs788k6d8frg3" path="res://Scenes/SFX.tscn" id="11_pah0f"]
 [ext_resource type="AudioStream" uid="uid://buhktu2s0ijl2" path="res://Audio/Cannon.mp3" id="12_uubjk"]
 [ext_resource type="AudioStream" uid="uid://d1t4go3nivth8" path="res://Audio/fireball.mp3" id="13_4j41u"]
@@ -132,7 +133,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_60cms")
+"texture": ExtResource("6_i2jdo")
 }],
 "loop": true,
 "name": &"Dead",
@@ -386,7 +387,7 @@ drunkParticleEffect = NodePath("DrunkParticle")
 z_index = 2
 material = SubResource("ShaderMaterial_2bffd")
 sprite_frames = SubResource("SpriteFrames_r0p5u")
-animation = &"Side Walk"
+animation = &"Dead"
 
 [node name="PirateCraftingController" parent="Player2" index="2" node_paths=PackedStringArray("sfx")]
 sfx = NodePath("../../Music")
@@ -423,6 +424,7 @@ offset_right = 320.0
 offset_bottom = 176.0
 
 [node name="Music" parent="." instance=ExtResource("5_pbftw")]
+volume_db = -15.0
 
 [node name="SFX" parent="Music" instance=ExtResource("11_pah0f")]
 stream = ExtResource("12_uubjk")
@@ -436,12 +438,12 @@ mp3 = 1
 
 [node name="SFX3" parent="Music" instance=ExtResource("11_pah0f")]
 stream = ExtResource("14_v310y")
-volume_db = 5.0
+volume_db = 24.0
 mp3 = 2
 
 [node name="SFX4" parent="Music" instance=ExtResource("11_pah0f")]
 stream = ExtResource("13_4j41u")
-volume_db = 5.0
+volume_db = 20.0
 mp3 = 3
 
 [node name="SFX5" parent="Music" instance=ExtResource("11_pah0f")]
@@ -450,6 +452,7 @@ mp3 = 4
 
 [node name="SFX6" parent="Music" instance=ExtResource("11_pah0f")]
 stream = ExtResource("17_mh647")
+volume_db = 24.0
 mp3 = 5
 
 [node name="SFX7" parent="Music" instance=ExtResource("11_pah0f")]

@@ -318,9 +318,9 @@ flip_h = true
 visible = false
 layout_mode = 0
 offset_left = 87.0
-offset_top = 47.0
+offset_top = 34.0
 offset_right = 239.0
-offset_bottom = 155.0
+offset_bottom = 150.0
 script = ExtResource("12_rjqsd")
 
 [node name="Winner" type="RichTextLabel" parent="FinishScreen"]
