@@ -357,6 +357,7 @@ animations = [{
 }]
 
 [node name="Game" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Level" parent="." instance=ExtResource("2_gpv0w")]
 position = Vector2(32, 0)

@@ -20,6 +20,8 @@ public partial class Spawner : Node2D
 	private double timePassed = 0;
 	private double waitTime = 0;
 	private int itemint = 0;
+	private int maxAmountOfSpawns = 25;
+	public int amountOfSpawns = 0;
 	[Export]
 	public int ItemFrom { get; set; } = 1;
 	[Export]
@@ -48,8 +50,13 @@ public partial class Spawner : Node2D
 
 	public void SpawnItems()
 	{
-
-		itemint = random.RandiRange(ItemFrom, ItemTo);
+		if(amountOfSpawns >= maxAmountOfSpawns){
+			return;
+		}
+		itemint = random.RandiRange(ItemFrom, ItemTo + 1);
+		if(itemint == ItemTo + 1){
+			itemint = ItemFrom;
+		}
 		PickUp pickUp = (PickUp)GD.Load<PackedScene>("res://Component/PickUp.tscn").Instantiate();
 		pickUp.Position = GetRandomPositionBetweenMarkers();
 		GetParent().AddChild(pickUp);

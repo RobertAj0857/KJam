@@ -37,6 +37,7 @@ public partial class PickUp : Area2D
 				Player player = (Player)box.GetParent<Player>();
 				if(player.pirateCraftingController.elementAmounts[element] < player.pirateCraftingController.maxAmountOfElements){
 					Collect(player);
+					spawner.amountOfSpawns --;
 					QueueFree();
 					return;
 				}else{
@@ -44,7 +45,8 @@ public partial class PickUp : Area2D
 				}
 			}
 		}
-		if(hits.Count > 0 && !cantPickUp){
+		if(GetOverlappingBodies().Count > 0 && !cantPickUp){
+			spawner.amountOfSpawns --;
 			QueueFree();
 		}
 	}
@@ -53,6 +55,7 @@ public partial class PickUp : Area2D
 	{
 		this.element = element;
 		spawner = s;
+		spawner.amountOfSpawns ++;
 		switch (element)
 		{
 			case PirateCraftingController.Element.Cannon:
