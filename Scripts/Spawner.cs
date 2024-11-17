@@ -50,7 +50,6 @@ public partial class Spawner : Node2D
 	{
 
 		itemint = random.RandiRange(ItemFrom, ItemTo);
-		GD.Print("SpawnItem" + itemint);
 		PickUp pickUp = (PickUp)GD.Load<PackedScene>("res://Component/PickUp.tscn").Instantiate();
 		pickUp.Position = GetRandomPositionBetweenMarkers();
 		GetParent().AddChild(pickUp);
@@ -59,7 +58,6 @@ public partial class Spawner : Node2D
 			case 1:
 				element = PirateCraftingController.Element.Cannon;
 				pickUp.MakePickUp(this, element);
-				GD.Print("Cannon spawnitem");
 				break;
 
 			case 2:

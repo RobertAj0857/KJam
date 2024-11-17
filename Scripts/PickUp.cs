@@ -19,7 +19,7 @@ public partial class PickUp : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GD.Print("_Ready_PickUp");
+
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -42,23 +42,19 @@ public partial class PickUp : Area2D
 
 	public void MakePickUp(Spawner s, PirateCraftingController.Element element)
 	{
-		GD.Print("MakePickUp");
 		this.element = element;
 		spawner = s;
 		switch (element)
 		{
 			case PirateCraftingController.Element.Cannon:
-				GD.Print("Cannon event");
 				sprite2D.Texture = Cannon;
 				break;
 
 			case PirateCraftingController.Element.PocketWatch:
-				GD.Print("PC event");
 				sprite2D.Texture = Rum;
 				break;
 
 			case PirateCraftingController.Element.Rum:
-				GD.Print("Rum event");
 				sprite2D.Texture = StopWatch;
 				break;
 
