@@ -32,6 +32,7 @@ public partial class Health : Node2D
         if(!Immortality){
             pirateHealth -= damage;
             checkIfDead();
+            animationPlayer.Seek(0);
             animationPlayer.Play("HitEffect");
             if(!character.IsPlayer1) {
                 UI.Instance.head1.UpdateHealth(pirateHealth);

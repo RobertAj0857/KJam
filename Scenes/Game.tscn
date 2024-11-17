@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="4_57ofa"]
 [ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
-[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
+[ext_resource type="PackedScene" uid="uid://dhwraoqcp8qec" path="res://Scenes/music.tscn" id="5_pbftw"]
 [ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
 [ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
 [ext_resource type="PackedScene" uid="uid://cs788k6d8frg3" path="res://Scenes/SFX.tscn" id="11_pah0f"]

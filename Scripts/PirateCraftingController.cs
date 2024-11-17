@@ -63,20 +63,19 @@ public partial class PirateCraftingController : Node2D
 		cannonBall.Direction = player.AimDirection;
 		cannonBall.Team1 = player.IsPlayer1;
 		player.GetParent().AddChild(cannonBall);
+		player.Velocity -= player.AimDirection * 250;
 		sfx.PlaySound("Cannon ball");
 	}
 	private void drinkRum()
 	{
 		GD.Print("DRUNK MOVEMENT");
 		player.ApplyDrunkEffect(2);
-		player.ApplyDrunkEffect(2.5);
 		sfx.PlaySound("DRUNK MOVEMENT");
 	}
 	private void goBackInTime()
 	{
 		GD.Print("GO BACK IN TIME");
 		player.TimeWarp(0.2);
-		player.TimeWarp(0.4);
 		sfx.PlaySound("GO BACK IN TIME");
 	}
 	private void shootFireCannonBall()
@@ -87,6 +86,7 @@ public partial class PirateCraftingController : Node2D
 		cannonBall.Direction = player.AimDirection;
 		cannonBall.Team1 = player.IsPlayer1;
 		player.GetParent().AddChild(cannonBall);
+		player.Velocity -= player.AimDirection * 250;
 		sfx.PlaySound("CANNON BALL ON FIRE");
 	}
 	private void timeBomb()
@@ -106,6 +106,7 @@ public partial class PirateCraftingController : Node2D
 		magicCannonBall.Team1 = player.IsPlayer1;
 		magicCannonBall.Player = player;
 		player.GetParent().AddChild(magicCannonBall);
+		player.Velocity -= player.AimDirection * 150;
 		sfx.PlaySound("TELEPORT WITH CANNON BALL");
 	}
 	private void explosionPlayer()
