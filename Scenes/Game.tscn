@@ -4,32 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
 [ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="3_7v1ef"]
 [ext_resource type="Material" uid="uid://dqqhfopt8ak0v" path="res://fire.tres" id="3_32gn2"]
-[ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="3_rqib2"]
 [ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="4_3jlnk"]
 [ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="4_57ofa"]
 [ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
 [ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
 [ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
-[ext_resource type="PackedScene" uid="uid://cs788k6d8frg3" path="res://Scenes/SFX.tscn" id="6_lu2xb"]
-[ext_resource type="AudioStream" uid="uid://buhktu2s0ijl2" path="res://Audio/Cannon.mp3" id="7_kar34"]
-[ext_resource type="AudioStream" uid="uid://d1t4go3nivth8" path="res://Audio/fireball.mp3" id="9_4okc2"]
-[ext_resource type="AudioStream" uid="uid://ci6tgkrqayvf4" path="res://Audio/explozioooon.mp3" id="10_cs5pq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7u4qv"]
-resource_local_to_scene = true
-shader = ExtResource("3_7v1ef")
-shader_parameter/quantity = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0lcm"]
-resource_local_to_scene = true
-shader = ExtResource("3_7v1ef")
-shader_parameter/quantity = 0.0
 [ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bffd"]
 resource_local_to_scene = true
-shader = ExtResource("3_rqib2")
+shader = ExtResource("3_7v1ef")
 shader_parameter/inWater = null
 shader_parameter/quantity = 0.0
 shader_parameter/waterTex = ExtResource("4_57ofa")
@@ -203,7 +188,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sbvno"]
 resource_local_to_scene = true
-shader = ExtResource("3_rqib2")
+shader = ExtResource("3_7v1ef")
 shader_parameter/inWater = null
 shader_parameter/quantity = 0.0
 shader_parameter/waterTex = ExtResource("4_57ofa")
@@ -385,8 +370,6 @@ position = Vector2(32, 0)
 [node name="Player2" parent="." instance=ExtResource("2_re7t3")]
 y_sort_enabled = false
 position = Vector2(255, 114)
-z_index = 0
-position = Vector2(102, 54)
 IsPlayer1 = false
 
 [node name="PirateSprite" parent="Player2" index="0"]
@@ -394,6 +377,9 @@ z_index = 2
 material = SubResource("ShaderMaterial_2bffd")
 sprite_frames = SubResource("SpriteFrames_r0p5u")
 animation = &"Side Walk"
+
+[node name="PirateCraftingController" parent="Player2" index="2" node_paths=PackedStringArray("sfx")]
+sfx = NodePath("../../Music")
 
 [node name="Player1" parent="." instance=ExtResource("2_re7t3")]
 y_sort_enabled = false
@@ -404,6 +390,9 @@ z_index = 2
 material = SubResource("ShaderMaterial_sbvno")
 sprite_frames = SubResource("SpriteFrames_yyf85")
 animation = &"Side Walk"
+
+[node name="PirateCraftingController" parent="Player1" index="2" node_paths=PackedStringArray("sfx")]
+sfx = NodePath("../../Music")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 visible = false
@@ -423,44 +412,11 @@ offset_right = 320.0
 offset_bottom = 176.0
 
 [node name="Music" parent="." instance=ExtResource("5_pbftw")]
-autoplay = false
-
-[node name="SFX" parent="Music" instance=ExtResource("6_lu2xb")]
-stream = ExtResource("7_kar34")
-volume_db = 5.0
-max_polyphony = 6
-
-[node name="SFX2" parent="Music" instance=ExtResource("6_lu2xb")]
-volume_db = 5.0
-mp3 = 1
-
-[node name="SFX3" parent="Music" instance=ExtResource("6_lu2xb")]
-volume_db = 5.0
-mp3 = 2
-
-[node name="SFX4" parent="Music" instance=ExtResource("6_lu2xb")]
-stream = ExtResource("9_4okc2")
-volume_db = 5.0
-mp3 = 3
-
-[node name="SFX5" parent="Music" instance=ExtResource("6_lu2xb")]
-stream = ExtResource("10_cs5pq")
-mp3 = 4
-
-[node name="SFX6" parent="Music" instance=ExtResource("6_lu2xb")]
-mp3 = 5
-
-[node name="SFX7" parent="Music" instance=ExtResource("6_lu2xb")]
-mp3 = 6
-
-[node name="SFX8" parent="Music" instance=ExtResource("6_lu2xb")]
-mp3 = 7
-
-[node name="SFX9" parent="Music" instance=ExtResource("6_lu2xb")]
-mp3 = 8
 
 [node name="Spawner" parent="." instance=ExtResource("6_058mw")]
 
 [editable path="Player2"]
+[editable path="Player2/Hitbox"]
 [editable path="Player1"]
+[editable path="Player1/Hitbox"]
 [editable path="Spawner"]
