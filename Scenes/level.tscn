@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://k88d8bef1pu2" path="res://FloorTileset.tres" id="2_ljilp"]
 [ext_resource type="Script" path="res://Scripts/Level.cs" id="3_e4d4p"]
 [ext_resource type="TileSet" uid="uid://cegpuea2sxgci" path="res://WallTileset.tres" id="3_o3eyp"]
-[ext_resource type="TileSet" uid="uid://dov17o25temx0" path="res://Scenes/decorationTileset.tres" id="4_s8xhq"]
+[ext_resource type="TileSet" uid="uid://ctmfx2kw7sg8t" path="res://Scenes/decorationTileset.tres" id="4_s8xhq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_807oe"]
 
