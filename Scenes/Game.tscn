@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=56 format=3 uid="uid://u5m5gtdyw8tp"]
 
 [ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
 [ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
 [ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
+[ext_resource type="PackedScene" uid="uid://cs788k6d8frg3" path="res://Scenes/SFX.tscn" id="11_pah0f"]
+[ext_resource type="AudioStream" uid="uid://buhktu2s0ijl2" path="res://Audio/Cannon.mp3" id="12_uubjk"]
+[ext_resource type="AudioStream" uid="uid://d1t4go3nivth8" path="res://Audio/fireball.mp3" id="13_4j41u"]
+[ext_resource type="AudioStream" uid="uid://ci6tgkrqayvf4" path="res://Audio/explozioooon.mp3" id="14_1w05c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bffd"]
 resource_local_to_scene = true
@@ -412,6 +416,40 @@ offset_right = 320.0
 offset_bottom = 176.0
 
 [node name="Music" parent="." instance=ExtResource("5_pbftw")]
+
+[node name="SFX" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("12_uubjk")
+volume_db = 5.0
+max_polyphony = 6
+
+[node name="SFX2" parent="Music" instance=ExtResource("11_pah0f")]
+volume_db = 5.0
+mp3 = 1
+
+[node name="SFX3" parent="Music" instance=ExtResource("11_pah0f")]
+volume_db = 5.0
+mp3 = 2
+
+[node name="SFX4" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("13_4j41u")
+volume_db = 5.0
+mp3 = 3
+
+[node name="SFX5" parent="Music" instance=ExtResource("11_pah0f")]
+stream = ExtResource("14_1w05c")
+mp3 = 4
+
+[node name="SFX6" parent="Music" instance=ExtResource("11_pah0f")]
+mp3 = 5
+
+[node name="SFX7" parent="Music" instance=ExtResource("11_pah0f")]
+mp3 = 6
+
+[node name="SFX8" parent="Music" instance=ExtResource("11_pah0f")]
+mp3 = 7
+
+[node name="SFX9" parent="Music" instance=ExtResource("11_pah0f")]
+mp3 = 8
 
 [node name="Spawner" parent="." instance=ExtResource("6_058mw")]
 
