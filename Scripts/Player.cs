@@ -14,6 +14,18 @@ public partial class Player : CharacterBody2D
 	public float MaxSpeed { get; set; } = 2000.0f;
 	[Export]
 	public float Friction { get; set; } = 0.3f;
+	private bool inWater = false;
+	public bool InWater {
+		get => inWater; set{
+			if(inWater == value) return;
+			inWater = value;
+			if(inWater) {
+
+			} else {
+
+			}
+		}
+	}
 	private float baseFriction;
 	private float baseAcceleration;
 	private float currentVelocity = 0f;
@@ -172,7 +184,8 @@ public partial class Player : CharacterBody2D
 				DrunkMovement = false;
 			}
 		}
-		LerpVelocityToMax(new(), (float)Math.Pow(Friction, delta * 60), 0);
+		float WaterFriction = InWater? 2: 1;
+		LerpVelocityToMax(new(), (float)Math.Pow(Friction*WaterFriction, delta * 60), 0);
 		GetInput();
 		bool isMoving = inputDirection != Vector2.Zero;
 		if (isMoving && !TimeWarping)
