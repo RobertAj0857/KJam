@@ -70,6 +70,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_71k18")
+path1 = "res://Scenes/level_select_menu.tscn"
+path2 = "res://Scenes/level_select_menu.tscn"
+path3 = "res://Scenes/level_select_menu.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1000
@@ -116,6 +119,6 @@ tile_map_data = PackedByteArray("AAAEAAMAAQAJAAQAAAABAAUAAQAIAAQAAAABAAMAAQAIAAY
 position = Vector2(159, 49)
 texture = ExtResource("3_utn1t")
 
-[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="button_up" from="TextureButton" to="." method="button1"]
 
 [editable path="TextureButton/Level"]
