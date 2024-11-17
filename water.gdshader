@@ -11,7 +11,7 @@ void vertex() {
 }
 
 void fragment() {
-	vec2 size = vec2(256, 176);
+	vec2 size = vec2(256, 180);
 	vec2 pixelSize = 1.0 / size;
 	float energy = pow(texture(tex1, floor(UV*size)/size+pan1*TIME*pixelSize).r*texture(tex2,floor(UV*size)/size+pan2*TIME*pixelSize).r+0.1,2);
 	COLOR = texture(gradient, vec2(energy));
