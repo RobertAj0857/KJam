@@ -28,7 +28,6 @@ public partial class Player : CharacterBody2D
 	}
 	private float baseFriction;
 	private float baseAcceleration;
-	private float currentVelocity = 0f;
 	private Vector2 inputDirection = Vector2.Zero;
 	private double drunkTimer = -1;
 	private bool drunkMovement = false;
