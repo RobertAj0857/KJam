@@ -221,7 +221,7 @@ public partial class Player : CharacterBody2D
 				DrunkMovement = false;
 			}
 		}
-		float WaterFriction = InWater? 2: 1;
+		float WaterFriction = InWater? 1.65f: 1;
 		LerpVelocityToMax(new(), (float)Math.Pow(Friction*WaterFriction, delta * 60), 0);
 		GetInput();
 		bool isMoving = inputDirection != Vector2.Zero;

@@ -22,7 +22,7 @@ public partial class Explosion : Area2D
 			if(hit is Hitbox box) {
 				GD.Print("Detect!");
 				Vector2 explosionDirection = (((Player) box.GetParent()).Position - Position).Normalized();
-				((Player) box.GetParent()).Velocity += explosionDirection * ExplosionRange * 30;
+				((Player) box.GetParent()).Velocity += explosionDirection * ExplosionRange * 20;
 				box.damageComponent.attackHit(Damage);
 			}
 		}

@@ -34,6 +34,9 @@ public partial class Spawner : Node2D
 	{
 		random = new RandomNumberGenerator();
 		waitTime = random.RandfRange(from, to);
+		for(int i = 0; i < 5; i++){
+			CallDeferred(MethodName.SpawnItems);
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)
