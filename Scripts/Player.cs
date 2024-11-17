@@ -79,7 +79,13 @@ public partial class Player : CharacterBody2D
 	public bool IsDead {get => isDead; set{
 		isDead = value;
 		sprite.Play("Dead");
-		GetTree().ReloadCurrentScene();
+		InWater = false;
+		if(IsPlayer1){
+			UI.Instance.GetNode<Control>("FinishScreen").GetNode<RichTextLabel>("Winner").Text = "[center]Blackbeard Won!";	
+		}else{
+			UI.Instance.GetNode<Control>("FinishScreen").GetNode<RichTextLabel>("Winner").Text = "[center]Redbeard Won!";
+		}
+		UI.Instance.GetNode<Control>("FinishScreen").Visible = true;	
 	}}
     public override void _Ready()
     {
