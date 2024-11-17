@@ -28,6 +28,8 @@ public partial class Explosion : Area2D
 	{
 		((CapsuleShape2D)collisionShape2D.Shape).Radius = ExplosionRange / 2;
 		((CapsuleShape2D)collisionShape2D.Shape).Height = ExplosionRange;
+		((GradientTexture2D)GetNode<Sprite2D>("ExplosionEffect").Texture).Width = ExplosionRange;
+		((GradientTexture2D)GetNode<Sprite2D>("ExplosionEffect").Texture).Height = ExplosionRange;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

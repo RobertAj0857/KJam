@@ -6,11 +6,11 @@ public partial class ExplodingBarrel : Area2D
 	[Export]
 	public int Damage {get; set;} = 30;
 	[Export]
-	public double Cooldown {get; set;} = 3;
+	public double Cooldown {get; set;} = 1.5;
 	[Export]
 	public double ExplosionDuration {get; set;} = 0.25;
 	[Export]
-	public int Range {get; set;} = 32;
+	public int Range {get; set;} = 48;
 	private double timePassed = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

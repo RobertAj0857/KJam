@@ -59,6 +59,14 @@ public partial class Projectile : Area2D
 		// checks for walls
 		if(GetOverlappingBodies().Count > 0) {
 			// destroy if wall hit
+			if(this is FireBall){
+				Explosion explosion = (Explosion) GD.Load<PackedScene>("res://Scenes/explosion.tscn").Instantiate();
+				explosion.Damage = Damage;
+				explosion.ExplosionRange = 32;
+				explosion.ExplosionDuration = 0.4;
+				explosion.Position = Position;
+				GetParent().AddChild(explosion);
+			}
 			Destroy();
 		}
 		// checks for players
@@ -66,6 +74,14 @@ public partial class Projectile : Area2D
 		foreach(Area2D hit in hits) {
 			if(hit is Hitbox box && box.Team1 != Team1) {
 				box.damageComponent.attackHit(Damage);
+				if(this is FireBall){
+					Explosion explosion = (Explosion) GD.Load<PackedScene>("res://Scenes/explosion.tscn").Instantiate();
+					explosion.Damage = Damage;
+					explosion.ExplosionRange = 32;
+					explosion.ExplosionDuration = 0.4;
+					explosion.Position = Position;
+					GetParent().AddChild(explosion);
+				}
 				Destroy();
 			}
 		}

@@ -7,9 +7,9 @@ using System.Linq.Expressions;
 public partial class PirateCraftingController : Node2D
 {
 	[Export]
-	public double InputTime = 0.35;
+	public double InputTime = 0.2;
 	[Export]
-	private double EffectCooldown = 0.2;
+	private double EffectCooldown = 0.3;
 	public enum Element
 	{
 		Cannon,
@@ -70,7 +70,7 @@ public partial class PirateCraftingController : Node2D
 	private void goBackInTime()
 	{
 		GD.Print("GO BACK IN TIME");
-		player.TimeWarp(0.4);
+		player.TimeWarp(0.3);
 	}
 	private void shootFireCannonBall()
 	{
