@@ -300,12 +300,12 @@ shape = SubResource("CapsuleShape2D_jtlcu")
 script = ExtResource("4_j0cep")
 
 [node name="Hitbox" parent="." node_paths=PackedStringArray("damageComponent") instance=ExtResource("2_knigx")]
-position = Vector2(0, 3)
+position = Vector2(0, 2)
 scale = Vector2(1.12, 1.2)
 damageComponent = NodePath("../Damage")
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0, -2.5)
+position = Vector2(0, -1.66667)
 
 [node name="Health" parent="." node_paths=PackedStringArray("animationPlayer", "character") instance=ExtResource("6_iogy4")]
 maxHealth = 80

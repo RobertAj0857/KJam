@@ -374,6 +374,7 @@ text = "[center]Main menu
 scroll_active = false
 
 [node name="RestartButton" type="Button" parent="FinishScreen"]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 114.0
