@@ -58,8 +58,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ppd4c")
 path1 = "res://Main_Viewport.tscn"
-path2 = "res://Main_Viewport.tscn"
-path3 = "res://Main_Viewport.tscn"
+path2 = "res://Levels/Main_Viewport1.tscn"
+path3 = "res://Levels/Main_Viewport2.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1000
