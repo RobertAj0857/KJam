@@ -14,12 +14,15 @@ public partial class Explosion : Area2D
 	public CollisionShape2D collisionShape2D {get; set;} = null;
 	// Called when the node enters the scene tree for the first time.
 	public void Explode(){
+		GetParent().GetNode<Music>("Music").PlaySound("TIME BOMB");
 		Godot.Collections.Array<Area2D> hits = GetOverlappingAreas();
 		GD.Print("Ready explosion");
 		GD.Print("Detect!"+hits);
 		foreach(Area2D hit in hits) {
 			if(hit is Hitbox box) {
 				GD.Print("Detect!");
+				Vector2 explosionDirection = (((Player) box.GetParent()).Position - Position).Normalized();
+				((Player) box.GetParent()).Velocity += explosionDirection * ExplosionRange * 30;
 				box.damageComponent.attackHit(Damage);
 			}
 		}

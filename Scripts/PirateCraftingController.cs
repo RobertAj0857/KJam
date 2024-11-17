@@ -95,7 +95,6 @@ public partial class PirateCraftingController : Node2D
 		ExplodingBarrel explodingBarrel = (ExplodingBarrel)GD.Load<PackedScene>("res://Scenes/explodingBarrel.tscn").Instantiate();
 		explodingBarrel.Position = player.Position;
 		player.GetParent().AddChild(explodingBarrel);
-		sfx.PlaySound("TIME BOMB");
 	}
 	private void teleportShot()
 	{
@@ -120,6 +119,7 @@ public partial class PirateCraftingController : Node2D
 		explosion.Position = player.Position;
 		player.GetParent().AddChild(explosion);
 		player.Dash(0.2);
+		sfx.PlaySound("EXPLOSION TELEPORT");
 	}
 
 	public void updateElementAmounts(){
@@ -133,7 +133,6 @@ public partial class PirateCraftingController : Node2D
 		playerUI.GetNode<Sprite2D>("Elements").GetNode<Sprite2D>("Rum").GetNode<RichTextLabel>("Amount").Text = elementAmounts[Element.Rum]+"";
 		playerUI.GetNode<Sprite2D>("Elements").GetNode<Sprite2D>("PocketWatch").GetNode<RichTextLabel>("Amount").Text = elementAmounts[Element.PocketWatch]+"";
 		GD.Print("EXPLOSION TELEPORT");
-		sfx.PlaySound("EXPLOSION TELEPORT");
 	}
 	public void makeElementEffect()
 	{
