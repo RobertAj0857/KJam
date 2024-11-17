@@ -86,7 +86,7 @@ tile_map_data = PackedByteArray()
 tile_map_data = PackedByteArray()
 
 [node name="LevelAScreenshot" type="Sprite2D" parent="."]
-position = Vector2(162, 148)
+position = Vector2(71, 94)
 texture = ExtResource("4_4roam")
 
 [node name="Button1" type="TextureButton" parent="LevelAScreenshot"]
@@ -106,7 +106,7 @@ texture_hover = ExtResource("7_upvai")
 stretch_mode = 3
 
 [node name="LevelBScreenshot" type="Sprite2D" parent="."]
-position = Vector2(254, 89)
+position = Vector2(239, 93)
 texture = ExtResource("5_3hetq")
 
 [node name="Button2" type="TextureButton" parent="LevelBScreenshot"]
@@ -125,7 +125,7 @@ texture_hover = ExtResource("7_upvai")
 stretch_mode = 3
 
 [node name="LevelCScreenshot" type="Sprite2D" parent="."]
-position = Vector2(70, 91)
+position = Vector2(158, 145)
 texture = ExtResource("6_6ptps")
 
 [node name="Button3" type="TextureButton" parent="LevelCScreenshot"]
