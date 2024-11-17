@@ -52,51 +52,61 @@ public partial class PirateCraftingController : Node2D
 	private double timeSinceEffect = 0;
 	private bool isPerformingAction = false;
 	private bool activeCraftCombination = false;
+	[Export]
+	public Music sfx;
 
 	private void shootCannonBall()
 	{
 		GD.Print("Cannon ball");
-		Projectile cannonBall = (Projectile) GD.Load<PackedScene>("res://Scenes/cannonBall.tscn").Instantiate();
+		Projectile cannonBall = (Projectile)GD.Load<PackedScene>("res://Scenes/cannonBall.tscn").Instantiate();
 		cannonBall.Position = player.Position;
 		cannonBall.Direction = player.AimDirection;
 		cannonBall.Team1 = player.IsPlayer1;
 		player.GetParent().AddChild(cannonBall);
+		sfx.PlaySound("Cannon ball");
 	}
 	private void drinkRum()
 	{
 		GD.Print("DRUNK MOVEMENT");
 		player.ApplyDrunkEffect(2);
+		player.ApplyDrunkEffect(2.5);
+		sfx.PlaySound("DRUNK MOVEMENT");
 	}
 	private void goBackInTime()
 	{
 		GD.Print("GO BACK IN TIME");
 		player.TimeWarp(0.2);
+		player.TimeWarp(0.4);
+		sfx.PlaySound("GO BACK IN TIME");
 	}
 	private void shootFireCannonBall()
 	{
 		GD.Print("CANNON BALL ON FIRE");
-		Projectile cannonBall = (Projectile) GD.Load<PackedScene>("res://Scenes/fire_ball.tscn").Instantiate();
+		Projectile cannonBall = (Projectile)GD.Load<PackedScene>("res://Scenes/fire_ball.tscn").Instantiate();
 		cannonBall.Position = player.Position;
 		cannonBall.Direction = player.AimDirection;
 		cannonBall.Team1 = player.IsPlayer1;
 		player.GetParent().AddChild(cannonBall);
+		sfx.PlaySound("CANNON BALL ON FIRE");
 	}
 	private void timeBomb()
 	{
 		GD.Print("TIME BOMB");
-		ExplodingBarrel explodingBarrel = (ExplodingBarrel) GD.Load<PackedScene>("res://Scenes/explodingBarrel.tscn").Instantiate();
+		ExplodingBarrel explodingBarrel = (ExplodingBarrel)GD.Load<PackedScene>("res://Scenes/explodingBarrel.tscn").Instantiate();
 		explodingBarrel.Position = player.Position;
 		player.GetParent().AddChild(explodingBarrel);
+		sfx.PlaySound("TIME BOMB");
 	}
 	private void teleportShot()
 	{
 		GD.Print("TELEPORT WITH CANNON BALL");
-		MagicCannonBall magicCannonBall = (MagicCannonBall) GD.Load<PackedScene>("res://Scenes/magicCannonBall.tscn").Instantiate();
+		MagicCannonBall magicCannonBall = (MagicCannonBall)GD.Load<PackedScene>("res://Scenes/magicCannonBall.tscn").Instantiate();
 		magicCannonBall.Position = player.Position;
 		magicCannonBall.Direction = player.AimDirection;
 		magicCannonBall.Team1 = player.IsPlayer1;
 		magicCannonBall.Player = player;
 		player.GetParent().AddChild(magicCannonBall);
+		sfx.PlaySound("TELEPORT WITH CANNON BALL");
 	}
 	private void explosionPlayer()
 	{
@@ -121,6 +131,8 @@ public partial class PirateCraftingController : Node2D
 		playerUI.GetNode<Sprite2D>("Elements").GetNode<Sprite2D>("Cannon").GetNode<RichTextLabel>("Amount").Text = elementAmounts[Element.Cannon]+"";
 		playerUI.GetNode<Sprite2D>("Elements").GetNode<Sprite2D>("Rum").GetNode<RichTextLabel>("Amount").Text = elementAmounts[Element.Rum]+"";
 		playerUI.GetNode<Sprite2D>("Elements").GetNode<Sprite2D>("PocketWatch").GetNode<RichTextLabel>("Amount").Text = elementAmounts[Element.PocketWatch]+"";
+		GD.Print("EXPLOSION TELEPORT");
+		sfx.PlaySound("EXPLOSION TELEPORT");
 	}
 	public void makeElementEffect()
 	{
@@ -219,9 +231,12 @@ public partial class PirateCraftingController : Node2D
 				makeElementEffect();
 				GD.Print("Make effect1");
 			}
-		}else{
+		}
+		else
+		{
 			timeSinceEffect += delta;
-			if(timeSinceEffect >= EffectCooldown){
+			if (timeSinceEffect >= EffectCooldown)
+			{
 				isPerformingAction = false;
 			}
 		}
