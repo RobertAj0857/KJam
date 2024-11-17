@@ -1,0 +1,151 @@
+[gd_scene load_steps=16 format=3 uid="uid://lgl2pmnfn0kh"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenu.cs" id="1_ppd4c"]
+[ext_resource type="Shader" path="res://water.gdshader" id="2_7g88x"]
+[ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="3_rtpq2"]
+[ext_resource type="Texture2D" uid="uid://3p13qf7bysa5" path="res://Sprites/LevelAScreenshot.png" id="4_4roam"]
+[ext_resource type="Texture2D" uid="uid://dj3s3k5v5dri" path="res://Sprites/LevelBScreenshot.png" id="5_3hetq"]
+[ext_resource type="Texture2D" uid="uid://diss5wlqy3wxr" path="res://Sprites/LevelCScreenshot.png" id="6_6ptps"]
+[ext_resource type="Texture2D" uid="uid://da4msmw2g4yuq" path="res://Sprites/RedX1.0.png" id="7_upvai"]
+[ext_resource type="Texture2D" uid="uid://bjaeqkyoxjfp4" path="res://Sprites/RedXDown1.0.png" id="8_ls68s"]
+
+[sub_resource type="Gradient" id="Gradient_jd3rc"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0901639, 0.163934, 0.360656)
+colors = PackedColorArray(0.03374, 0.654518, 0.928331, 1, 0.158072, 0.714487, 0.995463, 1, 0.3977, 0.760157, 0.97, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_epjfk"]
+gradient = SubResource("Gradient_jd3rc")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8i6ek"]
+noise_type = 0
+frequency = 0.04
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2rjvf"]
+width = 256
+height = 176
+seamless = true
+noise = SubResource("FastNoiseLite_8i6ek")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6athm"]
+noise_type = 2
+frequency = 0.1
+fractal_octaves = 1
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_72jsk"]
+width = 128
+height = 176
+seamless = true
+noise = SubResource("FastNoiseLite_6athm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bqmt"]
+shader = ExtResource("2_7g88x")
+shader_parameter/pan1 = Vector2(-10, 0)
+shader_parameter/pan2 = Vector2(10, 0)
+shader_parameter/gradient = SubResource("GradientTexture1D_epjfk")
+shader_parameter/tex1 = SubResource("NoiseTexture2D_2rjvf")
+shader_parameter/tex2 = SubResource("NoiseTexture2D_72jsk")
+
+[node name="Control" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ppd4c")
+path1 = "res://Main_Viewport.tscn"
+path2 = "res://Main_Viewport.tscn"
+path3 = "res://Main_Viewport.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1000
+material = SubResource("ShaderMaterial_8bqmt")
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 184.0
+color = Color(0.3192, 0.56224, 0.84, 1)
+
+[node name="Level" parent="." instance=ExtResource("3_rtpq2")]
+position = Vector2(8, 0)
+tile_map_data = PackedByteArray()
+
+[node name="ColorRect" parent="Level" index="0"]
+visible = false
+
+[node name="Floor" parent="Level" index="1"]
+tile_map_data = PackedByteArray()
+
+[node name="Walls" parent="Level" index="2"]
+tile_map_data = PackedByteArray()
+
+[node name="Decorations" parent="Level" index="3"]
+tile_map_data = PackedByteArray()
+
+[node name="LevelAScreenshot" type="Sprite2D" parent="."]
+position = Vector2(170, 143)
+texture = ExtResource("4_4roam")
+
+[node name="Button1" type="TextureButton" parent="LevelAScreenshot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -53.0
+offset_right = -5.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_pressed = ExtResource("8_ls68s")
+texture_hover = ExtResource("7_upvai")
+stretch_mode = 3
+
+[node name="LevelBScreenshot" type="Sprite2D" parent="."]
+position = Vector2(72, 80)
+texture = ExtResource("5_3hetq")
+
+[node name="Button2" type="TextureButton" parent="LevelBScreenshot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -51.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_pressed = ExtResource("8_ls68s")
+texture_hover = ExtResource("7_upvai")
+stretch_mode = 3
+
+[node name="LevelCScreenshot" type="Sprite2D" parent="."]
+position = Vector2(219, 55)
+texture = ExtResource("6_6ptps")
+
+[node name="Button3" type="TextureButton" parent="LevelCScreenshot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -53.0
+offset_right = -4.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_pressed = ExtResource("8_ls68s")
+texture_hover = ExtResource("7_upvai")
+stretch_mode = 3
+
+[connection signal="button_up" from="LevelAScreenshot/Button1" to="." method="button1"]
+[connection signal="button_up" from="LevelBScreenshot/Button2" to="." method="button2"]
+[connection signal="button_up" from="LevelCScreenshot/Button3" to="." method="button3"]
+
+[editable path="Level"]
