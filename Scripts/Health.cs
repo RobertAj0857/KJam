@@ -33,6 +33,11 @@ public partial class Health : Node2D
             pirateHealth -= damage;
             checkIfDead();
             animationPlayer.Play("HitEffect");
+            if(!character.IsPlayer1) {
+                UI.Instance.head1.UpdateHealth(pirateHealth);
+            } else {
+                UI.Instance.head2.UpdateHealth(pirateHealth);
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=51 format=3 uid="uid://u5m5gtdyw8tp"]
 
 [ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="4_3jlnk"]
 [ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
-[ext_resource type="PackedScene" uid="uid://dhwraoqcp8qec" path="res://Scenes/music.tscn" id="5_pbftw"]
+[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
 [ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
 [ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
 
@@ -397,9 +397,8 @@ offset_bottom = 176.0
 
 [node name="Music" parent="." instance=ExtResource("5_pbftw")]
 
-[editable path="Player2"]
-[editable path="Player1"]
-
 [node name="Spawner" parent="." instance=ExtResource("6_058mw")]
 
+[editable path="Player2"]
+[editable path="Player1"]
 [editable path="Spawner"]

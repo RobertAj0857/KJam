@@ -3,6 +3,10 @@ using System;
 
 public partial class UI : Control
 {
+	[Export]
+	public BigPirateHead head1;
+	[Export]
+	public BigPirateHead head2;
 	private static UI instance = null;
 	public static UI Instance {get{
 		if(instance == null){

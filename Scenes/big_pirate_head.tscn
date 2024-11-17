@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce4n3no7hg5qo"]
+
+[ext_resource type="Texture2D" uid="uid://bpvkcpa5krepm" path="res://Sprites/BigPirateBlackBeardHead1.0.png" id="1_2d21v"]
+[ext_resource type="Shader" path="res://Scenes/big_pirate_head.gdshader" id="1_ah4ys"]
+[ext_resource type="Texture2D" uid="uid://dq3gmx8y74ma6" path="res://Sprites/BigPirateHead1.1.png" id="2_wv4wv"]
+[ext_resource type="Script" path="res://BigPirateHead.cs" id="3_2dcpj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlnel"]
+resource_local_to_scene = true
+shader = ExtResource("1_ah4ys")
+shader_parameter/iValue = 0.0
+shader_parameter/skull = ExtResource("2_wv4wv")
+
+[node name="BigPirateHead" type="Sprite2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_tlnel")
+position = Vector2(2, -68)
+texture = ExtResource("1_2d21v")
+script = ExtResource("3_2dcpj")
