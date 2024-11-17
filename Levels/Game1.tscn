@@ -1,104 +1,104 @@
-[gd_scene load_steps=62 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=62 format=4 uid="uid://dmg8qbmnbd46f"]
 
-[ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
-[ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
-[ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="3_7v1ef"]
-[ext_resource type="Material" uid="uid://dqqhfopt8ak0v" path="res://fire.tres" id="3_32gn2"]
-[ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="4_3jlnk"]
-[ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="4_57ofa"]
-[ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
-[ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
-[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
-[ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
-[ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
-[ext_resource type="Texture2D" uid="uid://ku4nvhqtmh62" path="res://Sprites/RedDeadPirate.png" id="6_i2jdo"]
-[ext_resource type="PackedScene" uid="uid://cs788k6d8frg3" path="res://Scenes/SFX.tscn" id="11_pah0f"]
-[ext_resource type="AudioStream" uid="uid://buhktu2s0ijl2" path="res://Audio/Cannon.mp3" id="12_uubjk"]
-[ext_resource type="AudioStream" uid="uid://d1t4go3nivth8" path="res://Audio/fireball.mp3" id="13_4j41u"]
-[ext_resource type="AudioStream" uid="uid://cjnoyba6v37q2" path="res://Audio/Drinking.mp3" id="13_6r7ah"]
-[ext_resource type="AudioStream" uid="uid://ci6tgkrqayvf4" path="res://Audio/explozioooon.mp3" id="14_1w05c"]
-[ext_resource type="AudioStream" uid="uid://bd4tjw3tb1qbb" path="res://Audio/reverseFast.mp3" id="14_v310y"]
-[ext_resource type="AudioStream" uid="uid://7msniwx1pglq" path="res://Audio/ReverseFaster.mp3" id="17_mh647"]
-[ext_resource type="AudioStream" uid="uid://dllod8rrjku2m" path="res://Audio/23707__hazure__seagull.mp3" id="18_u23r2"]
-[ext_resource type="AudioStream" uid="uid://crpfwyfdyhjt6" path="res://Audio/ocean.mp3" id="19_pmdem"]
+[ext_resource type="PackedScene" uid="uid://tjy766wgf01q" path="res://Scenes/level2.tscn" id="1_2slho"]
+[ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_84f5e"]
+[ext_resource type="Shader" path="res://Scenes/HitEffect.gdshader" id="3_ltaif"]
+[ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="4_4ojjh"]
+[ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="5_i5uf4"]
+[ext_resource type="Texture2D" uid="uid://ku4nvhqtmh62" path="res://Sprites/RedDeadPirate.png" id="6_72ka1"]
+[ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="7_4os83"]
+[ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="8_1bko5"]
+[ext_resource type="Material" uid="uid://dqqhfopt8ak0v" path="res://fire.tres" id="9_54gff"]
+[ext_resource type="Texture2D" uid="uid://bvu2dnyavl3qi" path="res://Sprites/fire_placeholder.png" id="10_hymqi"]
+[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="11_l8e6l"]
+[ext_resource type="PackedScene" uid="uid://cs788k6d8frg3" path="res://Scenes/SFX.tscn" id="12_10w2w"]
+[ext_resource type="AudioStream" uid="uid://buhktu2s0ijl2" path="res://Audio/Cannon.mp3" id="13_jyiqg"]
+[ext_resource type="AudioStream" uid="uid://cjnoyba6v37q2" path="res://Audio/Drinking.mp3" id="14_7ox6a"]
+[ext_resource type="AudioStream" uid="uid://bd4tjw3tb1qbb" path="res://Audio/reverseFast.mp3" id="15_t5l0p"]
+[ext_resource type="AudioStream" uid="uid://d1t4go3nivth8" path="res://Audio/fireball.mp3" id="16_qn8dp"]
+[ext_resource type="AudioStream" uid="uid://ci6tgkrqayvf4" path="res://Audio/explozioooon.mp3" id="17_w3js3"]
+[ext_resource type="AudioStream" uid="uid://7msniwx1pglq" path="res://Audio/ReverseFaster.mp3" id="18_blnjr"]
+[ext_resource type="AudioStream" uid="uid://dllod8rrjku2m" path="res://Audio/23707__hazure__seagull.mp3" id="19_ul4gf"]
+[ext_resource type="AudioStream" uid="uid://crpfwyfdyhjt6" path="res://Audio/ocean.mp3" id="20_ds13w"]
+[ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="21_6fx2e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bffd"]
 resource_local_to_scene = true
-shader = ExtResource("3_7v1ef")
+shader = ExtResource("3_ltaif")
 shader_parameter/inWater = null
 shader_parameter/quantity = 0.0
-shader_parameter/waterTex = ExtResource("4_57ofa")
+shader_parameter/waterTex = ExtResource("4_4ojjh")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p6ju0"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(10, 60, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bd44"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(20, 60, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8iwck"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(10, 48, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rdp0o"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(20, 48, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pv7b"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(30, 48, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8ojc"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(40, 48, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmrb7"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(10, 12, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrv5j"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(20, 12, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lncuy"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(10, 0, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sgr7l"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(20, 0, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6r3vw"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(30, 0, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ct5q4"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(40, 0, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8if0"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(10, 36, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6utan"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(20, 36, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60wrq"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(10, 24, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dgs2q"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(20, 24, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ij7mh"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(30, 24, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8i4g"]
-atlas = ExtResource("4_xd23c")
+atlas = ExtResource("5_i5uf4")
 region = Rect2(40, 24, 10, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r0p5u"]
@@ -133,7 +133,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_i2jdo")
+"texture": ExtResource("6_72ka1")
 }],
 "loop": true,
 "name": &"Dead",
@@ -198,81 +198,81 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sbvno"]
 resource_local_to_scene = true
-shader = ExtResource("3_7v1ef")
+shader = ExtResource("3_ltaif")
 shader_parameter/inWater = null
 shader_parameter/quantity = 0.0
-shader_parameter/waterTex = ExtResource("4_57ofa")
+shader_parameter/waterTex = ExtResource("4_4ojjh")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v74ko"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(10, 60, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2s0r8"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(20, 60, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dcn4i"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(10, 48, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5bbl"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(20, 48, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pub2v"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(30, 48, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mo15m"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(40, 48, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_30iy7"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(10, 12, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rdjg1"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(20, 12, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ahfcy"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(10, 0, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v42kf"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(20, 0, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1kqe"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(30, 0, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ii5fi"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(40, 0, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eooxy"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(10, 36, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7fngj"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(20, 36, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3246"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(10, 24, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81jsi"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(20, 24, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bgxpy"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(30, 24, 10, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6mdgc"]
-atlas = ExtResource("6_fk4ex")
+atlas = ExtResource("7_4os83")
 region = Rect2(40, 24, 10, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yyf85"]
@@ -308,7 +308,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_60cms")
+"texture": ExtResource("8_1bko5")
 }],
 "loop": true,
 "name": &"Dead",
@@ -374,12 +374,13 @@ animations = [{
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Level" parent="." instance=ExtResource("2_gpv0w")]
+[node name="Level" parent="." instance=ExtResource("1_2slho")]
 position = Vector2(32, 0)
+tile_map_data = PackedByteArray("AAAUAAsAAgAAAAAAAAD//wsAAgAAAAAAAAARAAsAAgAAAAAAAAASAAsAAgAAAAAAAAATAAsAAgAAAAAAAAD/////AgAAAAAAAAD//wAAAgAAAAAAAAD//wEAAgAAAAAAAAD//wIAAgAAAAAAAAD//wMAAgAAAAAAAAD//wQAAgAAAAAAAAD//wUAAgAAAAAAAAD//wYAAgAAAAAAAAD//wgAAgAAAAAAAAD//wkAAgAAAAAAAAD//woAAgAAAAAAAAAAAP//AgAAAAAAAAABAP//AgAAAAAAAAACAP//AgAAAAAAAAADAP//AgAAAAAAAAAEAP//AgAAAAAAAAAFAP//AgAAAAAAAAAGAP//AgAAAAAAAAAHAP//AgAAAAAAAAAIAP//AgAAAAAAAAAJAP//AgAAAAAAAAAKAP//AgAAAAAAAAALAP//AgAAAAAAAAAMAP//AgAAAAAAAAANAP//AgAAAAAAAAAOAP//AgAAAAAAAAAPAP//AgAAAAAAAAAQAP//AgAAAAAAAAARAP//AgAAAAAAAAAVAAwAAgAAAAAAAAAVAAsAAgAAAAAAAAAVAAoAAgAAAAAAAAAVAAkAAgAAAAAAAAAVAAgAAgAAAAAAAAAVAAcAAgAAAAAAAAAVAAYAAgAAAAAAAAAVAAUAAgAAAAAAAAAVAAQAAgAAAAAAAAAVAAMAAgAAAAAAAAAVAAIAAgAAAAAAAAAVAAEAAgAAAAAAAAAVAAAAAgAAAAAAAAAVAP//AgAAAAAAAAAVAP7/AgAAAAAAAAAUAAwAAgAAAAAAAAAUAP7/AgAAAAAAAAATAAwAAgAAAAAAAAATAP7/AgAAAAAAAAASAAwAAgAAAAAAAAASAP7/AgAAAAAAAAARAAwAAgAAAAAAAAARAP7/AgAAAAAAAAAQAAwAAgAAAAAAAAAQAP7/AgAAAAAAAAAPAAwAAgAAAAAAAAAPAP7/AgAAAAAAAAAOAAwAAgAAAAAAAAAOAP7/AgAAAAAAAAANAAwAAgAAAAAAAAANAP7/AgAAAAAAAAAMAAwAAgAAAAAAAAAMAP7/AgAAAAAAAAALAAwAAgAAAAAAAAALAP7/AgAAAAAAAAAKAAwAAgAAAAAAAAAKAP7/AgAAAAAAAAAJAAwAAgAAAAAAAAAJAP7/AgAAAAAAAAAIAAwAAgAAAAAAAAAIAP7/AgAAAAAAAAAHAAwAAgAAAAAAAAAHAP7/AgAAAAAAAAAGAAwAAgAAAAAAAAAGAP7/AgAAAAAAAAAFAAwAAgAAAAAAAAAFAP7/AgAAAAAAAAAEAAwAAgAAAAAAAAAEAP7/AgAAAAAAAAADAAwAAgAAAAAAAAADAP7/AgAAAAAAAAACAAwAAgAAAAAAAAACAP7/AgAAAAAAAAABAAwAAgAAAAAAAAABAP7/AgAAAAAAAAAAAAwAAgAAAAAAAAAAAP7/AgAAAAAAAAD//wwAAgAAAAAAAAD///7/AgAAAAAAAAD+/wwAAgAAAAAAAAD+/wsAAgAAAAAAAAD+/woAAgAAAAAAAAD+/wkAAgAAAAAAAAD+/wgAAgAAAAAAAAD+/wcAAgAAAAAAAAD+/wYAAgAAAAAAAAD+/wUAAgAAAAAAAAD+/wQAAgAAAAAAAAD+/wMAAgAAAAAAAAD+/wIAAgAAAAAAAAD+/wEAAgAAAAAAAAD+/wAAAgAAAAAAAAD+////AgAAAAAAAAD+//7/AgAAAAAAAAAPAAkAAQAEAAMAAAAPAAgAAQAEAAMAAAAPAAQAAQAEAAMAAAAPAAMAAQAEAAMAAAAPAAIAAQAEAAMAAAAPAAEAAQAEAAMAAAAOAAkAAQACAAMAAAAOAAgAAQACAAMAAAAOAAQAAQABAAIAAAAOAAMAAQACAAMAAAANAAkAAQADAAIAAAANAAgAAQADAAMAAAANAAQAAQADAAEAAAANAAMAAQADAAIAAAAMAAkAAQAAAAIAAAAMAAgAAQAAAAAAAAAMAAQAAQADAAQAAAAMAAMAAQABAAIAAAALAAQAAQACAAQAAAALAAMAAQACAAEAAAAKAAQAAQAAAAQAAAAKAAMAAQAAAAMAAAAIAAYAAQAEAAQAAAAIAAUAAQAEAAEAAAAIAAQAAQAEAAAAAAAHAAYAAQABAAQAAAAHAAUAAQACAAIAAAAHAAQAAQADAAAAAAAGAAkAAQAEAAMAAAAGAAgAAQAEAAAAAAAGAAYAAQAAAAQAAAAGAAUAAQAAAAEAAAAGAAQAAQAAAAAAAAAFAAkAAQACAAEAAAAFAAgAAQABAAMAAAAFAAcAAQAEAAMAAAAFAAYAAQAEAAAAAAAEAAkAAQACAAEAAAAEAAgAAQADAAIAAAAEAAcAAQACAAMAAAAEAAYAAQACAAAAAAADAAkAAQACAAMAAAADAAgAAQACAAMAAAADAAcAAQACAAMAAAADAAYAAQABAAAAAAADAAMAAQAEAAQAAAADAAIAAQABAAEAAAADAAEAAQADAAIAAAACAAkAAQACAAIAAAACAAgAAQACAAEAAAACAAcAAQADAAIAAAACAAYAAQADAAAAAAACAAMAAQABAAQAAAACAAIAAQACAAMAAAACAAEAAQADAAMAAAABAAgAAQACAAMAAAABAAcAAQACAAIAAAABAAYAAQADAAAAAAABAAMAAQAAAAQAAAABAAIAAQAAAAIAAAABAAEAAQAAAAAAAAAPAAoAAQAEAAQAAAAOAAoAAQABAAQAAAANAAoAAQACAAQAAAAMAAoAAQAAAAQAAAAGAAoAAQAEAAQAAAAFAAoAAQABAAQAAAAEAAoAAQACAAQAAAADAAoAAQABAAQAAAADAAAAAQADAAAAAAACAAAAAQAAAAAAAAAAAAgAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAYAAQAAAAAAAAABAAkAAQACAAMAAAACAAoAAQABAAQAAAAPAAAAAQAEAAAAAAAOAAIAAQADAAIAAAAOAAEAAQACAAMAAAAOAAAAAQABAAAAAAANAAIAAQACAAEAAAANAAEAAQACAAEAAAANAAAAAQADAAAAAAAMAAIAAQABAAIAAAAMAAEAAQADAAIAAAAMAAAAAQABAAAAAAALAAIAAQACAAIAAAALAAEAAQABAAIAAAALAAAAAQACAAAAAAAKAAIAAQAAAAIAAAAKAAEAAQAAAAMAAAAKAAAAAQAAAAAAAAAEAAIAAQAEAAQAAAAEAAEAAQAEAAMAAAAEAAAAAQAEAAAAAAAPAAcAAQAEAAAAAAAOAAcAAQACAAAAAAANAAcAAQAAAAAAAAAPAAUAAQAEAAQAAAAOAAUAAQACAAQAAAANAAUAAQAAAAQAAAAAAAoAAQAAAAQAAAABAAoAAQABAAQAAAAAAAkAAQAAAAMAAAA=")
 
-[node name="Player2" parent="." node_paths=PackedStringArray("drunkParticleEffect") instance=ExtResource("2_re7t3")]
+[node name="Player2" parent="." node_paths=PackedStringArray("drunkParticleEffect") instance=ExtResource("2_84f5e")]
 y_sort_enabled = false
-position = Vector2(255, 114)
+position = Vector2(240, 24)
 IsPlayer1 = false
 drunkParticleEffect = NodePath("DrunkParticle")
 
@@ -392,9 +393,9 @@ animation = &"Dead"
 [node name="PirateCraftingController" parent="Player2" index="2" node_paths=PackedStringArray("sfx")]
 sfx = NodePath("../../Music")
 
-[node name="Player1" parent="." node_paths=PackedStringArray("drunkParticleEffect") instance=ExtResource("2_re7t3")]
+[node name="Player1" parent="." node_paths=PackedStringArray("drunkParticleEffect") instance=ExtResource("2_84f5e")]
 y_sort_enabled = false
-position = Vector2(89, 43)
+position = Vector2(72, 128)
 drunkParticleEffect = NodePath("DrunkParticle")
 
 [node name="PirateSprite" parent="Player1" index="0"]
@@ -408,8 +409,8 @@ sfx = NodePath("../../Music")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 visible = false
-material = ExtResource("3_32gn2")
-texture = ExtResource("4_3jlnk")
+material = ExtResource("9_54gff")
+texture = ExtResource("10_hymqi")
 centered = false
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -423,51 +424,51 @@ offset_left = 284.0
 offset_right = 320.0
 offset_bottom = 176.0
 
-[node name="Music" parent="." instance=ExtResource("5_pbftw")]
+[node name="Music" parent="." instance=ExtResource("11_l8e6l")]
 volume_db = -15.0
 
-[node name="SFX" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("12_uubjk")
+[node name="SFX" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("13_jyiqg")
 volume_db = 5.0
 max_polyphony = 6
 
-[node name="SFX2" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("13_6r7ah")
+[node name="SFX2" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("14_7ox6a")
 volume_db = 5.0
 mp3 = 1
 
-[node name="SFX3" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("14_v310y")
+[node name="SFX3" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("15_t5l0p")
 volume_db = 24.0
 mp3 = 2
 
-[node name="SFX4" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("13_4j41u")
+[node name="SFX4" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("16_qn8dp")
 volume_db = 20.0
 mp3 = 3
 
-[node name="SFX5" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("14_1w05c")
+[node name="SFX5" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("17_w3js3")
 mp3 = 4
 
-[node name="SFX6" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("17_mh647")
+[node name="SFX6" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("18_blnjr")
 volume_db = 24.0
 mp3 = 5
 
-[node name="SFX7" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("14_1w05c")
+[node name="SFX7" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("17_w3js3")
 mp3 = 6
 
-[node name="SFX8" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("18_u23r2")
+[node name="SFX8" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("19_ul4gf")
 mp3 = 7
 
-[node name="SFX9" parent="Music" instance=ExtResource("11_pah0f")]
-stream = ExtResource("19_pmdem")
+[node name="SFX9" parent="Music" instance=ExtResource("12_10w2w")]
+stream = ExtResource("20_ds13w")
 mp3 = 8
 
-[node name="Spawner" parent="." instance=ExtResource("6_058mw")]
+[node name="Spawner" parent="." instance=ExtResource("21_6fx2e")]
 
 [editable path="Player2"]
 [editable path="Player2/Hitbox"]
