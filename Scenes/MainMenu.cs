@@ -4,19 +4,23 @@ using System;
 public partial class MainMenu : Control
 {
 	[Export]
-	public TextureButton playButton;
+	public String path1;
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+	[Export]
+	public String path2;
+
+	[Export]
+	public String path3;
+
+	public void button1() {
+		GetTree().ChangeSceneToFile(path1);
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+	public void button2() {
+		GetTree().ChangeSceneToFile(path2);
 	}
 
-	public void _on_texture_button_button_up() {
-		GetTree().ChangeSceneToFile("res://Main_Viewport.tscn");
+	public void button3() {
+		GetTree().ChangeSceneToFile(path3);
 	}
 }
