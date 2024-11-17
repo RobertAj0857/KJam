@@ -265,6 +265,7 @@ point_count = 2
 z_index = 10
 collision_mask = 5
 script = ExtResource("1_xtey8")
+Speed = 650.0
 sprite = NodePath("PirateSprite")
 combinationShower = NodePath("CombinationShower")
 pirateCraftingController = NodePath("PirateCraftingController")

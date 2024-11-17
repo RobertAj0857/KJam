@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://chb2kr3ap64po"]
+[gd_scene load_steps=10 format=3 uid="uid://chb2kr3ap64po"]
 
 [ext_resource type="Texture2D" uid="uid://ippkbwb3v5py" path="res://Sprites/UIPlank.png" id="1_fj55a"]
+[ext_resource type="Script" path="res://Scripts/UI.cs" id="1_s1p8x"]
 [ext_resource type="Texture2D" uid="uid://c3cd1jd1wavv4" path="res://Sprites/UIPaper1.1.png" id="2_22745"]
 [ext_resource type="Texture2D" uid="uid://bamsucef8imdl" path="res://Sprites/CannonBig1.0.png" id="2_plp1q"]
 [ext_resource type="Texture2D" uid="uid://xo0j0qlxd2wo" path="res://Sprites/RomeBig1.0.png" id="3_sbyli"]
@@ -15,21 +16,22 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 320.0
 offset_bottom = 180.0
+script = ExtResource("1_s1p8x")
 
-[node name="UiPlank" type="Sprite2D" parent="."]
+[node name="Player2" type="Sprite2D" parent="."]
 position = Vector2(302, 90)
 texture = ExtResource("1_fj55a")
 
-[node name="UiPaper1_0" type="Sprite2D" parent="UiPlank"]
+[node name="Elements" type="Sprite2D" parent="Player2"]
 position = Vector2(0, 16)
 texture = ExtResource("2_22745")
 
-[node name="Cannon" type="Sprite2D" parent="UiPlank/UiPaper1_0"]
+[node name="Cannon" type="Sprite2D" parent="Player2/Elements"]
 texture_filter = 1
 position = Vector2(0, -47)
 texture = ExtResource("2_plp1q")
 
-[node name="Amount" type="RichTextLabel" parent="UiPlank/UiPaper1_0/Cannon"]
+[node name="Amount" type="RichTextLabel" parent="Player2/Elements/Cannon"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -10.0
@@ -38,10 +40,10 @@ offset_right = 5.0
 offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
-text = "1
-"
+text = "0"
+scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="UiPlank/UiPaper1_0/Cannon"]
+[node name="Slash" type="RichTextLabel" parent="Player2/Elements/Cannon"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -51,8 +53,9 @@ offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "5"
+scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="UiPlank/UiPaper1_0/Cannon"]
+[node name="Max" type="RichTextLabel" parent="Player2/Elements/Cannon"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -9.0
@@ -63,13 +66,14 @@ rotation = -0.367118
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "/"
+scroll_active = false
 
-[node name="Rum" type="Sprite2D" parent="UiPlank/UiPaper1_0"]
+[node name="Rum" type="Sprite2D" parent="Player2/Elements"]
 texture_filter = 1
 position = Vector2(0, -7)
 texture = ExtResource("3_sbyli")
 
-[node name="Amount" type="RichTextLabel" parent="UiPlank/UiPaper1_0/Rum"]
+[node name="Amount" type="RichTextLabel" parent="Player2/Elements/Rum"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -10.0
@@ -78,10 +82,10 @@ offset_right = 5.0
 offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
-text = "1
-"
+text = "0"
+scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="UiPlank/UiPaper1_0/Rum"]
+[node name="Slash" type="RichTextLabel" parent="Player2/Elements/Rum"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -91,8 +95,9 @@ offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "5"
+scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="UiPlank/UiPaper1_0/Rum"]
+[node name="Max" type="RichTextLabel" parent="Player2/Elements/Rum"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -9.0
@@ -103,13 +108,14 @@ rotation = -0.367118
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "/"
+scroll_active = false
 
-[node name="PocketWatch" type="Sprite2D" parent="UiPlank/UiPaper1_0"]
+[node name="PocketWatch" type="Sprite2D" parent="Player2/Elements"]
 texture_filter = 1
 position = Vector2(0, 33)
 texture = ExtResource("4_dq8lr")
 
-[node name="Amount" type="RichTextLabel" parent="UiPlank/UiPaper1_0/PocketWatch"]
+[node name="Amount" type="RichTextLabel" parent="Player2/Elements/PocketWatch"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -10.0
@@ -118,10 +124,10 @@ offset_right = 5.0
 offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
-text = "1
-"
+text = "0"
+scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="UiPlank/UiPaper1_0/PocketWatch"]
+[node name="Slash" type="RichTextLabel" parent="Player2/Elements/PocketWatch"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -131,8 +137,9 @@ offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "5"
+scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="UiPlank/UiPaper1_0/PocketWatch"]
+[node name="Max" type="RichTextLabel" parent="Player2/Elements/PocketWatch"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -9.0
@@ -143,32 +150,33 @@ rotation = -0.367118
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "/"
+scroll_active = false
 
-[node name="BigPirateHead" type="Sprite2D" parent="UiPlank"]
+[node name="BigPirateHead" type="Sprite2D" parent="Player2"]
 texture_filter = 1
 position = Vector2(2, -68)
 texture = ExtResource("5_b368s")
 
-[node name="UiPlank2" type="Sprite2D" parent="."]
+[node name="Player1" type="Sprite2D" parent="."]
 position = Vector2(18, 90)
 texture = ExtResource("1_fj55a")
 
-[node name="BigPirateHead" type="Sprite2D" parent="UiPlank2"]
+[node name="BigPirateHead" type="Sprite2D" parent="Player1"]
 texture_filter = 1
 position = Vector2(0, -68)
 texture = ExtResource("6_dqvqv")
 flip_h = true
 
-[node name="UiPaper1_1" type="Sprite2D" parent="UiPlank2"]
+[node name="Elements" type="Sprite2D" parent="Player1"]
 position = Vector2(0, 16)
 texture = ExtResource("2_22745")
 
-[node name="Cannon" type="Sprite2D" parent="UiPlank2/UiPaper1_1"]
+[node name="Cannon" type="Sprite2D" parent="Player1/Elements"]
 texture_filter = 1
 position = Vector2(0, -47)
 texture = ExtResource("2_plp1q")
 
-[node name="Amount" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/Cannon"]
+[node name="Amount" type="RichTextLabel" parent="Player1/Elements/Cannon"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -10.0
@@ -177,10 +185,10 @@ offset_right = 5.0
 offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
-text = "1
-"
+text = "0"
+scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/Cannon"]
+[node name="Slash" type="RichTextLabel" parent="Player1/Elements/Cannon"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -190,8 +198,9 @@ offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "5"
+scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/Cannon"]
+[node name="Max" type="RichTextLabel" parent="Player1/Elements/Cannon"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -9.0
@@ -202,13 +211,14 @@ rotation = -0.367118
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "/"
+scroll_active = false
 
-[node name="Rum" type="Sprite2D" parent="UiPlank2/UiPaper1_1"]
+[node name="Rum" type="Sprite2D" parent="Player1/Elements"]
 texture_filter = 1
 position = Vector2(0, -7)
 texture = ExtResource("3_sbyli")
 
-[node name="Amount" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/Rum"]
+[node name="Amount" type="RichTextLabel" parent="Player1/Elements/Rum"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -10.0
@@ -217,10 +227,10 @@ offset_right = 5.0
 offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
-text = "1
-"
+text = "0"
+scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/Rum"]
+[node name="Slash" type="RichTextLabel" parent="Player1/Elements/Rum"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -230,8 +240,9 @@ offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "5"
+scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/Rum"]
+[node name="Max" type="RichTextLabel" parent="Player1/Elements/Rum"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -9.0
@@ -242,13 +253,14 @@ rotation = -0.367118
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "/"
+scroll_active = false
 
-[node name="PocketWatch" type="Sprite2D" parent="UiPlank2/UiPaper1_1"]
+[node name="PocketWatch" type="Sprite2D" parent="Player1/Elements"]
 texture_filter = 1
 position = Vector2(0, 33)
 texture = ExtResource("4_dq8lr")
 
-[node name="Amount" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/PocketWatch"]
+[node name="Amount" type="RichTextLabel" parent="Player1/Elements/PocketWatch"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -10.0
@@ -257,10 +269,10 @@ offset_right = 5.0
 offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
-text = "1
-"
+text = "0"
+scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/PocketWatch"]
+[node name="Slash" type="RichTextLabel" parent="Player1/Elements/PocketWatch"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -270,8 +282,9 @@ offset_bottom = 25.0
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "5"
+scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="UiPlank2/UiPaper1_1/PocketWatch"]
+[node name="Max" type="RichTextLabel" parent="Player1/Elements/PocketWatch"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -9.0
@@ -282,3 +295,4 @@ rotation = -0.367118
 theme_override_fonts/normal_font = ExtResource("4_wxug4")
 theme_override_font_sizes/normal_font_size = 16
 text = "/"
+scroll_active = false

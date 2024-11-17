@@ -12,11 +12,11 @@
 position = Vector2(32, 0)
 
 [node name="Player2" parent="." instance=ExtResource("2_re7t3")]
-position = Vector2(102, 54)
+position = Vector2(255, 114)
 IsPlayer1 = false
 
 [node name="Player1" parent="." instance=ExtResource("2_re7t3")]
-position = Vector2(39, 47)
+position = Vector2(89, 43)
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 visible = false
