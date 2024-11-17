@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://u5m5gtdyw8tp"]
+[gd_scene load_steps=18 format=3 uid="uid://u5m5gtdyw8tp"]
 
 [ext_resource type="PackedScene" uid="uid://b0wmuv4mfsckf" path="res://Scenes/level.tscn" id="2_gpv0w"]
 [ext_resource type="PackedScene" uid="uid://cthstnn2x6s4a" path="res://Scenes/Player.tscn" id="2_re7t3"]
@@ -10,7 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cs788k6d8frg3" path="res://Scenes/SFX.tscn" id="6_lu2xb"]
 [ext_resource type="AudioStream" uid="uid://buhktu2s0ijl2" path="res://Audio/Cannon.mp3" id="7_kar34"]
 [ext_resource type="AudioStream" uid="uid://d1t4go3nivth8" path="res://Audio/fireball.mp3" id="9_4okc2"]
+[ext_resource type="AudioStream" uid="uid://cjnoyba6v37q2" path="res://Audio/Drinking.mp3" id="9_mbbms"]
+[ext_resource type="AudioStream" uid="uid://7msniwx1pglq" path="res://Audio/ReverseFaster.mp3" id="10_5jrf8"]
 [ext_resource type="AudioStream" uid="uid://ci6tgkrqayvf4" path="res://Audio/explozioooon.mp3" id="10_cs5pq"]
+[ext_resource type="AudioStream" uid="uid://dllod8rrjku2m" path="res://Audio/23707__hazure__seagull.mp3" id="12_6oab1"]
+[ext_resource type="AudioStream" uid="uid://crpfwyfdyhjt6" path="res://Audio/ocean.mp3" id="13_5rt3m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7u4qv"]
 resource_local_to_scene = true
@@ -66,7 +70,6 @@ offset_right = 320.0
 offset_bottom = 176.0
 
 [node name="Music" parent="." instance=ExtResource("5_pbftw")]
-autoplay = false
 
 [node name="SFX" parent="Music" instance=ExtResource("6_lu2xb")]
 stream = ExtResource("7_kar34")
@@ -74,10 +77,12 @@ volume_db = 5.0
 max_polyphony = 6
 
 [node name="SFX2" parent="Music" instance=ExtResource("6_lu2xb")]
-volume_db = 5.0
+stream = ExtResource("9_mbbms")
+volume_db = -4.0
 mp3 = 1
 
 [node name="SFX3" parent="Music" instance=ExtResource("6_lu2xb")]
+stream = ExtResource("10_5jrf8")
 volume_db = 5.0
 mp3 = 2
 
@@ -94,12 +99,15 @@ mp3 = 4
 mp3 = 5
 
 [node name="SFX7" parent="Music" instance=ExtResource("6_lu2xb")]
+stream = ExtResource("10_cs5pq")
 mp3 = 6
 
 [node name="SFX8" parent="Music" instance=ExtResource("6_lu2xb")]
+stream = ExtResource("12_6oab1")
 mp3 = 7
 
 [node name="SFX9" parent="Music" instance=ExtResource("6_lu2xb")]
+stream = ExtResource("13_5rt3m")
 mp3 = 8
 
 [node name="Spawner" parent="." instance=ExtResource("6_058mw")]
