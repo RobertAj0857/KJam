@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/PirateCraftingController.cs" id="4_j0cep"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="4_oycj8"]
 [ext_resource type="PackedScene" uid="uid://butnvcpogf8qb" path="res://Component/Health.tscn" id="6_iogy4"]
-[ext_resource type="PackedScene" uid="uid://dbwg81slv7etb" path="res://Component/Damage.tscn" id="7_e2oo3"]
+[ext_resource type="PackedScene" uid="uid://dtnfx35yrdbdy" path="res://Component/Damage.tscn" id="7_e2oo3"]
 [ext_resource type="Script" path="res://Scripts/CombinationShower.cs" id="9_6ypg6"]
 [ext_resource type="Texture2D" uid="uid://wrmxcngoxaru" path="res://Sprites/CannonSmall1.0.png" id="9_u5oor"]
 [ext_resource type="Texture2D" uid="uid://cdhfodrbbpul3" path="res://Sprites/RomeSmall1.0.png" id="10_meow7"]

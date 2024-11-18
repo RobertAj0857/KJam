@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b1d3en36bud4f" path="res://Sprites/PirateWater.png" id="4_57ofa"]
 [ext_resource type="Texture2D" uid="uid://wq5pd47h2n3b" path="res://Sprites/PirateBlackBeard1.0-Sheet.png" id="4_xd23c"]
 [ext_resource type="Texture2D" uid="uid://c3xx8tq63g02q" path="res://Sprites/DeadPirate.png" id="5_60cms"]
-[ext_resource type="PackedScene" uid="uid://dhwraoqcp8qec" path="res://Scenes/music.tscn" id="5_pbftw"]
+[ext_resource type="PackedScene" path="res://Scenes/music.tscn" id="5_pbftw"]
 [ext_resource type="PackedScene" uid="uid://cli5a2epgaf23" path="res://Component/spawner.tscn" id="6_058mw"]
 [ext_resource type="Texture2D" uid="uid://bav143xw2gj5m" path="res://Sprites/PirateRedBeard1.0-Sheet.png" id="6_fk4ex"]
 [ext_resource type="Texture2D" uid="uid://ku4nvhqtmh62" path="res://Sprites/RedDeadPirate.png" id="6_i2jdo"]
@@ -478,7 +478,6 @@ stream = ExtResource("19_pmdem")
 mp3 = 8
 
 [node name="Spawner" parent="." instance=ExtResource("6_058mw")]
-to = 1.5
 
 [editable path="Player2"]
 [editable path="Player2/Hitbox"]

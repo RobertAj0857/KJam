@@ -116,7 +116,7 @@ public partial class Player : CharacterBody2D
 		originDashPosition = Position;
 		targetDashPosition = originDashPosition + lastMovingDirection * 70;
 		var spaceState = GetWorld2D().DirectSpaceState;
-		var query = PhysicsRayQueryParameters2D.Create(Position + lastMovingDirection * 8,targetDashPosition,CollisionMask);
+		var query = PhysicsRayQueryParameters2D.Create(Position + lastMovingDirection * 2,targetDashPosition,CollisionMask);
 		var result = spaceState.IntersectRay(query);
 		if (result.Count > 0){
 			targetDashPosition = (Vector2)result["position"] - lastMovingDirection * 4;

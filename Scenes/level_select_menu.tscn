@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://y3gdf4ej58td"]
+[gd_scene load_steps=18 format=3 uid="uid://y3gdf4ej58td"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.cs" id="1_ppd4c"]
 [ext_resource type="Shader" path="res://water.gdshader" id="2_7g88x"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://diss5wlqy3wxr" path="res://Sprites/LevelCScreenshot.png" id="6_6ptps"]
 [ext_resource type="Texture2D" uid="uid://da4msmw2g4yuq" path="res://Sprites/RedX1.0.png" id="7_upvai"]
 [ext_resource type="Texture2D" uid="uid://bjaeqkyoxjfp4" path="res://Sprites/RedXDown1.0.png" id="8_ls68s"]
+[ext_resource type="FontFile" uid="uid://70vpt3m63g4x" path="res://alagard.ttf" id="9_w0m4x"]
+[ext_resource type="AudioStream" uid="uid://fu7no413txdr" path="res://Audio/oceanLooping.mp3" id="10_d32xs"]
 
 [sub_resource type="Gradient" id="Gradient_jd3rc"]
 interpolation_mode = 1
@@ -143,6 +145,31 @@ grow_vertical = 2
 texture_pressed = ExtResource("8_ls68s")
 texture_hover = ExtResource("7_upvai")
 stretch_mode = 3
+
+[node name="Winner" type="RichTextLabel" parent="."]
+texture_filter = 1
+clip_contents = false
+custom_minimum_size = Vector2(140, 16)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_top = 12.0
+offset_right = 124.0
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("9_w0m4x")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Choose a Map
+"
+scroll_active = false
+
+[node name="Water" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_d32xs")
+autoplay = true
 
 [connection signal="button_up" from="LevelAScreenshot/Button1" to="." method="button1"]
 [connection signal="button_up" from="LevelBScreenshot/Button2" to="." method="button2"]

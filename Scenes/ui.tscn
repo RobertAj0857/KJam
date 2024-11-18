@@ -221,6 +221,7 @@ text = "5"
 scroll_active = false
 
 [node name="Max" type="RichTextLabel" parent="Player1/Elements/Cannon"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = -9.0
