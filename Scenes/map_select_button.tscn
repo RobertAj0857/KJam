@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds2t5uvkq4sjh"]
+
+[ext_resource type="Texture2D" uid="uid://bjaeqkyoxjfp4" path="res://Sprites/RedXDown1.0.png" id="1_asd5i"]
+[ext_resource type="Texture2D" uid="uid://da4msmw2g4yuq" path="res://Sprites/RedX1.0.png" id="2_44kna"]
+[ext_resource type="Script" path="res://Scenes/MapSelectButton.cs" id="3_ts6hl"]
+
+[node name="Button1" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -53.0
+offset_right = -5.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_pressed = ExtResource("1_asd5i")
+stretch_mode = 3
+script = ExtResource("3_ts6hl")
+focusTexture = ExtResource("2_44kna")
+
+[connection signal="focus_entered" from="." to="." method="focusButton"]
+[connection signal="focus_exited" from="." to="." method="exitFocus"]
+[connection signal="mouse_entered" from="." to="." method="focusButton"]

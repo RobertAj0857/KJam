@@ -8,3 +8,6 @@ visible = false
 isCannonBall = true
 destroyedTex = ExtResource("2_xbpf8")
 Speed = 1.5
+
+[node name="CollisionShape2D" parent="." index="0"]
+debug_color = Color(0, 0.6, 0.7, 0.42)

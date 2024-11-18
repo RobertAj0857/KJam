@@ -29,6 +29,7 @@ public partial class Player : CharacterBody2D
 	private float baseFriction;
 	private float baseAcceleration;
 	private Vector2 inputDirection = Vector2.Zero;
+	public Vector2 precisePosition = Vector2.Zero;
 	private double drunkTimer = -1;
 	private bool drunkMovement = false;
 	private double currentDrunkDuration = 0;
@@ -90,6 +91,7 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         base._Ready();
+		precisePosition = GlobalPosition;
 		baseAcceleration = AccelerationRate;
 		baseFriction = Friction;
     }
@@ -128,11 +130,11 @@ public partial class Player : CharacterBody2D
 	{
 		if (IsPlayer1)
 		{
-			inputDirection = Input.GetVector("Player1Left", "Player1Right", "Player1Up", "Player1Down");
+			inputDirection = Input.GetVector("Player1Left", "Player1Right", "Player1Up", "Player1Down").Normalized();
 		}
 		else
 		{
-			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down");
+			inputDirection = Input.GetVector("Player2Left", "Player2Right", "Player2Up", "Player2Down").Normalized();
 		}
 		
 		if(inputDirection != Vector2.Zero && !TimeWarping){
@@ -182,7 +184,9 @@ public partial class Player : CharacterBody2D
 					posTo = lastPositions.First.Next.Value;
 				}
 				interpolation += delta / timeWarpDurationPerStep;
+				GlobalPosition = precisePosition;
 				Position = posFrom.Lerp(posTo, (float)interpolation);
+				precisePosition = GlobalPosition;
 				if(interpolation >= 1){
 					interpolation = 0;
 					timePassed = 0;
@@ -197,7 +201,9 @@ public partial class Player : CharacterBody2D
 				}
 			}else{
 				interpolation += delta / dashDuration;
+				GlobalPosition = precisePosition;
 				Position = originDashPosition.Lerp(targetDashPosition, (float)interpolation);
+				precisePosition = GlobalPosition;
 				if(interpolation >= 1){
 					interpolation = 0;
 					timePassed = 0;
@@ -221,7 +227,7 @@ public partial class Player : CharacterBody2D
 				DrunkMovement = false;
 			}
 		}
-		float WaterFriction = InWater? 1.65f: 1;
+		float WaterFriction = InWater? 1.575f: 1;
 		LerpVelocityToMax(new(), (float)Math.Pow(Friction*WaterFriction, delta * 60), 0);
 		GetInput();
 		bool isMoving = inputDirection != Vector2.Zero;
@@ -230,11 +236,15 @@ public partial class Player : CharacterBody2D
 			Velocity += inputDirection * Speed * AccelerationRate * (float)delta;
 			Velocity.LimitLength(MaxSpeed);
 		}
+		GlobalPosition = precisePosition;
 		if (Velocity != Vector2.Zero && !TimeWarping)
 		{
 			MoveAndSlide();
 		}
+		precisePosition = GlobalPosition;
+		GlobalPosition = precisePosition.Round();
 
+		
 		// For animations
 		string animationType = "Idle";
 		if (isMoving)

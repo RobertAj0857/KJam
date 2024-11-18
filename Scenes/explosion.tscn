@@ -69,7 +69,9 @@ collisionShape2D = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_85asc")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="ExplosionEffect" type="Sprite2D" parent="."]
+z_index = 15
 material = SubResource("ShaderMaterial_3y2gi")
 texture = SubResource("GradientTexture2D_mhw7m")

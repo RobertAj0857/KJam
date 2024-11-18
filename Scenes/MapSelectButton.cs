@@ -1,12 +1,10 @@
 using Godot;
 using System;
 
-public partial class MainMenuButton : TextureButton
+public partial class MapSelectButton : TextureButton
 {
 	[Export]
-	public Texture2D newNormalTexture;
-	[Export]
-	public Texture2D focusTexture;
+	Texture2D focusTexture;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -15,10 +13,6 @@ public partial class MainMenuButton : TextureButton
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-	}
-	public void _on_button_up() {
-		GetTree().ChangeSceneToFile("res://Scenes/main_menu.tscn");
-		GetParent<Control>().Visible = false;
 	}
 
 	public void focusButton(){
@@ -29,6 +23,6 @@ public partial class MainMenuButton : TextureButton
 	}
 
 	public void exitFocus(){
-		TextureNormal = newNormalTexture;
+		TextureNormal = null;
 	}
 }

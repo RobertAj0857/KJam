@@ -176,35 +176,38 @@ public partial class PirateCraftingController : Node2D
 		currentCraftCombination[element] = true;
 		player.combinationShower.updateCombination(currentCraftCombination, amountOfInputs);
 	}
-	public override void _Input(InputEvent @event)
-	{
-		base._Input(@event);
-		if (@event is InputEventKey eventKey && eventKey.Pressed && !player.IsDead && !player.TimeWarping)
+	private void checkInputs(InputEvent @event){
+		foreach (String keyInput in keyInputs)
 		{
-			foreach (String keyInput in keyInputs)
+			if ((player.IsPlayer1 && keyInput.Contains("Player1") && @event.IsActionPressed(keyInput) || !player.IsPlayer1 && keyInput.Contains("Player2") && @event.IsActionPressed(keyInput)) && !isPerformingAction)
 			{
-				if ((player.IsPlayer1 && keyInput.Contains("Player1") && eventKey.IsAction(keyInput) || !player.IsPlayer1 && keyInput.Contains("Player2") && eventKey.IsAction(keyInput)) && !isPerformingAction)
+				Element element = keyInputToElement[keyInput];
+				if (elementAmounts[element] > 0)
 				{
-					Element element = keyInputToElement[keyInput];
-					if (elementAmounts[element] > 0)
+					if (currentCraftCombination[element] || amountOfInputs >= maxAmountOfInputs)
 					{
-						if (currentCraftCombination[element] || amountOfInputs >= maxAmountOfInputs)
-						{
-							makeElementEffect();
-							if(elementAmounts[element] > 0){
-								addInput(element);
-							}
-							GD.Print("Make effect2");
-							break;
-						}
-						else
-						{
+						makeElementEffect();
+						if(elementAmounts[element] > 0){
 							addInput(element);
-							GD.Print("Make effect3");
 						}
+						GD.Print("Make effect2");
+						break;
+					}
+					else
+					{
+						addInput(element);
+						GD.Print("Make effect3");
 					}
 				}
 			}
+		}
+	}
+	public override void _Input(InputEvent @event)
+	{
+		base._Input(@event);
+		if ((@event is InputEventJoypadButton|| @event is InputEventKey) && !player.IsDead && !player.TimeWarping)
+		{
+			checkInputs(@event);
 		}
 	}
 	// Called when the node enters the scene tree for the first time.

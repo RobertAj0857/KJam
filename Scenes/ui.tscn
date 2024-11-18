@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://chb2kr3ap64po"]
+[gd_scene load_steps=23 format=3 uid="uid://chb2kr3ap64po"]
 
 [ext_resource type="Texture2D" uid="uid://ippkbwb3v5py" path="res://Sprites/UIPlank.png" id="1_fj55a"]
 [ext_resource type="Script" path="res://Scripts/UI.cs" id="1_s1p8x"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://Scenes/RestartButton.cs" id="14_4xg8m"]
 [ext_resource type="Texture2D" uid="uid://byknlkhqqbabt" path="res://Sprites/WoodenButton1.0.png" id="14_k121c"]
 [ext_resource type="Texture2D" uid="uid://qc0aqutdy6l4" path="res://Sprites/WoodenButtonDown1.0.png" id="15_ygx0c"]
+[ext_resource type="Texture2D" uid="uid://dcgp6jvrjui1b" path="res://Sprites/WoodenButton1.0Focus.png" id="17_57nls"]
+[ext_resource type="PackedScene" uid="uid://366ibpo27on0" path="res://Scenes/settings.tscn" id="20_q0uxp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xsasj"]
 resource_local_to_scene = true
@@ -66,7 +68,7 @@ theme_override_font_sizes/normal_font_size = 16
 text = "0"
 scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="Player2/Elements/Cannon"]
+[node name="Max" type="RichTextLabel" parent="Player2/Elements/Cannon"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -78,12 +80,8 @@ theme_override_font_sizes/normal_font_size = 16
 text = "5"
 scroll_active = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Player2/Elements/Cannon"]
-position = Vector2(0, 16)
-texture = ExtResource("6_qfhe3")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player2/Elements/Cannon"]
-position = Vector2(0, 16)
+[node name="Slash" type="Sprite2D" parent="Player2/Elements/Cannon"]
+position = Vector2(0.5, 16)
 texture = ExtResource("6_qfhe3")
 
 [node name="Rum" type="Sprite2D" parent="Player2/Elements"]
@@ -103,7 +101,7 @@ theme_override_font_sizes/normal_font_size = 16
 text = "0"
 scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="Player2/Elements/Rum"]
+[node name="Max" type="RichTextLabel" parent="Player2/Elements/Rum"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -115,22 +113,8 @@ theme_override_font_sizes/normal_font_size = 16
 text = "5"
 scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="Player2/Elements/Rum"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-offset_left = -9.0
-offset_top = 12.0
-offset_right = 4.0
-offset_bottom = 27.0
-rotation = -0.367118
-theme_override_fonts/normal_font = ExtResource("4_wxug4")
-theme_override_font_sizes/normal_font_size = 16
-text = "/"
-scroll_active = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player2/Elements/Rum"]
-position = Vector2(0, 16)
+[node name="Slash" type="Sprite2D" parent="Player2/Elements/Rum"]
+position = Vector2(0.5, 16)
 texture = ExtResource("6_qfhe3")
 
 [node name="PocketWatch" type="Sprite2D" parent="Player2/Elements"]
@@ -150,7 +134,7 @@ theme_override_font_sizes/normal_font_size = 16
 text = "0"
 scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="Player2/Elements/PocketWatch"]
+[node name="Max" type="RichTextLabel" parent="Player2/Elements/PocketWatch"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -162,22 +146,8 @@ theme_override_font_sizes/normal_font_size = 16
 text = "5"
 scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="Player2/Elements/PocketWatch"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-offset_left = -9.0
-offset_top = 12.0
-offset_right = 4.0
-offset_bottom = 27.0
-rotation = -0.367118
-theme_override_fonts/normal_font = ExtResource("4_wxug4")
-theme_override_font_sizes/normal_font_size = 16
-text = "/"
-scroll_active = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player2/Elements/PocketWatch"]
-position = Vector2(0, 16)
+[node name="Slash" type="Sprite2D" parent="Player2/Elements/PocketWatch"]
+position = Vector2(0.5, 16)
 texture = ExtResource("6_qfhe3")
 
 [node name="BigPirateHead" parent="Player2" instance=ExtResource("8_6uyyu")]
@@ -208,7 +178,7 @@ theme_override_font_sizes/normal_font_size = 16
 text = "0"
 scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="Player1/Elements/Cannon"]
+[node name="Max" type="RichTextLabel" parent="Player1/Elements/Cannon"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -220,22 +190,8 @@ theme_override_font_sizes/normal_font_size = 16
 text = "5"
 scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="Player1/Elements/Cannon"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-offset_left = -9.0
-offset_top = 12.0
-offset_right = 4.0
-offset_bottom = 27.0
-rotation = -0.367118
-theme_override_fonts/normal_font = ExtResource("4_wxug4")
-theme_override_font_sizes/normal_font_size = 16
-text = "/"
-scroll_active = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player1/Elements/Cannon"]
-position = Vector2(0, 16)
+[node name="Slash" type="Sprite2D" parent="Player1/Elements/Cannon"]
+position = Vector2(0.5, 16)
 texture = ExtResource("6_qfhe3")
 
 [node name="Rum" type="Sprite2D" parent="Player1/Elements"]
@@ -255,7 +211,7 @@ theme_override_font_sizes/normal_font_size = 16
 text = "0"
 scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="Player1/Elements/Rum"]
+[node name="Max" type="RichTextLabel" parent="Player1/Elements/Rum"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -267,22 +223,8 @@ theme_override_font_sizes/normal_font_size = 16
 text = "5"
 scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="Player1/Elements/Rum"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-offset_left = -9.0
-offset_top = 12.0
-offset_right = 4.0
-offset_bottom = 27.0
-rotation = -0.367118
-theme_override_fonts/normal_font = ExtResource("4_wxug4")
-theme_override_font_sizes/normal_font_size = 16
-text = "/"
-scroll_active = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player1/Elements/Rum"]
-position = Vector2(0, 16)
+[node name="Slash" type="Sprite2D" parent="Player1/Elements/Rum"]
+position = Vector2(0.5, 16)
 texture = ExtResource("6_qfhe3")
 
 [node name="PocketWatch" type="Sprite2D" parent="Player1/Elements"]
@@ -302,7 +244,7 @@ theme_override_font_sizes/normal_font_size = 16
 text = "0"
 scroll_active = false
 
-[node name="Slash" type="RichTextLabel" parent="Player1/Elements/PocketWatch"]
+[node name="Max" type="RichTextLabel" parent="Player1/Elements/PocketWatch"]
 modulate = Color(0, 0, 0, 1)
 texture_filter = 1
 offset_left = 3.0
@@ -314,22 +256,8 @@ theme_override_font_sizes/normal_font_size = 16
 text = "5"
 scroll_active = false
 
-[node name="Max" type="RichTextLabel" parent="Player1/Elements/PocketWatch"]
-visible = false
-modulate = Color(0, 0, 0, 1)
-texture_filter = 1
-offset_left = -9.0
-offset_top = 12.0
-offset_right = 4.0
-offset_bottom = 27.0
-rotation = -0.367118
-theme_override_fonts/normal_font = ExtResource("4_wxug4")
-theme_override_font_sizes/normal_font_size = 16
-text = "/"
-scroll_active = false
-
-[node name="Sprite2D2" type="Sprite2D" parent="Player1/Elements/PocketWatch"]
-position = Vector2(0, 16)
+[node name="Slash" type="Sprite2D" parent="Player1/Elements/PocketWatch"]
+position = Vector2(0.5, 16)
 texture = ExtResource("6_qfhe3")
 
 [node name="BigPirateHead2" parent="Player1" instance=ExtResource("8_6uyyu")]
@@ -341,10 +269,10 @@ flip_h = true
 [node name="FinishScreen" type="Panel" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 87.0
-offset_top = 34.0
-offset_right = 239.0
-offset_bottom = 150.0
+offset_left = 85.0
+offset_top = 30.0
+offset_right = 237.0
+offset_bottom = 146.0
 script = ExtResource("12_rjqsd")
 
 [node name="Sprite2D" type="Sprite2D" parent="FinishScreen"]
@@ -373,14 +301,16 @@ scroll_active = false
 
 [node name="MainMenuButton" type="TextureButton" parent="FinishScreen"]
 layout_mode = 1
-offset_left = 25.0
-offset_top = 70.0
-offset_right = 129.0
-offset_bottom = 110.0
+offset_left = 29.0
+offset_top = 74.0
+offset_right = 125.0
+offset_bottom = 106.0
 texture_normal = ExtResource("14_k121c")
 texture_pressed = ExtResource("15_ygx0c")
 stretch_mode = 3
 script = ExtResource("13_7gqu6")
+newNormalTexture = ExtResource("14_k121c")
+focusTexture = ExtResource("17_57nls")
 
 [node name="Text2" type="RichTextLabel" parent="FinishScreen/MainMenuButton"]
 z_index = 1
@@ -407,14 +337,16 @@ scroll_active = false
 
 [node name="RestartButton" type="TextureButton" parent="FinishScreen"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 30.0
-offset_right = 129.0
-offset_bottom = 70.0
+offset_left = 29.0
+offset_top = 34.0
+offset_right = 125.0
+offset_bottom = 66.0
 texture_normal = ExtResource("14_k121c")
 texture_pressed = ExtResource("15_ygx0c")
 stretch_mode = 3
 script = ExtResource("14_4xg8m")
+newNormalTexture = ExtResource("14_k121c")
+focusTexture = ExtResource("17_57nls")
 
 [node name="Text3" type="RichTextLabel" parent="FinishScreen/RestartButton"]
 z_index = 1
@@ -439,5 +371,23 @@ text = "[center]Play again
 "
 scroll_active = false
 
+[node name="Settings" parent="." instance=ExtResource("20_q0uxp")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 152.0
+offset_bottom = 116.0
+grow_horizontal = 1
+
+[connection signal="visibility_changed" from="FinishScreen" to="FinishScreen/RestartButton" method="_on_finish_screen_visibility_changed"]
 [connection signal="button_up" from="FinishScreen/MainMenuButton" to="FinishScreen/MainMenuButton" method="_on_button_up"]
+[connection signal="focus_entered" from="FinishScreen/MainMenuButton" to="FinishScreen/MainMenuButton" method="focusButton"]
+[connection signal="focus_exited" from="FinishScreen/MainMenuButton" to="FinishScreen/MainMenuButton" method="exitFocus"]
+[connection signal="mouse_entered" from="FinishScreen/MainMenuButton" to="FinishScreen/MainMenuButton" method="focusButton"]
 [connection signal="button_up" from="FinishScreen/RestartButton" to="FinishScreen/RestartButton" method="_on_button_up"]
+[connection signal="focus_entered" from="FinishScreen/RestartButton" to="FinishScreen/RestartButton" method="focusButton"]
+[connection signal="focus_exited" from="FinishScreen/RestartButton" to="FinishScreen/RestartButton" method="exitFocus"]
+[connection signal="mouse_entered" from="FinishScreen/RestartButton" to="FinishScreen/RestartButton" method="focusButton"]
