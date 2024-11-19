@@ -467,6 +467,8 @@ stream = ExtResource("20_ds13w")
 mp3 = 8
 
 [node name="Spawner" parent="." instance=ExtResource("21_6fx2e")]
+from = 1.0
+to = 1.4
 
 [editable path="Player2"]
 [editable path="Player2/Hitbox"]

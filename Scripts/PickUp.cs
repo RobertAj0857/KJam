@@ -64,6 +64,7 @@ public partial class PickUp : Area2D
 		}
 		if(GetOverlappingBodies().Count > 0 && !cantPickUp){
 			spawner.amountOfSpawns --;
+			spawner.SpawnItems();
 			QueueFree();
 		}
 	}
